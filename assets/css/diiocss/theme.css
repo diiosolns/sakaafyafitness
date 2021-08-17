@@ -1,0 +1,44 @@
+.sitecolor1 {
+  /*blue*/
+  color: #1328a8;
+}
+
+.sitecolor1bg {
+  /*blue*/
+  background-color: #1328a8;
+} 
+
+ .sitecolor2 {
+  /*yellow*/
+  color: #ed9d00;
+}
+
+.sitecolor2bg {
+  /*yellow*/
+  background-color: #ed9d00;
+} 
+
+.sitecolor3 {
+  /*white bg*/
+  color: #e7ece8;
+}
+
+.sitecolor3bg {
+  /*white bg*/
+  background-color: #e7ece8;
+} 
+
+.sitecolor4 {
+  /*black*/
+  color: #000616;
+}
+
+.sitecolor4bg {
+  /*black*/
+  background-color: #000616;
+} 
+
+.btn-info {
+  background-color: #1328a8 !important;
+  color: #fff;
+}

@@ -1,0 +1,275 @@
+<?php
+
+/*
+ * kiswahili language
+ */
+
+$lang['msg_lang'] = 'Changua Lugha (Lugha)'; // english language
+$lang['msg_login'] = 'Ingia';
+$lang['msg_username'] = 'Username';
+$lang['msg_password'] = 'Nywila';
+
+
+/*xxxxxxxxx HOMExxxxxxxxxx*/
+$lang['msg_home'] = 'NYUMBANI';
+$lang['msg_blog'] = 'BLOGU';
+$lang['msg_faq'] = 'MASWALI MUHIMU';
+$lang['msg_services on demand'] = 'HUDUMA SOKONI';
+$lang['msg_about_us'] = 'KUHUSU eHUDUMA';
+$lang['msg_contact_us'] = 'WASILIANA NASI';
+$lang['msg_search'] = 'Tafuta';
+$lang['msg_log in'] = 'INGIA';
+$lang['msg_sign up '] = 'JISAJILI';
+$lang['msg_language'] = 'Lugha';
+$lang['msg_welcome_to_huduma'] = 'Karibu kwenye wavuti ya eHuduma
+Furahia njia rahisi na haraka ya kuuza na kununua huduma';
+$lang['msg_select_profile_type'] = 'Chagua aina ya Profaili';
+$lang['msg_professionals'] = 'Wataalamu';
+$lang['msg_entrepreneurs'] = 'Wajasiliamali';
+$lang['msg_others'] = 'Wengineo';
+$lang['msg_select_profile_category'] = 'Chagua Kategoria ya Profaili';
+$lang['msg_teacher'] = 'Mwalimu';
+$lang['msg_doctor'] = 'Daktari';
+$lang['msg_technician'] = 'Fundi';
+$lang['msg_animal-keeper'] = 'Mtaalamu wa mifugo';
+$lang['msg_farming_expert '] = 'Mtaalamu wa Kilimo';
+$lang['msg_lawyer'] = 'Mwanasheria';
+$lang['msg_nurse'] = 'Nesi';
+$lang['msg_bursar'] = 'Mhasibu';
+$lang['msg_psychologist'] = 'Mwanasaikolojia';
+$lang['msg_translator'] = 'Mfasiri';
+$lang['msg_interpretor '] = 'Mkalimani';
+$lang['msg_programmer '] = 'Mbunifu wa kitehama';
+$lang['msg_blogger'] = 'Mtaalamu wa Bulogu';
+$lang['msg_master_of_ceremony'] = 'Mshereheshaji';
+$lang['msg_blocker'] = 'Dalali';
+$lang['msg_driver'] = 'Dereva';
+$lang['msg_security_guard'] = 'Mlinzi';
+$lang['msg_other_works '] = 'Kazi nyinginezo';
+$lang['msg_archtect'] = 'Mkandarasi';
+$lang['msg_shop'] = 'Duka';
+$lang['msg_parking'] = 'Maegesho ya Magari';
+$lang['msg_car_wash'] = 'Sehemu za Kuoshea Magari';
+$lang['msg_garage'] = 'Gereji';
+$lang['msg_bar'] = 'Baa';
+$lang['msg_salon'] = 'Saluni';
+$lang['msg_bakery'] = 'Duka la Mikate';
+$lang['msg_tuition_centre '] = 'Kituo cha Masomo ya ziada';
+$lang['msg_day_care'] = 'Shule ya Awali';
+$lang['msg_school'] = 'Shule';
+$lang['msg_guest_house'] = 'Nyumba ya kulala Wageni';
+$lang['msg_hotel'] = 'Hoteli';
+$lang['msg_restaurant'] = 'Mgahawa';
+$lang['msg_butcher'] = 'Bucha';
+$lang['msg_online_marketers'] = 'Wauzaji-Mitandaoni';
+$lang['msg_insurance'] = 'Wakala wa Bima';
+$lang['msg_other_business_works '] = 'Huduma nyinginezo za Kijasiliamali';
+$lang['msg_select_profile_sub_category'] = 'Chagua Kategoria Ndogo ya Profaili';
+$lang['msg_mathematics'] = 'Hisabati';
+$lang['msg_physics'] = 'Fizikia';
+$lang['msg_biology'] = 'Biolojia';
+$lang['msg_chemistry'] = 'Kemia';
+$lang['msg_history'] = 'Historia';
+$lang['msg_kiswahili'] = 'Lugha ya Kiswahili';
+$lang['msg_english'] = 'Lugha ya Kiingereza';
+$lang['msg_kiswahili_to_foreigners'] = 'Kiswahili kwa Wageni';
+$lang['msg_geography '] = 'Jiografia';
+$lang['msg_french'] = 'Lugha ya Kifaransa';
+$lang['msg_chinese'] = 'Lugha ya Kichina';
+$lang['msg_other_subjects'] = 'Masomo Mengineyo';
+$lang['msg_general_doctor'] = 'Daktari';
+$lang['msg_pediatrician'] = 'Daktari Bingwa wa Watoto';
+$lang['msg_surgeon'] = 'Daktari Bingwa wa Upasuaji';
+$lang['msg_Dermatologist'] = 'Daktari Bingwa wa Ngozi';
+$lang['msg_gynecologist'] = 'Daktari Bingwa wa Akina mama';
+$lang['msg_psychiatric'] = 'Daktari Bingwa wa Akili';
+$lang['msg_cardiologist'] = 'Daktari Bingwa wa Moyo';
+$lang['msg_neurologist'] = 'Daktari Bingwa wa Mishipa';
+$lang['msg_other_specialisations'] = 'Madaktari wengineo';
+$lang['msg_electrical'] = 'Umeme';
+$lang['msg_electronics'] = 'Vifaa vya Umeme';
+$lang['msg_tailoring'] = 'Ushonaji';
+$lang['msg_water_pumps'] = 'Pampu za Maji';
+$lang['msg_mechanics'] = 'Makenika';
+$lang['msg_other_specialisations'] = 'Ufundi mwingineo';
+$lang['msg_clothes'] = 'Nguo';
+$lang['msg_shoes'] = 'Viatu';
+$lang['msg_others'] = 'Maduka Mengineyo';
+$lang['msg_barbershop'] = 'Saluni ya Kiume';
+$lang['msg_hair_dressers'] = 'Saluni ya Kike';
+$lang['msg_primary'] = 'Shule ya Msingi';
+$lang['msg_secondary'] = 'Shule ya Sekondari';
+$lang['msg_search_profile '] = 'Tafuta Profaili';
+/*xxxxxxxxx END HOME xxxxx*/
+
+
+/*xxxxxxxxx FOOTER xxxxxxxxxx*/
+$lang['msg_'] = '';
+$lang['msg_popular_profiles'] = 'Profaili Maarufu';
+$lang['msg_new_profiles'] = 'Profaili Mpya';
+$lang['msg_about huduma'] = 'Kuhusu eHuduma';
+$lang['msg_about_simple_text'] = 'Huu mtandao unalenga kuwakutanisha wataalam, wajasiliamali, wafanyakazi na wafanyabiashara mbalimbaliambao wataweza kufungua Profile zao zitakazowasaidia watumiaji wa mtandao kuweza kuwapata kupitia mawasiliano yao na anuani za maeneo yao kwa ukaribu.';
+$lang['msg_our_services '] = 'Huduma Zetu';
+$lang['msg_user_profiles_'] = 'Profaili za Watumiaji';
+$lang['msg_business_profiles'] = 'Profaili za Biashara';
+$lang['msg_profile_timetable'] = 'Ratiba ya Profaili';
+$lang['msg_advertisements'] = 'Matangazo';
+$lang['msg_marketing'] = 'Masoko';
+$lang['msg_appointments'] = 'Miadi';
+$lang['msg_services'] = 'Huduma';
+$lang['msg_this_site_text'] = 'Huu mfumo unalenga kuwakutanisha wataalam, wajasiliamali, wafanyakazi na wafanyabiashara mbalimbaliambao wataweza kufungua Profile zao zitakazowasaidia watumiaji wa mtandao kuweza kuwapata kupitia mawasiliano yao na anuani za maeneo yao kwa ukaribu.';
+$lang['msg_profile_types'] = 'Aiza za Profaili';
+$lang['msg_Professionals '] = 'Wataalamu';
+$lang['msg_entrepreneurs'] = 'Wajasiliamali';
+$lang['msg_others'] = 'Wengineo';
+$lang['msg_profile_category'] = 'Kategoria ya Profaili';
+$lang['msg_teacher'] = 'Mwalimu';
+$lang['msg_doctor'] = 'Daktari';
+$lang['msg_lawyer'] = 'Mwanasheria';
+$lang['msg_nurse'] = 'Nesi';
+$lang['msg_psychologist'] = 'Mwanasaikolojia';
+$lang['msg_translator'] = 'Mfasiri';
+$lang['msg_interpreter'] = 'Mkalimani';
+$lang['msg_blogger'] = 'Mtaalamu wa Blogu';
+$lang['msg_technician'] = 'Fundi';
+$lang['msg_farming_expert'] = 'Mtaalamu wa Kilimo';
+$lang['msg_programmer'] = 'Mtaalamu wa kitehama';
+$lang['msg_blocker'] = 'Dalali';
+$lang['msg_master_of_ceremony'] = 'Mshereheshaji';
+$lang['msg_others'] = 'Huduma nyinginezo za kijasiliamali';
+$lang['msg_social_media_'] = 'Mitandao ya Kijamii';
+$lang['msg_visit_our_pages'] = 'Tafadahali tembelea kurasa zetu kwenye mitandao ya kijamii';
+$lang['msg_our_contacts'] = 'Mawasiliano yetu';
+$lang['msg_p.o.box'] = 'S. L. P 35040 - Dar es Salaam ';
+$lang['msg_phone'] = 'Namba ya Simu: +255 625 480 482';
+$lang['msg_email'] = 'Barua pepe: ehuduma@uwezomedia.com';
+/*xxxxxxxxx END FOOTER xxxxx*/
+
+
+/*xxxxxxxxx BLOG xxxxxxxxxx*/
+$lang['msg_ehuduma_blogging'] = 'eHuduma-Blogu';
+$lang['msg_more_news'] = 'Habari zaidi';
+$lang['msg_'] = '';
+$lang['msg_'] = '';
+$lang['msg_'] = '';
+/*xxxxxxxxx END BLOG xxxxx*/
+
+
+/*xxxxxxxxx ABOUTxxxxxxxxxx*/
+$lang['msg_about_huduma'] = 'Kuhusu eHuduma.com';
+$lang['msg_welcome_note'] = 'Neno la Ukaribisho';
+$lang['msg_welcome_text'] = '
+Ninayo furaha na heshima kubwa kukukaribisha  kwenye wavuti yetu ya www.ehuduma.com. Kama kampuni la kidigiti, Uwezomedia limited inakuletea moja kati ya wavuti bora sana kwa ajili ya kuendeleza mikakati ya kimasoko na kupunguza kiwango cha watu wasiokuwa na ajira kwenye jamii. 
+
+ehuduma.com ni mfumo-kazi ambao unachukua maeneo mawili ambayo ni wataalamu na wajasiliamali. Pande hizi kubwa mbili zitawasaidia watumiaji wa mtandao (walaji) kutafuta mahitaji yao kwa kutafuta mtaalamu  au mjasiliamali kulingana na mahitaji yao. Mbali na hayo, mtandao huu unakupa wewe (mtaalamu au mjasiliamali) fursa ya kujisajili na kutengeneza profaili ambayo itaonekana pale itakapotafutwa na watumiaji wa huduma. Huu ni mtandao wa kimasoko ambao mjasiliamali / mtaalamu anaweza kuutegemea  ili kuweza kuwafikia wateja wengi zaidi. 
+
+Timu yetu inafanya kazi kwa bidii sana kuhakikisha watumiaji wetu wa mtandao wanatumia mtandao bora na rafiki. Wavuti yetu inatoa taarifa juu ya huduma zetu kwa kila mara na muda, mikakati ya kuchangamana kwa ajili ya kuboresha namna ya utoaji huduma zetu na namna ya kufanya kazi bega kwa bega na wateja wetu kwa ajili ya kuongeza uwezo kiweledi na kwa viwango. 
+
+Ni matumaini yangu kuwa mtandao huu utakuwa ni wa manufaa na chombo cha uhakika kimasoko kwa ajili ya kufikia mahitaji yako. 
+
+Unaweza kitumia kitufe cha “Wasiliana nasi” kwenye wavuti yetu au akaunti zetu kwenye mitandao ya kijamii ambapo utaweza kutoa maoni yako au kufanya maulizo kwenye kipengele chochote kulingana na huduma zetu.
+
+Uwezomedia limited imejizatiti kuhakikisha mahitaji yako yanafanyiwa kazi kikamilifu na kufikia malengo kwa muda na kwa haki na usawa pamoja na kuzingatia ubora na vigezo vya hali ya juu. 
+
+Karibu sana kwenye wavuti yetu!';
+$lang['msg_ceo_name'] = 'MILLAMBO, Revocatus K';
+$lang['msg_ceo'] = 'Mkurugenzi Mtendaji';
+$lang['msg_profile_category'] = 'Kategoria ya Profaili';
+$lang['msg_easy_profile_search'] = 'Tafuta Profaili kwa Urahisi';
+$lang['msg_what_is_ehuduma_qn?'] = 'ehuduma ni nini?';
+$lang['msg_what_is_ehuduma_answr'] = 'ehuduma.com ni mfumo-kazi ambao unachukua maeneo mawili ambayo ni wataalamu na wajasiliamali. Pande hizi kubwa mbili zitawasaidia watumiaji wa mtandao (walaji) kutafuta mahitaji yao kwa kutafuta mtaalamu  au mjasiliamali kulingana na mahitaji yao. Lakini pia mtandao huu unamsaidia mtoa huduma kujisajili na kutengeneza profaili. Mtandao huu unarahisisha mchakato wa wateja kutafuta huduma kwa njia nyepesi, rahisi na ya uhakika. Huu ni mtandao wa kimasoko ambao mjasiliamali / mtaalamu anaweza kuutegemea  ili kuweza kuwafikia wateja wengi zaidi.';       
+$lang['msg_easy_profile_search'] = 'Tafuta Profaili kwa Urahisi';
+$lang['msg_vision'] = 'Maono';
+$lang['msg_vision'] = 'Kuwa moja ya kampuni bora za kidigiti duniani, ambapo watu wanaweza kutafuta na kupata hudma za wajasiliamali na wataalamu mtandaoni.';
+$lang['msg_easy_profile_search'] = 'Tafuta Profaili kwa Urahisi';
+$lang['msg_mission '] = 'Misheni';
+$lang['msg_mission'] = 'Tunahakikisha tunawapatia wateja wetu mtandao bora na rafiki kutumia kwa utafutaji rahisi wa huduma kulingana na mahitaji yao.';
+$lang['msg_site_information'] = 'Sehemu ya Taarifa';
+$lang['msg_site_photos'] = 'sehemu ya picha';
+$lang['msg_easy_profile_search'] = 'Tafuta Profaili kwa Urahisi';
+$lang['msg_how_to_use_our_services'] = 'Namna ya kutumia huduma zetu';
+$lang['msg_easy_profile_search'] = 'Tafuta Profaili kwa Urahisi';
+/*xxxxxxxxx END ABOUT xxxxx*/
+
+/*xxxxxxxxx FAQxxxxxxxxxx*/
+$lang['msg_faq'] = 'Maswali yaulizwayo mara kwa mara';
+$lang['msg_general_questions'] = 'Maswali ya Ujumla';
+$lang['msg_account_registration qn'] = '1. Je ni lazima kusajili akaunti?';
+$lang['msg_account registration ansr'] = 'Kusajili akaunti kwenye eHuduma.com kutahitajika tu iwapo utahitaji kuweka taarifa zako ili watumiaji wa mtandao waweze kuziona na kuomba kuweka miadi na wewe. Kutafuta huduma, profaili, na kuweka miadi hakumhitaji mtumiaji wa mtandao kujisajili.';
+$lang['msg_what_is_ehuduma qn'] = '2. eHuduma.com ni nini?';
+$lang['msg_what_is_ehuduma answr'] = 'Ni mtandao ambalo wataalamu na wajasiliamali wanaweza kujisajili na kuwasaidia watumiaji wa mtandao jinsi ya kuwapata kwa urahisi. Unaweza kutafuta na kupata wataalamu na wajasiliamali ndani na nje ya nchi.';
+$lang['msg_What_services_qn?'] = '3. Ni huduma zipi hutolewa na eHuduma.com?';
+$lang['msg_what_services_answr'] = 'Wavuti hii ni mtandao wa kimasoko kwa ajili ya wajasiliamali, wataalamu,  biashara na miradi mingine. Hawa wote wanaweza kutengeneza profaili zao ambazo zitamsaidia mlaji kuweza kuwatafuta na kuwapata kwa ajili ya kukutana na kufanya biashara.';
+$lang['msg_how_do_i_manage_qn'] = '4. Je, ninawezaje kupata huduma kwa kutembelea wavuti hii?';
+$lang['msg_how_do_i_manage_answr'] = 'Mtumiaji wa wavuti hii atakuwa na uhuru mkubwa wa kuchagua watoa huduma kwa kuzingatia mahitaji yake. Mtu atatembelea wavuti hii na kutafuta mtaalamu au mjasiliamali kulingana na mahitaji binafsi.';
+$lang['msg_how_do_i_make_an_appointment_qn'] = '5. Je, ninawezaje kuweka miadi na mtoa huduma?';
+$lang['msg_how_do_i_make_an_appointment_answr'] = 'Mtandao huu unampa mtumiaji nyenzo nzuri za kutumia; mtu anaweza kuona ratiba ya mtoa huduma ambayo inapatikana kwenye profaili yake halafu wanaweza kuchati na kukubaliana juu ya biashara.';
+$lang['msg_how_does_ehuduma_works_qn'] = '6. Je eHuduma inafanyaje kazi?';
+$lang['msg_how_does_ehuduma_works_answr'] = 'ehuduma inafanya kazi kwa kuwapa nafasi watoa huduma kujisajili na kutengeneza profaili, lakini pia walaji kutembelea mtandao na kutafuta watoa huduma kwa kuwatafuta na kuangalia profaili zao.';
+$lang['msg_how_do_i_search_qn'] = '7. Je ninawezaje kumtafuta mtoa huduma?';
+$lang['msg_how_do_i_search_answr'] = 'Itakuhitaji tu kuwa  na mahitaji yako na nia ya kupata kile unachokitaka kutoka kwenye mtandao huu kwani utahitaji kutafuta huduma mahususi.';
+$lang['msg_is_there_any_cost_qn'] = '8. Je kuna gharama yoyote ya kutumia wavuti hii?';
+$lang['msg_is _there_any_cost_answr'] = 'Hapana, ni bure kabisa kutumia mtandao huu. Unaweza kutengeneza profaili na kutafuta huduma bure kabisa lakini makubaliano yenu (kati ya mtoa huduma na mlaji) yanabaki kuwa binafsi na mnaweza kukubaliana au kutokubaliana kufanya biashara baina yenu. ehuduma haitahusika kwa biashara yeyote itakayokubaliwa baina yenu.';
+$lang['msg_profile'] = 'Profaili';
+$lang['msg_how_can_i_register_a_profile_qn'] = '1. Je ninawezaje kusajili profaili?';
+$lang['msg_how_can_i_register_a_profile_answr'] = 'Bofya kitufe cha Jisajili juu kabisa ya ukurasa huu kujisajili. Halafu Ingia kwenye Control Panel yako, huko utafanya uchaguzi wa kusajili profaili mpya.';
+$lang['msg_how_can_i_search_a_profile_qn'] = '2. Je ninawezaje kutafuta profaili?';
+$lang['msg_how_can_i_search_a_profile_answr'] = 'Nenda kwenye Ukurasa wa Nyumbani, halafu fuata maelekezo haya chini;
+Chagua Aina ya Profaili Stahiki
+Chagua Kategoria ya Profaili
+Chagua kategoria ndogo ya Profaili
+Halafu bofya kitufe cha Tafuta. Ukurasa wa Profaili utafunguka';
+$lang['msg_how_do_i_make_an_appointment_qn'] = '3. Je ninawezaje kuweka miadi?';
+$lang['msg_how_do_i_make_an_appointment_answr '] = 'Nenda kwenye Ukurasa wa Profaili husika (Zingatia swali lililotangulia juu ya kutafuta profaili)
+Shuka mpaka chini ya ukurasa huo
+Bofya kwenye Kuomba Fomu ya Miadi
+Jaza taarifa zote zinazohitajika
+Halafu Bofya kitufe cha "Weka Miadi"';
+$lang['msg_user'] =' Mtumiaji';
+$lang['msg_account_reg_qn'] = '1. Je ni lazima kusajili akaunti?';
+$lang['msg_account reg_answr'] = 'Kusajili akaunti kwenye eHuduma.com kutahitajika tu iwapo utahitaji kuweka taarifa zako ili watumiaji wa mtandao waweze kuziona na kuomba kuweka miadi na wewe. Kutafuta huduma, profaili, na kuweka miadi hakumhitaji mtumiaji wa mtandao kujisajili.';
+$lang['msg_is_there_any_cost_qn'] = '2. Je kuna gharama yoyote ya kutumia mtandao huu?';
+$lang['msg_is _there_any_cost_answr'] = 'Hapana, ni bure kabisa kutumia mtandao huu. Unaweza kutengeneza profaili na kutafuta huduma bure kabisa lakini makubaliano yenu (kati ya mtoa huduma na mlaji) yanabaki kuwa binafsi na mnaweza kukubaliana au kutokubaliana kufanya biashara baina yenu. ehuduma haitahusika kwa biashara yeyote itakayokubaliwa baina yenu.';
+/*xxxxxxxxx END FAQxxxxx*/
+
+/*xxxxxxxxx NEWS xxxxxxxxxx*/
+$lang['msg_'] = '';
+$lang['msg_'] = '';
+$lang['msg_'] = '';
+$lang['msg_'] = '';
+$lang['msg_'] = '';
+/*xxxxxxxxx END NEWS xxxxx*/
+
+
+/*xxxxxxxxx CONTACT USxxxxxxxxxx*/
+$lang['msg_our_contacts'] = 'Mawasiliano yetu';
+$lang['msg_physical_address'] = 'Anuani ya Posta: S. L. P 35040 - Dar es Salaam';
+$lang['msg_email'] = 'Barua Pepe: ehuduma@uwezomedia.com';
+$lang['msg_phone'] = 'Namba za Simu: Mobile: +255 625 480 482';
+$lang['msg_location'] = 'Tunapatikana: Chuo Kikuu cha Dar es Salaam';
+$lang['msg_name'] = 'Jina';
+$lang['msg_enter_name'] = 'Andika Jina';
+$lang['msg_email_address'] = 'Andika barua pepe';
+$lang['msg_subject'] = 'Mada';
+$lang['msg_choose_one'] = 'Chagua Moja';
+$lang['msg_general_customer_service'] = 'Huduma kwa Wateja kwa Ujumla';
+$lang['msg_suggestions'] = 'Maoni';
+$lang['msg_complaints'] = 'Malalamiko';
+$lang['msg_message'] = 'Ujumbe';
+$lang['msg_message'] = 'Ujumbe';
+$lang['msg_send_message'] = 'Tuma Ujumbe';
+$lang['msg_our_office'] = 'Ofisi Yetu';
+$lang['msg_ehuduma'] = 'eHuduma';
+$lang['msg_address'] = 'Uwezomedia limited
+Dar es Salaam - Tanzania
+S. L. P 35040, DSM
+Namba ya Simu: (255) 625-480-482';
+$lang['msg_full_name'] = 'Jina Kamili
+UWEZOMEDIA LIMITED - eHUDUMA
+ehuduma@uwezomedia.com';
+
+/*xxxxxxxxx END CONTACT US xxxxx*/
+
+
+
+

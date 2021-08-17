@@ -1,0 +1,276 @@
+<?php
+
+/*
+ * English language
+ */
+
+$lang['msg_lang'] = 'Select Language (Lugha)'; // english language
+$lang['msg_login'] = 'Log In';
+$lang['msg_username'] = 'Username';
+$lang['msg_password'] = 'Password';
+
+
+/*xxxxxxxxx HOMExxxxxxxxxx*/
+$lang['msg_home'] = 'HOME';
+$lang['msg_blog'] = 'BLOG';
+$lang['msg_faq'] = 'FAQ';
+$lang['msg_profiles'] = 'PROFILES';
+$lang['msg_services on demand'] = 'SERVICES ON DEMAND';
+$lang['msg_about_us'] = 'ABOUT US';
+$lang['msg_contact_us'] = 'CONTACT US';
+$lang['msg_search'] = 'Search';
+$lang['msg_log in'] = 'LOG IN';
+$lang['msg_sign up '] = 'SIGN UP';
+$lang['msg_language'] = 'Language';
+$lang['msg_welcome_to_huduma'] = 'Welcome to eHuduma Website
+Enjoy the quick and easy way to sell and buy services';
+$lang['msg_select_profile_type'] = 'Select Profile Type';
+$lang['msg_professionals'] = 'Professionals';
+$lang['msg_entrepreneurs'] = 'Entrepreneurs';
+$lang['msg_others'] = 'Others';
+$lang['msg_select_profile_category'] = 'Select Profile Category';
+$lang['msg_teacher'] = 'Teacher';
+$lang['msg_doctor'] = 'Doctor';
+$lang['msg_technician'] = 'Technician';
+$lang['msg_animal-keeper'] = 'Animal Keeping Expert';
+$lang['msg_farming_expert '] = 'Farming Expert';
+$lang['msg_lawyer'] = 'Lawyer';
+$lang['msg_nurse'] = 'Nurse';
+$lang['msg_bursar'] = 'Bursar';
+$lang['msg_psychologist'] = 'Psychologist';
+$lang['msg_translator'] = 'Translator';
+$lang['msg_interpretor '] = 'Interpretor';
+$lang['msg_programmer '] = 'Programmer';
+$lang['msg_blogger'] = 'Blogger';
+$lang['msg_master_of_ceremony'] = 'Master of Ceremonies';
+$lang['msg_brocker'] = 'Brocker';
+$lang['msg_driver'] = 'Driver';
+$lang['msg_security_guard'] = 'Security Guard';
+$lang['msg_other_works '] = 'Other Specialisations';
+$lang['msg_archtect'] = 'Contractor';
+$lang['msg_shop'] = 'Shop';
+$lang['msg_parking'] = 'Car Park';
+$lang['msg_car_wash'] = 'Car Wash';
+$lang['msg_garage'] = 'Garage';
+$lang['msg_bar'] = 'Bar';
+$lang['msg_salon'] = 'Salon';
+$lang['msg_bakery'] = 'Bakery';
+$lang['msg_tuition_centre '] = 'Tuition Centre';
+$lang['msg_day_care'] = 'Kindergarten';
+$lang['msg_school'] = 'School';
+$lang['msg_guest_house'] = 'Guest House';
+$lang['msg_hotel'] = 'Hotel';
+$lang['msg_restaurant'] = 'Restaurant';
+$lang['msg_butcher'] = 'Butchery';
+$lang['msg_online_marketers'] = 'Online Marketers';
+$lang['msg_insurance'] = 'Insurance Agency';
+$lang['msg_other_business_works '] = Other 'Entrepreneurial services';
+$lang['msg_select_profile_sub_category'] = 'Select Profile Sub-category';
+$lang['msg_mathematics'] = 'Mathematics';
+$lang['msg_physics'] = 'Physics';
+$lang['msg_biology'] = 'Biology';
+$lang['msg_chemistry'] = 'Chemistry';
+$lang['msg_history'] = 'History';
+$lang['msg_kiswahili'] = 'Kiswahili Language';
+$lang['msg_english'] = 'English Language';
+$lang['msg_kiswahili_to_foreigners'] = 'Kiswahili to Foreigners';
+$lang['msg_geography '] = 'Geography';
+$lang['msg_french'] = 'French Language';
+$lang['msg_chinese'] = 'Chinese Language';
+$lang['msg_other_subjects'] = 'Other Subjects';
+$lang['msg_general_doctor'] = 'General Physician';
+$lang['msg_pediatrician'] = 'Paediatrician';
+$lang['msg_surgeon'] = 'Surgeon';
+$lang['msg_Dermatologist'] = 'Dermatologist';
+$lang['msg_gynecologist'] = 'gynecologist';
+$lang['msg_psychiatric'] = 'Psychiatrist';
+$lang['msg_cardiologist'] = 'Cardiologist';
+$lang['msg_neurologist'] = 'Neurologist';
+$lang['msg_other_specialisations'] = 'Other Specialisations';
+$lang['msg_electrical'] = 'Electrical';
+$lang['msg_electronics'] = 'Electronics';
+$lang['msg_tailoring'] = 'Tailoring';
+$lang['msg_water_pumps'] = 'Water Pumps';
+$lang['msg_mechanics'] = 'Mechanics';
+$lang['msg_other_specialisations'] = 'Other Specialisations';
+$lang['msg_clothes'] = 'Clothes';
+$lang['msg_shoes'] = 'Shoes';
+$lang['msg_others'] = 'Others';
+$lang['msg_barbershop'] = 'Barbershop';
+$lang['msg_hair_dressers'] = 'Hair Dressing Salon';
+$lang['msg_primary'] = 'Primary';
+$lang['msg_secondary'] = 'Secondary';
+$lang['msg_search_profile '] = 'Search Profile';
+/*xxxxxxxxx END HOME xxxxx*/
+
+
+/*xxxxxxxxx FOOTER xxxxxxxxxx*/
+$lang['msg_'] = '';
+$lang['msg_popular_profiles'] = 'Popular Profiles';
+$lang['msg_new_profiles'] = 'New Profiles';
+$lang['msg_about huduma'] = 'About eHuduma';
+$lang['msg_about_simple_text'] = 'This site aims at bringing together professionals, entrepreneurs, workers, business executives and other people who will register and create their profiles that will help internet users to search and find them through their specified contacts and locations.'';
+$lang['msg_our_services '] = 'Our Services';
+$lang['msg_user_profiles_'] = 'User Profiles';
+$lang['msg_business_profiles'] = 'Business Profiles';
+$lang['msg_profile_timetable'] = 'Profile Timetable';
+$lang['msg_advertisements'] = 'Advertisements';
+$lang['msg_marketing'] = 'Marketing';
+$lang['msg_appointments'] = 'Appointments';
+$lang['msg_services'] = 'Services';
+$lang['msg_this_site_text'] = 'This site aims at bringing together professionals, entrepreneurs, workers, business executives and other people who will register and create their profiles that will help internet users to search and find them through their specified contacts and locations.';
+$lang['msg_profile_types'] = 'Profile Types';
+$lang['msg_Professionals '] = 'Professionals';
+$lang['msg_entrepreneurs'] = 'Entrepreneurs';
+$lang['msg_others'] = 'Others';
+$lang['msg_profile_category'] = 'Profile Category';
+$lang['msg_teacher'] = 'Teacher';
+$lang['msg_doctor'] = 'Doctor';
+$lang['msg_lawyer'] = 'Lawyer';
+$lang['msg_nurse'] = 'Nurse';
+$lang['msg_psychologist'] = 'Psychologist';
+$lang['msg_translator'] = 'Translator';
+$lang['msg_interpreter'] = 'Interpreter';
+$lang['msg_blogger'] = 'Blogger';
+$lang['msg_technician'] = 'Technician';
+$lang['msg_farming_expert'] = 'Farming Expert';
+$lang['msg_programmer'] = 'Programmer';
+$lang['msg_brocker'] = 'Brocker';
+$lang['msg_master_of_ceremony'] = 'Master of Ceremonies';
+$lang['msg_others'] = 'Other Entrepreneurial services';
+$lang['msg_social_media_'] = Social media'';
+$lang['msg_visit_our_pages'] = 'Please visit Our Social media Pages';
+$lang['msg_our_contacts'] = 'Our Contacs';
+$lang['msg_p.o.box'] = 'P. O. BOX 35040 - Dar es Salaam ';
+$lang['msg_phone'] = 'Phone No: +255 625 480 482';
+$lang['msg_email'] = 'Email Address: ehuduma@uwezomedia.com';
+/*xxxxxxxxx END FOOTER xxxxx*/
+
+
+/*xxxxxxxxx BLOG xxxxxxxxxx*/
+$lang['msg_ehuduma_blogging'] = 'eHuduma Blog';
+$lang['msg_more_news'] = 'More News';
+$lang['msg_'] = '';
+$lang['msg_'] = '';
+$lang['msg_'] = '';
+/*xxxxxxxxx END BLOG xxxxx*/
+
+
+/*xxxxxxxxx ABOUTxxxxxxxxxx*/
+$lang['msg_about_huduma'] = 'About eHuduma.com';
+$lang['msg_welcome_note'] = 'Welcome Note';
+$lang['msg_welcome_text'] = '
+I have a great honour to introduce you to our www.ehuduma.com website. As a digital company, Uwezomedia limited presents one of the very best websites for improving marketing strategies and reducing unemployment rate in the society.
+
+eHuduma.com is an ecosystem that encompasses mainly two areas which are professional and entrepreneurial blocks. These blocks will help the clients (service consumers) to find their needs by locating an entrepreneur or a professional depending on their demands. Apart from that this site gives you (a professional or an entrepreneur) an opportunity to register and create your profile that will be located when searched by service consumers. This is the marketing site that an entrepreneur / a professional can depend on in order to reach more customers.
+
+Our team is working very hard to make sure our visitors use the best and a user friendly site. Our website provides up-to-date and timely information on our services, interactive strategies for improving our service delivery and the mode of working hand in hand with our clients in order to maximize the capacity and abilities in terms of professionalism and standards.
+
+It is my hope that you will find this website beneficial and effective marketing tool for satisfying your demands.
+
+You can use the "Contact us" feature in our websites or in our social network accounts where you can share your views or make enquiries on any aspect regarding our services.
+
+Uwezomedia limited is committed to ensuring all your needs are worked upon to satisfaction, timely and equitably with proper maintenance of high quality and standards.
+
+Welcome to our website!';
+$lang['msg_ceo_name'] = 'MILLAMBO, Revocatus K';
+$lang['msg_ceo'] = 'Chief Executive Officer';
+$lang['msg_others'] = 'Others';
+$lang['msg_profile_category'] = 'Profile Category';
+$lang['msg_easy_profile_search'] = 'Easy Profile Search';
+$lang['msg_what_is_ehuduma_qn?'] = 'What is eHuduma?';
+$lang['msg_what_is_ehuduma_answr'] = 'eHuduma.com is an ecosystem that encompasses mainly two areas which are professional and entrepreneurial blocks. These blocks help the clients (service consumers) to find an entrepreneur or a professional depending on their needs but also it helps the service provider to register, create profiles. The platform simplifies the process of customers finding services in an easy, simple and effective way. This is the marketing site that an entrepreneur / a professional can depend on in order to reach more customers.';
+$lang['msg_easy_profile_search'] = 'Easy Profile Search';
+$lang['msg_vision'] = 'Our Vision';
+$lang['msg_vision'] = 'To become one of the world’s best digital company, where people can find and discover entrepreneurial and professional services online.';
+$lang['msg_easy_profile_search'] = 'Easy Profile Search';
+$lang['msg_mission '] = Our Mission'';
+$lang['msg_mission'] = 'We strive to offer our customers the best and user friendly platform for easy finding of services according to their demands.';
+$lang['msg_site_information'] = 'Site Information';
+$lang['msg_site_photos'] = 'Site Photos';
+$lang['msg_easy_profile_search'] = 'Easy Profile Search';
+$lang['msg_how_to_use_our_services'] = 'How to Use our Services';
+$lang['msg_easy_profile_search'] = 'Easy Profile Search';
+/*xxxxxxxxx END ABOUT xxxxx*/
+
+/*xxxxxxxxx FAQxxxxxxxxxx*/
+$lang['msg_faq'] = 'Frequently Asked Questions';
+$lang['msg_general_questions'] = 'General Questions';
+$lang['msg_account_registration qn'] = '1. Is account registration required?';
+$lang['msg_account registration ansr'] = 'Account registration at eHuduma.com is only required if you wish to publish your information so that users can View your details and make appointment with you. Searching for services, profiles and making appointments does not require a user to register.';
+$lang['msg_what_is_ehuduma qn'] = '2. What is eHuduma.com?';
+$lang['msg_what_is_ehuduma answr'] = 'Is a site where Professionals and entrepreneurs can register and help users to locate them easily. You can easily search and locate Professionals and entrepreneurs within and outside country.';
+$lang['msg_What_services_qn?'] = '3. What services does eHuduma.com provide?';
+$lang['msg_what_services_answr'] = 'This site provides marketing platform for entrepreneurs, professionals, businesses and other projects. These can create profiles from which the service consumers can be able search and locate them in order to meet for the business.';
+$lang['msg_how_do_i_manage_qn'] = '4. How do I manage to get services by visiting into this website?';
+$lang['msg_how_do_i_manage_answr'] = 'A visitor to this website will have a great range of choosing the service providers depending on their needs. One will visit the website and search for a professional or an entrepreneur according to the personal needs.';
+$lang['msg_how_do_i_make_an_appointment_qn'] = '5. How do I make an appointment with a service provider?';
+$lang['msg_how_do_i_make_an_appointment_answr'] = 'This site provides the visitor with the best useful tools; one can see the service provider’s timetable which is found on the service provider's profile and then they can chat and agree on their business.';
+$lang['msg_how_does_ehuduma_works_qn'] = '6. How does eHuduma work?';
+$lang['msg_how_does_ehuduma_works_answr'] = 'eHuduma works by allowing service providers to sign up and create profiles and service consumers to visit the site and locate the service providers by searching and viewing their profiles.';
+$lang['msg_how_do_i_search_qn'] = '7. How do I search for service providers?';
+$lang['msg_how_do_i_search_answr'] = 'It only takes your need and enthusiasm to get what you want from this site because you will need to search for the specific services.';
+$lang['msg_is_there_any_cost_qn'] = '8. Is there any cost of using this website?';
+$lang['msg_is _there_any_cost_answr'] = 'No, using this site is free of charge. You can create profiles and search for services for free but your agreement (between the service provider + service consumer) remain personal and you can agree/disagree to do business between you. eHuduma will not be responsible for any agreed business.';
+$lang['msg_profile'] = 'Profile';
+$lang['msg_how_can_i_register_a_profile_qn'] = '1. How can I register a Profile?';
+$lang['msg_how_can_i_register_a_profile_answr'] = 'Click Register Button on top of this page to sign up. Then Login into your Control Panel where you will find an option to register new Profile.';
+$lang['msg_how_can_i_search_a_profile_qn'] = '2. How can I Search for a Profile?';
+$lang['msg_how_can_i_search_a_profile_answr'] = 'Go to the Home Page, then follow the below procedures;
+Select Appropriate Profile Type
+Choose a Profile Category
+Choose Profile Sub-Category
+Then click Search button. A profile Page will be displayed';
+$lang['msg_how_do_i_make_an_appointment_qn'] = '3. How do I make an appointment ?';
+$lang['msg_how_do_i_make_an_appointment_answr '] = 'Go to The respective Profile Page (Refer the above question on how to search the profile)
+Scroll to the bottom of the Page
+Click on Appointment Request Form
+Fill in all the required information
+Then click "Make Appointment" Button';
+$lang['msg_user'] =' User';
+$lang['msg_account_reg_qn'] = '1. Is account registration required?';
+$lang['msg_account_reg_answr'] = 'Account registration at eHuduma.com is only required if you wish to publish your information so that users can View your details and make appointment wuith you. Searching for services, Profiles and making appointments does not require a user to register.';
+$lang['msg_is_there_any_cost_qn'] = '2. Is there any cost of using this website?';
+$lang['msg_is _there_any_cost_answr'] = 'No, using this site is free of charge. You can create profiles and search for services for free but your agreement (between the service provider + service consumer) remains personal and you can agree/disagree to do business between you. eHuduma will not be responsible for any agreed business between you.';
+/*xxxxxxxxx END FAQxxxxx*/
+
+/*xxxxxxxxx NEWS xxxxxxxxxx*/
+$lang['msg_'] = '';
+$lang['msg_'] = '';
+$lang['msg_'] = '';
+$lang['msg_'] = '';
+$lang['msg_'] = '';
+/*xxxxxxxxx END NEWS xxxxx*/
+
+
+/*xxxxxxxxx CONTACTUSxxxxxxxxxx*/
+$lang['msg_our_contacts'] = 'Our Contacts';
+$lang['msg_physical_address'] = 'Postal Address: P. O. BOX 35040 - Dar es Salaam';
+$lang['msg_email'] = 'Email Address: ehuduma@uwezomedia.com';
+$lang['msg_phone'] = 'Phone Numbers: Mobile: +255 625 480 482';
+$lang['msg_location'] = 'Location: University of Dar es Salaam';
+$lang['msg_name'] = 'Name';
+$lang['msg_enter_name'] = 'Enter Name';
+$lang['msg_email_address'] = 'Enter Email';
+$lang['msg_subject'] = 'Subject';
+$lang['msg_choose_one'] = 'Choose One';
+$lang['msg_general_customer_service'] = 'General Customer Service';
+$lang['msg_suggestions'] = 'Suggestions';
+$lang['msg_complaints'] = 'Complaints';
+$lang['msg_message'] = 'Message';
+$lang['msg_message'] = 'Message';
+$lang['msg_send_message'] = 'Send Message';
+$lang['msg_our_office'] = 'Our Office';
+$lang['msg_ehuduma'] = 'eHuduma';
+$lang['msg_address'] = 'Professional Digital Company
+ Dar es Salaam - Tanzania 
+P. O. Box 35040, DSM
+Phone No: (255) 625-480-482';
+$lang['msg_full_name'] = 'Full Name
+UWEZOMEDIA LIMITED - eHUDUMA
+ehuduma@uwezomedia.com';
+/*xxxxxxxxx END CONTACT US xxxxx*/
+
+
+
+

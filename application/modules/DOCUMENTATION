@@ -1,0 +1,60 @@
+STARTED ON SUNDAY (15/08/2021)
+Name: SAKA AFYA FITNESS CLUB
+Author: Dionizi France
+==============================================================
+
+Site Colors:
+BLUE: 	#1328a8  rgba(19,40,168,255)
+YELLOW: #ed9d00  rgba(237,157,0,255)
+WHITE:  #e7ece8  rgba(236,236,233,255)
+BLACK:  #000616  rgba(4,11,27,255)
+
+
+
+
+
+C:\xampp\htdocs\sakaafyafitness\assets\js\AdminLTE\app.js:
+  150      }).addClass("no-print");
+  151      demo_settings.append(
+  152:             "<h4 style='margin: 0 0 5px 0; border-bottom: 1px dashed #ddd; padding-bottom: 3px;'>Layout Options</h4>"
+  153              + "<div class='form-group no-margin'>"
+  154              + "<div class='.checkbox'>"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================END SAKAAFYAFITNESS CLUB==================
+09/02/2017
+USING POPOVER
+1. Add jQuery (2.7 or 2.0.2) befor kbootstrap.js 
+2. Initialise the popover
+	 <!-- Popover -->
+        <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover(); 
+          });
+        </script>
+
+-----------------------------------------------------
+31/08/2020
+------------
+1. Implement job edti (owne & admin can edit)
+2. Implement admin controls
+	-accept (raise modal to input agreed price)
+	-paid (raise modal to input paid amount)
+	-bid closed
+	-job completed (Done)
+	-Closed (close job)
+	-Cancel (cancelling jobs)
