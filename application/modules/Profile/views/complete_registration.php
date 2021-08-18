@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>eHuduma</title>
+        <title>Saka Afya Fitness Club</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
          <!--Web icon-->
         <link rel="shortcut icon" href="<?php echo base_url('assets/img/icon.ico') ?>" />
@@ -26,14 +26,12 @@
         <link href="<?php echo base_url('assets/css/AdminLTE.css');?>" rel="stylesheet" type="text/css" />
         <!-- Font Family (Google font) -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/tabs.css');?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/tabstyles.css');?>" />
+        <!-- site theme -->
+        <link href="<?php echo base_url('assets/css/diiocss/theme.css');?>" rel="stylesheet" type="text/css" />
+
+
         <script src="<?php echo base_url('assets/js/modernizr.custom.js');?>"></script>
         <!--  search inputs top -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
@@ -43,41 +41,11 @@
             body {
                   font-family: 'Roboto', sans-serif !important;
               }
-          .sitecolor1 {
-            color: #10C4EF;
-          }
 
-          .sitecolor1bg {
-            background-color: #10C4EF;
-          } 
-
-           .sitecolor2 {
-            color: #FD037E;
-          }
-
-          .sitecolor2bg {
-            background-color: #FD037E;
-          } 
           
            .mypadding {
               padding: 1% 4% 0 4%;
            }
-
-           .sitecolor1 {
-    color: #10C4EF;
-   }
-
-          .sitecolor1bg {
-            background-color: #10C4EF;
-          } 
-
-           .sitecolor2 {
-            color: #FD037E;
-          }
-
-          .sitecolor2bg {
-            background-color: #FD037E;
-          } 
 
         .form-style-1 {
             margin:10px auto;
@@ -168,6 +136,7 @@
     <body class="skin-black">
     <?php
          $services = modules::load('Profile')->get_where_custom_tb('services', 'status', "Active");
+         $sports = modules::load('Profile')->get_where_custom_tb('sports', 'status', "Active");
     ?>
         <!--  ======================== Create Profile Form ================= -->
         <div class="row" style="margin: 5px 5px 5px 5px">
@@ -187,7 +156,7 @@
                                 <div class="col-md-12"  style="text-align: center; font-size: 14px; padding-bottom: 20px;">
 
                                 </div>
-                                     <h4><b>Profile Name & Image</b></h4>
+                                     <h4><b>Basic Information</b></h4>
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <div class="form-group">
@@ -204,19 +173,48 @@
                                             </div>
                                           </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Gender<?php //echo ucfirst($this->lang->line('msg_profile_type')); ?><span class="required">*</span></label>
+                                            <select class=" field-select input-sm1" name="gender" id="gender" required="">
+                                                <option value="Other">Select your gender<?php //echo $this->lang->line('msg_select_profile_type'); ?></option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                         </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Age<?php //echo ucfirst($this->lang->line('msg_profile_type')); ?><span class="required">*</span></label>
+                                            <select class=" field-select input-sm1" name="age" id="age" required="">
+                                                <option value="Other">Select your age<?php //echo $this->lang->line('msg_select_profile_type'); ?></option>
+                                                <?php for($i = 18; $i <= 100; $i++) { ?>
+                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                         </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label>National ID/Driving license<?php //echo $this->lang->line('msg_profile_name'); ?><span class="required">*</span></label>
+                                                <input type="text" class="form-control  field-long input-sm1" name="idno" id="idno" value="" placeholder="Enter your ID No.<?php //echo $this->lang->line('msg_enter_profile_name'); ?>"  required="">
+                                            </div>
+                                          </div>
+                                    </div>
                             </div>
                                
                             <div class="row">
-                                <hr>
-                                <h4><b>Profile Type & Category</b></h4> 
+                                <!-- <hr>
+                                <h4><b>Basic Information</b></h4>  -->
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label><?php echo $this->lang->line('msg_profile_type'); ?><span class="required">*</span></label>
+                                        <label><?php echo ucfirst($this->lang->line('msg_profile_type')); ?><span class="required">*</span></label>
                                         <select class=" field-select input-sm1" name="type" id="type" required="">
-                                           <option value="Other"><?php echo $this->lang->line('msg_select_profile_type'); ?></option>
-                                            <?php foreach ($services->result() as $row1): ?>
-                                              <option value="<?php echo $row1->id;?>"><?php echo $row1->service;?></option>
-                                            <?php endforeach; ?>
+                                            <option value="Other"><?php echo $this->lang->line('msg_select_profile_type'); ?></option>
+                                            <option value="Individual">Individual</option>
+                                            <option value="Group">Group/ Team</option>
+                                            <option value="Company">Company</option>
                                         </select>
                                      </div>
                                 </div>
@@ -224,9 +222,9 @@
                                     <div class="form-group">
                                         <label><?php echo $this->lang->line('msg_profile_category'); ?><span class="required">*</span></label>
                                         <select class="field-select" name="cat" id="category" required="">
-                                            <option value="Other"><?php echo $this->lang->line('msg_select_profile_category'); ?></option>
-                                            <?php foreach ($services->result() as $row2): ?>
-                                              <option value="<?php echo $row2->service;?>"><?php echo $row2->service;?></option>
+                                            <option value="Others">Select category<?php //echo $this->lang->line('msg_select_profile_category'); ?></option>
+                                            <?php foreach ($services->result() as $row1): ?>
+                                              <option value="<?php echo $row1->service;?>"><?php echo $row1->service;?></option>
                                             <?php endforeach; ?>
                                         </select>
                                      </div>
@@ -235,9 +233,9 @@
                                     <div class="form-group">
                                         <label><?php echo $this->lang->line('msg_profile_sub_category'); ?><span class="required">*</span></label>
                                         <select class="form-control" name="subcat" id="subcategory" required="">
-                                            <option value="Other"><?php echo $this->lang->line('msg_select_profile_subcategory'); ?></option>
-                                            <?php foreach ($services->result() as $row3): ?>
-                                              <option value="<?php echo $row3->service;?>"><?php echo $row3->service;?></option>
+                                            <option value="Others">Select type of sport<?php //echo $this->lang->line('msg_select_profile_subcategory'); ?></option>
+                                            <?php foreach ($sports->result() as $row3): ?>
+                                              <option value="<?php echo $row3->name;?>"><?php echo $row3->name;?></option>
                                             <?php endforeach; ?>
                                         </select>
                                      </div>
@@ -246,20 +244,20 @@
                            
                             <div class="row">
                                 <hr>
-                                 <h4><b>Profile Contact Information</b></h4>
+                                 <h4><b>Contact Information</b></h4>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label><?php echo $this->lang->line('msg_phone_number'); ?><span class="required">*</span></label>
-                                            <input type="number"  class="field-long" name="phone" value="" placeholder="<?php //echo $this->lang->line('msg_enter_phone_number'); ?>"   required="">
+                                            <input type="text"  class="field-long" name="phone" value="" placeholder="Eg. 07XXXXXXXX<?php //echo $this->lang->line('msg_enter_phone_number'); ?>"   required="">
                                         </div>
-                                      </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label><?php echo $this->lang->line('msg_alt_phone_number'); ?></label>
-                                            <input type="number"  class="field-long" name="altphone" value="" placeholder="<?php //echo $this->lang->line('msg_enter_alt_phone_number'); ?>"   >
+                                            <input type="text"  class="field-long" name="altphone" value="" placeholder="Eg. 07XXXXXXXX<?php //echo $this->lang->line('msg_enter_alt_phone_number'); ?>"   >
                                         </div>
                                       </div>
                                 </div>
@@ -267,7 +265,7 @@
                                     <div class="form-group">
                                         <div class="form-group field-select">
                                             <label><?php echo $this->lang->line('msg_email_address'); ?><span class="required">*</span></label>
-                                            <input type="email"  class="field-long" name="email" value="" placeholder="<?php //echo $this->lang->line('msg_enter_email_address'); ?>"   required="">
+                                            <input type="email"  class="field-long" name="email" value="" placeholder="Enter e-mail<?php //echo $this->lang->line('msg_enter_email_address'); ?>"   required="">
                                         </div>
                                       </div>
                                 </div>
@@ -275,7 +273,7 @@
 
                             <div class="row">
                                 <hr>
-                                <h4><b>Profile Location Information</b></h4>
+                                <h4><b>Location Information</b></h4>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label><?php //echo $this->lang->line('msg_profile_type'); ?> Country<span class="required">*</span></label>
@@ -283,9 +281,9 @@
                                            <option value="Other"><?php //echo $this->lang->line('msg_select_profile_type'); ?></option>
                                            <!-- <option value="empty" selected="" >Select Country</option> -->
                                             <option value="Tanzania"  selected="">Tanzania</option>
-                                            <option value="Kenya">Kenya</option>
+                                           <!--  <option value="Kenya">Kenya</option>
                                             <option value="Uganda">Uganda</option>
-                                            <option value="Rwanda">Rwanda</option>
+                                            <option value="Rwanda">Rwanda</option> -->
                                         </select>
                                      </div>
                                 </div>
@@ -312,7 +310,7 @@
 
                             <div class="row">
                                 <hr>
-                                <h4><b>Profile Description (More Details) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-info btn-sm " name="editBtn" value="" data-toggle="tooltip"  title="" data-original-title="Maelezo kuhusu profaili: Tafadhari eleza kwa ufupi kuhusu ujuzi na uzoefu wako pamoja na mfano/ mifano ya kazi ulizokwishafanya au unazozifanya. "><i class="fa fa-info" style="border-radius: 50%;"></i></button></b></h4> 
+                                <h4><b>Description (More Details) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-info btn-sm " name="editBtn" value="" data-toggle="tooltip"  title="" data-original-title="Maelezo kuhusu profaili: Tafadhari eleza kwa ufupi kuhusu ujuzi na uzoefu wako pamoja na mfano/ mifano ya kazi ulizokwishafanya au unazozifanya. "><i class="fa fa-info" style="border-radius: 50%;"></i></button></b></h4> 
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="form-group">
@@ -325,6 +323,24 @@
                             </div>
 
                             <div class="row">
+                                <hr>
+                                <h4><b>Attachments</b></h4>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label>ID No./ National ID/Driving License (.pdf)<?php //echo $this->lang->line('msg_profile_image'); ?> </label>
+                                            <input type="file"  class="form-control" name="idfile" accept=".pdf" value="" placeholder="Attach your resume (must be a PDF file)<?php //echo $this->lang->line('msg_choose_file'); ?>"   required1="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label>Identification – Certificate (.pdf)<?php //echo $this->lang->line('msg_profile_image'); ?> </label>
+                                            <input type="file"  class="form-control" name="certificate" accept=".pdf" value="" placeholder="Attach your resume (must be a PDF file)<?php //echo $this->lang->line('msg_choose_file'); ?>"   required1="">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="form-group">
@@ -343,10 +359,9 @@
                                     <button type="submit" name="regBtn" value="ok" class="btn btn-info btn-lg pull-right">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->lang->line('msg_submit'); ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                 </div>
                             </div>  
-
-                                  <!-- <hr> -->
-                                </div><!-- /.box-body -->
-                            </form>  
+                            <!-- <hr> -->
+                        </div><!-- /.box-body -->
+                    </form>  
             </div>
 
             <div class="col-md-2"></div>
@@ -357,7 +372,7 @@
         <footer class="footer" style="background-color: #333333;">
             <div class="container">
                 <br>
-                <div class="row text-center" style="color: #fff;"><a href="<?php echo base_url('Home/ourPrivacy');?>"><?php echo $this->lang->line('msg_mdl_privacy'); ?></a> | <a href="<?php echo base_url('Home/ourTerms');?>"><?php echo $this->lang->line('msg_mdl_terms'); ?></a><br> © Uwezomedia Limited 2018 - <?php echo $this->lang->line('msg_all_rights_reserved'); ?>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->lang->line('msg_developer'); ?>: diioLab<!-- 2017. by Dionizi France (+255-752-194-092 | +255-684-544-167) --></div>
+                <div class="row text-center" style="color: #fff;"><a href="<?php echo base_url('Home/ourPrivacy');?>"><?php echo $this->lang->line('msg_mdl_privacy'); ?></a> | <a href="<?php echo base_url('Home/ourTerms');?>"><?php echo $this->lang->line('msg_mdl_terms'); ?></a><br> © Saka Afya Fitness Club <?php echo mdate('%Y'); ?> - <?php echo $this->lang->line('msg_all_rights_reserved'); ?>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->lang->line('msg_developer'); ?>: DiioLab<!-- 2017. by Dionizi France (+255-752-194-092 | +255-684-544-167) --></div>
                 <hr>
             </div>     
         </footer>
@@ -387,19 +402,15 @@
         <script src="<?php echo base_url('assets/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js');?>" type="text/javascript"></script>
         <!-- iCheck -->
         <script src="<?php echo base_url('assets/js/plugins/iCheck/icheck.min.js');?>" type="text/javascript"></script>
-
         <!-- AdminLTE App -->
         <script src="<?php echo base_url('assets/js/AdminLTE/app.js');?>" type="text/javascript"></script>
-        
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <script src="<?php echo base_url('assets/js/AdminLTE/dashboard.js');?>" type="text/javascript"></script>       
-
         <!-- CK Editor -->
         <script src="<?php echo base_url('assets/js/plugins/ckeditor/ckeditor.js');?>" type="text/javascript"></script>
         <!-- Bootstrap WYSIHTML5 -->
         <!-- <script src="<?php //echo base_url('assets/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js');?>" type="text/javascript"></script> -->
-        <script type="text/javascript">
-            
+        <script type="text/javascript">     
         </script> 
 
     </body>

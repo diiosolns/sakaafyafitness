@@ -38,7 +38,7 @@ function index(){
 				$data['mpanel_m'] = "Admin";
 				$data['mpanel_f'] = "admin_dashboard"; 
 				$this->load->view('Admin/indexa',$data); 
-			} else if ($this->session->userdata('user_role') == "Freelancer") { 
+			} else { 
 				if ($data['profileRes']->num_rows() == 0) {
 					//$data['mpanel_m'] = "Profile";
 					//$data['mpanel_f'] = "user_dashboard";
@@ -50,11 +50,7 @@ function index(){
 					$data['mpanel_f'] = "user_dashboard"; 
 				}
 				$this->load->view('Admin/indexf',$data); 
-			} else { 
-				$data['mpanel_m'] = "Admin";
-				$data['mpanel_f'] = "user_dashboard"; 
-				$this->load->view('Admin/indexu',$data); 
-			}
+			} 
 		} else {
 			redirect('Home');
 		}

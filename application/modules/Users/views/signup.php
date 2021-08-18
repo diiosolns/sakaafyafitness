@@ -47,6 +47,9 @@
         </style>
     </head>
     <body class="skin-black">
+    <?php
+        $services = modules::load('Profile')->get_where_custom_tb('services', 'status', "Active");
+    ?>
        
 
      <!-- ====================== USER SIGN UP ====================== -->
@@ -79,15 +82,9 @@
                               <div class="form-group">
                                   <select class="form-control" id="type" name="type" style="width: 98%;">
                                     <option value="Other"><?php echo $this->lang->line('msg_select_profile_type'); ?></option>
-                                    <option value="Trainee">Sports person (Trainee)<?php //echo $this->lang->line('msg_professionals'); ?></option>
-                                    <option value="Trainer">Trainer<?php //echo $this->lang->line('msg_entrepreneurs'); ?></option>
-                                    <option value="Sponsor">Sponsor<?php //echo $this->lang->line('msg_entrepreneurs'); ?></option>
-                                    <option value="Coach">Coach<?php //echo $this->lang->line('msg_entrepreneurs'); ?></option>
-                                    <option value="Accademy">Accademy<?php //echo $this->lang->line('msg_professionals'); ?></option>
-                                    <option value="Team">Team<?php //echo $this->lang->line('msg_entrepreneurs'); ?></option>
-                                    <option value="Gym">Gym<?php //echo $this->lang->line('msg_entrepreneurs'); ?></option>
-                                    <option value="Instractor">Instractor<?php //echo $this->lang->line('msg_professionals'); ?></option>
-                                    <option value="Supervisor">Supervisor<?php //echo $this->lang->line('msg_entrepreneurs'); ?></option>
+                                    <?php foreach ($services->result() as $row1): ?>
+                                      <option value="<?php echo $row1->service;?>"><?php echo $row1->service;?></option>
+                                    <?php endforeach; ?>
                                   </select>
                                   <span class="help-block"></span>
                               </div>

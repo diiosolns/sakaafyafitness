@@ -349,8 +349,13 @@
                             </a>
                         </li> -->
                         <li>
-                            <a href="<?php echo base_url('Profile/userProfile/');?><?php echo $userid;?>">
-                                <i class="fa fa-clipboard"></i> <span class=""></span>My Profile <?php //echo $this->lang->line('msg_new_profile'); ?> <i class="fa fa fa-angle-right pull-right"></i>
+                            <a href="<?php echo base_url('Profile/findprofile');?>">
+                                <i class="fa fa-clipboard"></i> <span class=""></span>Find Profiles <?php //echo $this->lang->line('msg_new_profile'); ?> <i class="fa fa fa-angle-right pull-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url('Profile/listprofiles/all');?>">
+                                <i class="fa fa-clipboard"></i> <span class=""></span>Browse Profiles <?php //echo $this->lang->line('msg_new_profile'); ?> <i class="fa fa fa-angle-right pull-right"></i>
                             </a>
                         </li>
                         <li>
@@ -364,8 +369,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url('Job/findjob/0');?>">
-                                <i class="fa fa-folder-open"></i> <span>Browse Projects<?php //echo $this->lang->line('msg_chats'); ?></span> <i class="fa fa fa-angle-right pull-right"></i>
+                            <a href="<?php echo base_url('Profile/userProfile/');?><?php echo $userid;?>">
+                                <i class="fa fa-folder-open"></i> <span>My account<?php //echo $this->lang->line('msg_chats'); ?></span> <i class="fa fa fa-angle-right pull-right"></i>
                             </a>
                         </li>
                         <!-- <li>

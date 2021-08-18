@@ -72,6 +72,22 @@ $query=$this->db->get($table);
 return $query;
 }
 
+function get_where_custom4($col1, $value1, $col2, $value2, $col3, $value3, $col4, $value4) {
+$table = $this->get_table();
+$array = array($col1 => $value1, $col2 => $value2, $col3 => $value3, $col4 => $value4);
+$this->db->where($array);
+$query=$this->db->get($table);
+return $query;
+}
+
+function get_where_custom3_tb($tb, $col1, $value1, $col2, $value2, $col3, $value3) {
+$table = $this->get_table();
+$array = array($col1 => $value1, $col2 => $value2, $col3 => $value3);
+$this->db->where($array);
+$query=$this->db->get($tb);
+return $query;
+}
+
 function get_col_where($tb, $col){
 $table = $this->get_table($tb);
 $this->db->distinct();
@@ -165,10 +181,33 @@ $this->db->where($col, $value);
 $this->db->delete($table);
 }
 
+function _delete_custome3_tb($tb, $col1, $value1, $col2, $value2, $col3, $value3) {
+$table = $this->get_table();
+$array = array($col1 => $value1, $col2 => $value2, $col3 => $value3);
+$this->db->where($array);
+$this->db->delete($tb);
+}
+
+function _delete_custome4_tb($tb, $col1, $value1, $col2, $value2, $col3, $value3, $col4, $value4) {
+$table = $this->get_table();
+$array = array($col1 => $value1, $col2 => $value2, $col3 => $value3, $col4 => $value4);
+$this->db->where($array);
+$this->db->delete($tb);
+}
+
 function count_where($column, $value) {
 $table = $this->get_table();
 $this->db->where($column, $value);
 $query=$this->db->get($table);
+$num_rows = $query->num_rows();
+return $num_rows;
+}
+
+function count_where_custom2_tb($tb, $col1, $value1, $col2, $value2) {
+$table = $this->get_table();
+$array = array($col1 => $value1, $col2 => $value2);
+$this->db->where($array);
+$query=$this->db->get($tb);
 $num_rows = $query->num_rows();
 return $num_rows;
 }

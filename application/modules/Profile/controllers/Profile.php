@@ -80,6 +80,67 @@ function complete_registration(){
 }
 
 
+function listprofiles(){ 
+	$data['middle_m'] ="Profile";
+	$data['mpanel_m'] = "Profile";
+	$data['mpanel_f'] = "listprofiles";
+	$data['middle_f'] ="listprofiles";
+	$data['bfooter_m'] ="Home";
+	$data['bfooter_f'] ="blank";
+	$data['color'] = "";
+	$data['msg'] ='';
+	$cat = $this->uri->segment(3);
+	if ($cat== "all") {
+		$data['title'] ='Available Profiles';
+		$data['profileRes'] = $this->profile->get('id');
+	} else {
+		$data['title'] ='Available Profiles Under '.$cat." Category";
+		$data['profileRes'] = $this->profile->get_where_custom('category', $cat);
+	}
+	
+	if ($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+	} else {
+		$this->load->view('Home/index',$data);
+	}
+}
+
+function findprofile(){ 
+	$data['middle_m'] ="Profile";
+	$data['mpanel_m'] = "Profile";
+	$data['bfooter_m'] ="Home";
+	$data['bfooter_f'] ="blank";
+	$data['color'] = "";
+	$data['msg'] ='';
+	$cat = $this->uri->segment(3);
+	if ($cat== "all") {
+		$data['title'] ='Available Profiles';
+		$data['profileRes'] = $this->profile->get('id');
+	} else {
+		$data['title'] ='Available Profiles Under '.$cat." Category";
+		$data['profileRes'] = $this->profile->get_where_custom('category', $cat);
+	}
+
+	$findBtn = $this->input->post('findBtn',true);
+	$type = $this->input->post('type',true);
+	$category = $this->input->post('category',true);
+	$subcategory = $this->input->post('subcategory',true);
+	if (!$findBtn=="") {
+		$data['title'] ='Search results for:  '.$type." -> ".$category." -> ".$subcategory;
+		$data['profileRes'] = $this->profile->Mdl_profile->get_where_custom4('type', $type, 'category', $category, 'subcategory', $subcategory, 'status', "Active");
+		$data['mpanel_f'] = "listprofiles";
+		$data['middle_f'] ="listprofiles";
+	} else {
+		$data['mpanel_f'] = "findprofile";
+		$data['middle_f'] ="findprofile";
+	}
+	
+	if ($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+	} else {
+		$this->load->view('Home/index',$data);
+	}
+}
 
 
 
@@ -103,7 +164,7 @@ function freelancer(){
 	}
 	
 	if ($this->session->userdata('logged_in')) {
-		if ($this->session->userdata('user_role') == "Admin") { $this->load->view('Admin/indexa',$data); } else if ($this->session->userdata('user_role') == "Freelancer") { $this->load->view('Admin/indexf',$data); } else if ($this->session->userdata('user_role') == "User") { $this->load->view('Admin/indexu',$data); } else {  $this->load->view('Admin/indexu',$data); }
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
 	} else {
 		$this->load->view('Home/index',$data);
 	}
@@ -123,7 +184,7 @@ function freelancer2(){
 	$serviceid = $service;
 	$data['profileRes'] = $this->profile->get_where_custom('serviceid', $serviceid);
 	if ($this->session->userdata('logged_in')) {
-		if ($this->session->userdata('user_role') == "Admin") { $this->load->view('Admin/indexa',$data); } else if ($this->session->userdata('user_role') == "Freelancer") { $this->load->view('Admin/indexf',$data); } else if ($this->session->userdata('user_role') == "User") { $this->load->view('Admin/indexu',$data); } else {  $this->load->view('Admin/indexu',$data); }
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
 	} else {
 		$this->load->view('Home/index',$data);
 	}
@@ -133,15 +194,17 @@ function freelancer2(){
 
 function get_profile_data_from_post(){
 	$data['profilename'] = $this->input->post('pname', true);
-	$data['type'] = "Freelancer";
-	$data['serviceid'] = $this->input->post('type', true);
+	$data['gender'] = $this->input->post('gender', true);
+	$data['yob'] = mdate('%Y') - $this->input->post('age', true);
+	$data['idno'] = $this->input->post('idno', true);
+	$data['type'] = $this->input->post('type', true);
 	$data['category'] = $this->input->post('cat', true);
 	$data['subcategory'] = $this->input->post('subcat', true);
 	$data['userid'] = $this->session->userdata('user_id');
 	$data['description'] = $this->input->post('desc', true);;
 	$data['country'] = $this->input->post('country', true);
 	$data['region'] = $this->input->post('region', true);
-	$data['phyaddress'] = $this->input->post('phyaddress', true);;
+	$data['phyaddress'] = $this->input->post('phyaddress', true);
 	$data['email'] = $this->input->post('email', true);;
 	$data['phone'] = $this->input->post('phone', true);;
 	$data['altphone'] = $this->input->post('altphone', true);;
@@ -189,10 +252,39 @@ function get_profile_data_from_post(){
         $artImage_name = $data1['upload_data']['file_name'];
 		$data1['artimgsms']= $this->upload->display_errors();*/
 	
+	echo $data0['artimgsms'];
 	if (!$data0['artimgsms'] == "") {
 		$artImage_name = "def.png";
 	} 
+
+	//upload PDF files
+	$config1['upload_path']   = './uploads/attachments/';
+    $config1['allowed_types'] = 'pdf|jpg|png';
+    $config1['file_name'] = $new_name."_ID";
+    $this->load->library('upload',$config1);
+    $this->upload->do_upload('idfile');
+    $data1 = array('upload_data' => $this->upload->data());
+    $data['idfile'] = $data1['upload_data']['file_name'];
+
+    $config2['upload_path']   = './uploads/attachments/';
+    $config2['allowed_types'] = 'pdf|jpg|png';
+    $config2['file_name'] = $new_name."_Certificate";
+    $this->load->library('upload',$config2);
+    $this->upload->do_upload('certificate');
+    $data2 = array('upload_data' => $this->upload->data());
+    $data['certificate'] = $data2['upload_data']['file_name'];
+
+    $config3['upload_path']   = './uploads/attachments/';
+    $config3['allowed_types'] = 'pdf|jpg|png';
+    $config3['file_name'] = $new_name."_Resume";
+    $this->load->library('upload',$config3);
+    $this->upload->do_upload('resume');
+    $data3 = array('upload_data' => $this->upload->data());
+    $data['resume'] = $data3['upload_data']['file_name'];
+	//End PD files upload
+
 	$data['img'] = $artImage_name;
+	$data['status'] = "Active";
 	$data['date'] = mdate('%d-%m-%Y');
 	$data['udate'] = mdate('%d-%m-%Y %H:%i:%s');
 	
@@ -204,12 +296,13 @@ function get_profile_data_from_post(){
 
 function get_profile_edit_data_from_post(){
 	$data['profilename'] = $this->input->post('pname', true);
-	$data['serviceid'] = $this->input->post('type', true);
-	$data['type'] = "Freelancer";
-	//$data['type'] = $this->input->post('category', true);
+	$data['gender'] = $this->input->post('gender', true);
+	$data['yob'] = mdate('%Y') - $this->input->post('age', true);
+	$data['idno'] = $this->input->post('idno', true);
+	$data['type'] = $this->input->post('type', true);
 	$data['category'] = $this->input->post('cat', true);
 	$data['subcategory'] = $this->input->post('subcat', true);
-	//$data['userid'] = $this->session->userdata('user_id');
+	$data['userid'] = $this->session->userdata('user_id');
 	$data['description'] = $this->input->post('desc', true);;
 	$data['country'] = $this->input->post('country', true);
 	$data['region'] = $this->input->post('region', true);
@@ -263,6 +356,33 @@ function get_profile_edit_data_from_post(){
 	if (!$data0['artimgsms'] == "") {
 		$artImage_name = "def.png";
 	} 
+
+	//upload PDF files
+	$config1['upload_path']   = './uploads/attachments/';
+    $config1['allowed_types'] = 'pdf|jpg|png';
+    $config1['file_name'] = $new_name."_ID";
+    $this->load->library('upload',$config1);
+    $this->upload->do_upload('idfile');
+    $data1 = array('upload_data' => $this->upload->data());
+    $data['idfile'] = $data1['upload_data']['file_name'];
+
+    $config2['upload_path']   = './uploads/attachments/';
+    $config2['allowed_types'] = 'pdf|jpg|png';
+    $config2['file_name'] = $new_name."_Certificate";
+    $this->load->library('upload',$config2);
+    $this->upload->do_upload('certificate');
+    $data2 = array('upload_data' => $this->upload->data());
+    $data['certificate'] = $data2['upload_data']['file_name'];
+
+    $config3['upload_path']   = './uploads/attachments/';
+    $config3['allowed_types'] = 'pdf|jpg|png';
+    $config3['file_name'] = $new_name."_Resume";
+    $this->load->library('upload',$config3);
+    $this->upload->do_upload('resume');
+    $data3 = array('upload_data' => $this->upload->data());
+    $data['resume'] = $data3['upload_data']['file_name'];
+	//End PD files upload
+
 	$data['img'] = $artImage_name;
 	$data['date'] = mdate('%d-%m-%Y');
 	$data['udate'] = mdate('%d-%m-%Y %H:%i:%s');
@@ -1111,15 +1231,54 @@ function userProfile() {
 	} else if ($this->uri->segment(4)=="posted") {
 		# code...
 		$data['myjobres'] = $this->job->get_where_custom_limit('postedby', $userid ,100, 1);
-	} else if ($this->uri->segment(4)=="done") {
+	} else if ($this->uri->segment(4)=="like") {
 		# code...
 		$data['myjobres'] = $this->job->get_where_custom_limit('doneby', $userid ,100, 1);
+		//update action table
+		$this->updateAction($userid, $this->session->userdata('user_id'), 2, 1, "");
 	} else {
 		$data['myjobres'] = $this->job->get_where_custom_limit('postedby', $userid ,100, 1);
 	}
+	//update action table
+	$this->updateAction($userid, $this->session->userdata('user_id'), 1, 1, "");
 	
 	if ($this->session->userdata('logged_in')) {
-		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else if($this->session->userdata('user_role') == "User") {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } else if($this->session->userdata('user_role') == "Freelancer") {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+		//if ($this->session->userdata('user_role') == "admin") { if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } } else { $this->load->view('Production/index',$data); }
+	} else {
+		$this->load->view('Home/index',$data);
+	}
+}
+
+function updateAction($userid, $doneby, $action, $value, $remark) {
+	$data['userid'] = $userid;
+	$data['doneby'] = $doneby;
+	$data['action'] = $action;
+	$data['value'] = $value;
+	$data['remark'] = $remark;
+	$data['date'] = mdate('%d-%m-%Y');
+	$data['udate'] = mdate('%d-%m-%Y %H:%i:%s');
+	$this->Mdl_profile->_delete_custome3_tb('action', 'userid', $userid, 'doneby', $doneby, 'action', $action);
+	$this->_insert_tb('action', $data);
+}
+
+function feedback() {
+	$profileid = $this->input->post('profileid',true);
+	$fdata['userid'] = $this->input->post('commentBtn',true);
+	$fdata['senderid'] = $this->session->userdata('user_id');
+	$fdata['toid'] = $this->input->post('commentBtn',true);
+	$fdata['comment'] = $this->input->post('comment',true);
+	$fdata['type'] = "Comment";
+	$fdata['status'] = "Active";
+	$data['date'] = mdate('%d-%m-%Y');
+	$data['udate'] = mdate('%d-%m-%Y %H:%i:%s');
+	$this->_insert_tb('comment', $fdata);
+
+	//redirect to profile
+	redirect('Profile/userProfile/'.$fdata['userid']);
+
+	if ($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
 		//if ($this->session->userdata('user_role') == "admin") { if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } } else { $this->load->view('Production/index',$data); }
 	} else {
 		$this->load->view('Home/index',$data);
@@ -1190,7 +1349,7 @@ function managemyProfiles() {
 	}
 
 	if ($this->session->userdata('logged_in')) {
-		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else if($this->session->userdata('user_role') == "User") {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } else if($this->session->userdata('user_role') == "Freelancer") {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
 		//if ($this->session->userdata('user_role') == "admin") { if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } } else { $this->load->view('Production/index',$data); }
 	} else {
 		//redirect('Home');
