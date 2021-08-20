@@ -40,6 +40,12 @@
       padding-left: 20px;
       padding-right: 20px;
       font-size: 18px;
+      color: #fff;
+    }
+
+    .subscribe_btn:hover {
+      background-color: #1328a8;
+      color: #fff;
     }
 
 </style>
@@ -69,8 +75,8 @@
     if ($serv->id==1) { $mdi = "fa fa-laptop"; } else if ($serv->id==2){ $mdi = "fa fa-mobile"; }  else if ($serv->id==3){ $mdi = "fa fa-copy"; }  else if ($serv->id==4){ $mdi = "fa fa-folder-open"; }  else if ($serv->id==5){ $mdi = "mdi mdi-google-translate"; }  else if ($serv->id==6){ $mdi = "mdi mdi-content-save-edit-outline"; }  else if ($serv->id==7){ $mdi = "mdi mdi-google-ads"; }  else if ($serv->id==8){ $mdi = "mdi mdi-folder-star-multiple-outline"; } else {$mdi = "fa fa-folder-open";}
   ?>    
   <div class="col-md-3" style="text-align: center; padding-bottom: 50px;">
-    <a class="sitecolor2" href="<?php echo base_url('Job/post/1/');?><?php echo $serv->id;?>"><i class="<?php echo $mdi;?> fa-5x"></i></a>
-    <h4><a class1="sitecolor2" style="color: gray;" href="<?php echo base_url('Job/post/1/');?><?php echo $serv->id;?>"><?php echo $serv->service;?></a></h4>
+    <a class="sitecolor2" href="<?php echo base_url('Profile/listprofiles/');?><?php echo $serv->service;?>"><i class="<?php echo $mdi;?> fa-5x"></i></a>
+    <h4><a class1="sitecolor2" style="color: gray;" href="<?php echo base_url('Profile/listprofiles/');?><?php echo $serv->service;?>"><?php echo $serv->service;?></a></h4>
   </div>
   <?php endforeach; ?>
 
@@ -88,7 +94,7 @@
 </div>
 <div class="row">
   <div class="col-md-4" style="text-align: center;">
-    <a href="<?php echo base_url('Home/job');?>" class="sitecolor1 btn how-it-works-icon" ><i class="mdi mdi-post fa-5x"></i></a>
+    <a href="<?php echo base_url('Profile/listprofiles/all');?>" class="sitecolor1 btn how-it-works-icon" ><i class="mdi mdi-post fa-5x"></i></a>
     <!-- <img src="<?php //echo base_url('assets/img/service1.PNG');?>" class="avater" alt="service" style="width: 50%;" > -->
     <h2><?php echo $this->lang->line('msg_post_a_job'); ?></h2>
     <p style="font-size: 18px;">
@@ -96,7 +102,7 @@
     </p>
   </div>
   <div class="col-md-4" style="text-align: center;">
-    <a href="<?php echo base_url('Home/job');?>" class="sitecolor1 btn how-it-works-icon" ><i class="mdi mdi-target-account fa-5x"></i></a>
+    <a href="<?php echo base_url('Profile/listprofiles/all');?>" class="sitecolor1 btn how-it-works-icon" ><i class="mdi mdi-target-account fa-5x"></i></a>
     <!-- <img src="<?php //echo base_url('assets/img/service2.PNG');?>" class="avater" alt="service" style="width: 50%;" > -->
     <h2><?php echo $this->lang->line('msg_choosing_freelancers'); ?></h2>
     <p style="font-size: 18px;">
@@ -104,7 +110,7 @@
     </p>
   </div>
   <div class="col-md-4" style="text-align: center;">
-    <a href="<?php echo base_url('Home/job');?>" class="sitecolor1 btn how-it-works-icon" ><i class="mdi mdi-contactless-payment-circle fa-5x"></i></a>
+    <a href="<?php echo base_url('Profile/payments');?>" class="sitecolor1 btn how-it-works-icon" ><i class="mdi mdi-contactless-payment-circle fa-5x"></i></a>
     <!-- <img src="<?php //echo base_url('assets/img/service3.PNG');?>" class="avater" alt="service" style="width: 50%;" > -->
     <h2><?php echo $this->lang->line('msg_pay_safely_title'); ?></h2>
     <p style="font-size: 18px;">
@@ -285,7 +291,7 @@
     <div class="form-group" style="width: 40%;">
       <input type="email" name="email" class="form-control subscribe_in" id="email" placeholder="Enter your email address" required="">
     </div>
-    <button type="submit" class="btn sitecolor2bg subscribe_btn">Subscribe</button>
+    <button type="submit" class="btn sitecolor2bg subscribe_btn" >Subscribe</button>
   </form>
   <b style="font-size: 16px; margin-top: 20px; color: <?php echo $color; ?>"><?php echo $subscribe_msg; ?></b>
 </div>

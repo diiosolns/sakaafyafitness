@@ -305,10 +305,10 @@
               <img alt="Brand" src="<?php echo base_url('assets/img/brand_blue.png');?>" height=45px >
             </a>
           </li>
-          <li class="topli2" ><a href="<?php echo base_url('Home');?>"><b><?php echo $this->lang->line('msg_home'); ?></b></a></li>
-          <li class="topli2" ><a href="<?php echo base_url('Home/aboutUs');?>"><b><?php echo $this->lang->line('msg_about_us'); ?></b></a></li>
-          <li class="topli2" ><a href="<?php echo base_url('Home/contactUs');?>"><b><?php echo $this->lang->line('msg_contact_us'); ?></b></a></li>
-          <li class="topli2" ><a href="<?php echo base_url('Artical/blog');?>"><b><?php echo $this->lang->line('msg_blog'); ?></b></a></li>
+          <li class="topli2" ><a class="home"  href="<?php echo base_url('Home');?>"><b><?php echo $this->lang->line('msg_home'); ?></b></a></li>
+          <li class="topli2" ><a class="about" href="<?php echo base_url('Home/aboutUs');?>"><b><?php echo $this->lang->line('msg_about_us'); ?></b></a></li>
+          <li class="topli2" ><a class="contact"  href="<?php echo base_url('Home/contactUs');?>"><b><?php echo $this->lang->line('msg_contact_us'); ?></b></a></li>
+          <li class="topli2" ><a class="blog"  href="<?php echo base_url('Artical/blog');?>"><b><?php echo $this->lang->line('msg_blog'); ?></b></a></li>
           
 
           
@@ -363,10 +363,10 @@
         <div class="row">
           <div class="col-md-12" style="text-align: center; padding-bottom: 40px; color: #fff; font-size: 16px;">
               <!-- ====================links -->
-              <a href="<?php echo base_url('Home');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_home'); ?></b></a>
-              <a href="<?php echo base_url('Home/aboutUs');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_about_us'); ?></b></a>
-              <a href="<?php echo base_url('Artical/blog');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_blog'); ?></b></a>
-              <a href="<?php echo base_url('Home/contactUs');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_contact_us'); ?></b></a>
+              <a class="home" href="<?php echo base_url('Home');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_home'); ?></b></a>
+              <a class="about" href="<?php echo base_url('Home/aboutUs');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_about_us'); ?></b></a>
+              <a class="contact" href="<?php echo base_url('Home/contactUs');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_contact_us'); ?></b></a>
+              <a class="blog" href="<?php echo base_url('Artical/blog');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_blog'); ?></b></a>
               <!-- <a href="<?php echo base_url('Home/FAQ');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_faq'); ?></b></a> -->
              <!--  =================end links -->
               <hr>
@@ -397,19 +397,20 @@
         <div class="col-sm-3 center">
             <h4 class="title"><?php echo $this->lang->line('msg_profile_types'); ?></h4>
             <span class="acount-icon">          
-              <a href="<?php echo base_url('Profile/freelancer/0');?>"><i class="fa fa-user" aria-hidden="true"></i> Sports Persons <?php //echo $this->lang->line('msg_Freelancer'); ?></a>
-              <a href="<?php echo base_url('Job/findjob/0');?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Coaches/ Sponsors <?php //echo $this->lang->line('msg_find_jobs'); ?></a>
-              <a href="<?php echo base_url('Home/Job');?>"><i class="fa fa-tasks" aria-hidden="true"></i> Teams <?php //echo $this->lang->line('msg_post_a_job'); ?></a>
-              <a href="<?php echo base_url('Profile/freelancer/0');?>"><i class="fa fa-user" aria-hidden="true"></i> Gyms <?php //echo $this->lang->line('msg_Freelancer'); ?></a>
-              <a href="<?php echo base_url('Job/findjob/0');?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Instructors <?php //echo $this->lang->line('msg_find_jobs'); ?></a>
-              <a href="<?php echo base_url('Home/Job');?>"><i class="fa fa-tasks" aria-hidden="true"></i> Trainers <?php //echo $this->lang->line('msg_post_a_job'); ?></a>             
+              <a href="<?php echo base_url('Profile/listprofiles/Sportsperson');?>"><i class="fa fa-user" aria-hidden="true"></i> Sportsperson <?php //echo $this->lang->line('msg_Freelancer'); ?></a>
+              <a href="<?php echo base_url('Profile/listprofiles/Trainee');?>"><i class="fa fa-tasks" aria-hidden="true"></i> Trainees <?php //echo $this->lang->line('msg_post_a_job'); ?></a> 
+              <a href="<?php echo base_url('Profile/listprofiles/Trainer');?>"><i class="fa fa-tasks" aria-hidden="true"></i> Trainers <?php //echo $this->lang->line('msg_post_a_job'); ?></a>    
+              <a href="<?php echo base_url('Profile/listprofiles/Sponsor');?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Coaches/ Sponsors <?php //echo $this->lang->line('msg_find_jobs'); ?></a>
+              <a href="<?php echo base_url('Profile/listprofiles/Team');?>"><i class="fa fa-tasks" aria-hidden="true"></i> Teams <?php //echo $this->lang->line('msg_post_a_job'); ?></a>
+              <a href="<?php echo base_url('Profile/listprofiles/Gym');?>"><i class="fa fa-user" aria-hidden="true"></i> Gyms <?php //echo $this->lang->line('msg_Freelancer'); ?></a>
+              <a href="<?php echo base_url('Profile/listprofiles/Instructor');?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Instructors <?php //echo $this->lang->line('msg_find_jobs'); ?></a>         
             </span>
         </div>
         <div class="col-sm-3">
             <h4 class="title"> Club Members <?php //echo $this->lang->line('msg_Freelancer_Categories'); ?></h4>
             <div class="category">
               <?php foreach ($services->result() as $row1): ?>
-              <a href="<?php echo base_url('Profile/freelancer/');?><?php echo $row1->id;?>"><?php echo $row1->service;?></a>
+              <a href="<?php echo base_url('Profile/listprofiles/');?><?php echo $row1->service;?>"><?php echo $row1->service;?></a>
               <?php endforeach; ?>    
             </div>
         </div>

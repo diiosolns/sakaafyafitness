@@ -28,6 +28,10 @@
   .myli {
     font-size: 18px;
     padding-bottom: 10px;
+    padding-top: 10px;
+  }
+  .myli:hover {
+    background-color: #F9F9F9;
   }
 
   .cardheader_sm {
@@ -35,7 +39,8 @@
       /*background: url("../../img/profilebg3.jpg");*/
        background-size: cover;
        height: 60px;
-    }
+  }
+
 </style>
 
  <?php
@@ -51,6 +56,16 @@
 <div class="row padding" style="margin-left: 5% !important; margin-right: 5% !important;">
   
   <div class="col-md-8 profileout pull-left ">
+    <!-- title -->
+    <div class="row " style="margin-bottom: 20px;">
+      <div class="col-md-9" style="font-size: 20px; color: gray;"> 
+        <?php echo $title; ?> , <?php echo number_format($profileRes->num_rows(),0) ?>
+      </div>
+      <div class="col-md-3">
+        <a href="<?php echo base_url('Profile/findprofile');?>" class="btn btn-info btn-md pull-right">&nbsp;&nbsp;&nbsp;&nbsp;Find Profiles<?php //echo $this->lang->line('msg_submit'); ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+      </div>
+    </div>
+    <!-- end title -->
     <!-- ==========incase no profile ============ -->
     <?php if ($profileRes->num_rows()==0) { ?>
       <div class="row profile">
@@ -63,14 +78,7 @@
         </div>
       </div>
     <?php } else { ?>
-       <div class="row " style="margin-bottom: 20px;">
-          <div class="col-md-9" style="font-size: 20px; color: gray;"> 
-            <?php echo $title; ?> , <?php echo number_format($profileRes->num_rows(),0) ?>
-          </div>
-          <div class="col-md-3">
-            <a href="<?php echo base_url('Profile/findprofile');?>" class="btn btn-info btn-md pull-right">&nbsp;&nbsp;&nbsp;&nbsp;Find Profiles<?php //echo $this->lang->line('msg_submit'); ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-          </div>
-        </div>
+       
     <?php } ?>
     <!-- =========end no profile ================ -->
     <?php foreach ($profileRes->result() as $row1): ?>
@@ -81,7 +89,7 @@
       <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="border-bottom: 1px solid #F9F9F9; padding-bottom: 5px; margin-bottom: 10px;">
         <a data-toggle="collapse" data-target="#more<?php echo $row1->id ;?>" class="pull-right"><i class="fa fa-clock pull-right"></i> <small><?php echo mdate('%Y')-$row1->yob; ?> years</small></a>
         <h4><a style="color: #222;" href="<?php echo base_url('Profile/userProfile');?>/<?php echo $row1->userid;?>"><b><?php echo $row1->profilename ;?></b></a></h4>
-        <span><i><?php echo $row1->type ;?> / <?php echo $row1->category ;?> / <?php echo $row1->subcategory ;?></i></span>
+        <span><i><?php echo $row1->type ;?> > <?php echo $row1->category ;?> > <?php echo $row1->subcategory ;?></i></span>
         <br><small><?php echo $row1->country ;?>, <?php echo $row1->region ;?></small>
       </div>
       <!-- <div class="col-md-12" style="padding-bottom: 10px; padding-top: 5px; font-size: 18px; border-top1: 1px solid lightgray;" >
@@ -101,7 +109,8 @@
     <hr>
     <ul class="myul">
       <?php foreach ($services->result() as $row): ?>
-        <li class="myli"><a href="<?php echo base_url('Profile/listprofiles/');?><?php echo $row->service;?>"><?php echo $row->service;?></a></li>
+        <?php $count = modules::load('Profile')->count_where('category', $row->service); ?>
+        <li class="myli"><a href="<?php echo base_url('Profile/listprofiles/');?><?php echo $row->service;?>"><?php echo $row->service;?><small class="badge pull-right bg-green"><?php echo number_format($count,0); ?></small></a></li>
       <?php endforeach; ?>
     </ul>
   </div>
@@ -111,7 +120,8 @@
     <hr>
     <ul class="myul">
       <?php foreach ($services->result() as $row): ?>
-        <li class="myli"><a href="<?php echo base_url('Profile/listprofiles/');?><?php echo $row->service;?>"><?php echo $row->service;?></a></li>
+        <?php $count = modules::load('Profile')->count_where('category', $row->service); ?>
+        <li class="myli"><a href="<?php echo base_url('Profile/listprofiles/');?><?php echo $row->service;?>"><?php echo $row->service;?><small class="badge pull-right bg-green"><?php echo number_format($count,0); ?></small></a></li>
       <?php endforeach; ?>
     </ul>
   </div>

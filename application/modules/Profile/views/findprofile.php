@@ -28,8 +28,11 @@
   .myli {
     font-size: 18px;
     padding-bottom: 10px;
+    padding-top: 10px;
   }
-
+  .myli:hover {
+    background-color: #F9F9F9;
+  }
   .cardheader_sm {
        background: url("<?php echo base_url('assets/img/profilebg2.jpg');?>");
       /*background: url("../../img/profilebg3.jpg");*/
@@ -55,8 +58,8 @@
     <div class="row profile">
         <div class="col-md-12" style="height: 10px;"></div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-          <h2 style="color: lightgray;"><b>Find profiles! </b></h2> 
-          <h4 style="color: lightgray;">Select all required options and click search.</h4>
+          <h2 style="color: gray;"><b>Find profiles! </b></h2> 
+          <h4 style="color: gray;">Select all required options and click search.</h4>
           <form class="form-style-1" action="<?php echo base_url('Profile/findprofile')?>" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-md-6 find_input">
@@ -107,7 +110,8 @@
     <hr>
     <ul class="myul">
       <?php foreach ($services->result() as $row): ?>
-        <li class="myli"><a href="<?php echo base_url('Profile/listprofiles/');?><?php echo $row->service;?>"><?php echo $row->service;?></a></li>
+        <?php $count = modules::load('Profile')->count_where('category', $row->service); ?>
+        <li class="myli"><a href="<?php echo base_url('Profile/listprofiles/');?><?php echo $row->service;?>"><?php echo $row->service;?><small class="badge pull-right bg-green"><?php echo number_format($count,0); ?></small></a></li>
       <?php endforeach; ?>
     </ul>
   </div>
@@ -117,7 +121,8 @@
     <hr>
     <ul class="myul">
       <?php foreach ($services->result() as $row): ?>
-        <li class="myli"><a href="<?php echo base_url('Profile/listprofiles/');?><?php echo $row->service;?>"><?php echo $row->service;?></a></li>
+        <?php $count = modules::load('Profile')->count_where('category', $row->service); ?>
+        <li class="myli"><a href="<?php echo base_url('Profile/listprofiles/');?><?php echo $row->service;?>"><?php echo $row->service;?><small class="badge pull-right bg-green"><?php echo number_format($count,0); ?></small></a></li>
       <?php endforeach; ?>
     </ul>
   </div>

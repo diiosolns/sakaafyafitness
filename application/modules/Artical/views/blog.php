@@ -1,4 +1,9 @@
 <style type="text/css">
+    .blog {
+        background-color: #1328a8;
+        color: #fff !important;
+        /*background-color: #DCDCDC;*/
+    }
     .blog_post{
         background-color: #fff;
         padding: 5px 15px 5px 15px;

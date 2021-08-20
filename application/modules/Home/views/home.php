@@ -4,6 +4,11 @@
 
 <!-- <?php echo $this->lang->line('msg_'); ?> -->
 <style type="text/css">
+  .home {
+      background-color: #1328a8;
+      color: #fff !important;
+      /*background-color: #DCDCDC;*/
+  }
   .searchin {
     font-size: 18px;
     padding-left: 20px;

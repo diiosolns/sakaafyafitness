@@ -64,6 +64,14 @@ $query=$this->db->get($table);
 return $query;
 }
 
+function get_where_custom2_tb($tb, $col1, $value1, $col2, $value2) {
+$table = $this->get_table();
+$array = array($col1 => $value1, $col2 => $value2);
+$this->db->where($array);
+$query=$this->db->get($tb);
+return $query;
+}
+
 function get_where_custom3($col1, $value1, $col2, $value2, $col3, $value3) {
 $table = $this->get_table();
 $array = array($col1 => $value1, $col2 => $value2, $col3 => $value3);
@@ -166,6 +174,13 @@ function _update_custome($col, $value, $data) {
 $table = $this->get_table();
 $this->db->where($col, $value);
 $this->db->update($table, $data);
+}
+
+function _update_custom2_tb($tb, $col1, $value1, $col2, $value2, $data) {
+$table = $this->get_table();
+$array = array($col1 => $value1, $col2 => $value2);
+$this->db->where($array);
+$this->db->update($tb, $data);
 }
 
 function _delete($id) {

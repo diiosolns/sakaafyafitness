@@ -1,4 +1,10 @@
-
+<style type="text/css">
+    .about {
+        background-color: #1328a8;
+        color: #fff !important;
+        /*background-color: #DCDCDC;*/
+    }
+</style>
 <!-- ======================= HEADER IMAGE ================= -->
 <div id="myCarousel" class="carousel slide carousel-fade hidden-xs hidden-sm fullscreen slider" data-ride="carousel" data-interval="3000" data-pause="hover" data-wrap="true"  >
   <div class="carousel-inner" role="listbox">

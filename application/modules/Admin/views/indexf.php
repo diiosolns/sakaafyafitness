@@ -28,9 +28,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
         <!-- site theme -->
         <link href="<?php echo base_url('assets/css/diiocss/theme.css');?>" rel="stylesheet" type="text/css" />
-
-
-       
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -45,9 +42,21 @@
            .mypadding {
               padding: 1% 4% 0 4%;
            }
+           .full_height {
+            min-height: 100vh;
+           }
+           .bg-light-blue {
+              background-color: #1328a8 !important;
+           }
         </style>
     </head>
     <body class="skin-black">
+        <?php 
+            $userid = $this->session->userdata('user_id');
+            $myprofiles = modules::load('Job')->Mdl_job->get_where_custom_tb('profile', 'userid', $userid);
+            $myjobs = modules::load('Job')->Mdl_job->get_where_custom_tb('job', 'postedby', $userid);
+            $profile_pic = base_url('assets/img/profile/0/'.$this->session->userdata('user_img'))
+        ?>
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="<?php echo base_url('Home');?>" class="logo">
@@ -142,47 +151,26 @@
                             </ul>
                         </li> -->
                         <!-- Notifications: style can be found in dropdown.less -->
-                        <!-- <li class="dropdown notifications-menu">
+                        <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-warning"></i>
-                                <span class="label label-warning">10</span>
+                                <i class="fa fa-bell"></i>
+                                <span class="label label-warning">0</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">You have 10 notifications</li>
+                                <li class="header">You have 0 notifications</li>
                                 <li>
-                                    <!-- inner menu: contains the actual data --
+                                    <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
-                                        <li>
+                                        <!-- <li>
                                             <a href="#">
                                                 <i class="ion ion-ios7-people info"></i> 5 new members joined today
                                             </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-warning danger"></i> Very long description here that may not fit into the page and may cause design problems
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-users warning"></i> 5 new members joined
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#">
-                                                <i class="ion ion-ios7-cart success"></i> 25 sales made
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="ion ion-ios7-person danger"></i> You changed your username
-                                            </a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </li>
                                 <li class="footer"><a href="#">View all</a></li>
                             </ul>
-                        </li> -->
+                        </li>
                         <!-- Tasks: style can be found in dropdown.less -->
                         <!-- <li class="dropdown tasks-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -268,10 +256,10 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img src="<?php echo base_url('assets/img/icon.png');?>" class="img-circle" alt="User Image" />
+                                    <img src="<?php echo $profile_pic; ?>" class="img-circle" alt="User Image" />
                                     <p>
-                                        <?php echo $this->session->userdata('user_name');?> - <?php echo $this->session->userdata('user_role');?> User
-                                        <small>Member of eHuduma</small>
+                                        <?php echo $this->session->userdata('user_name');?> - <?php echo $this->session->userdata('user_role');?> 
+                                        <small>Club Member</small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -280,16 +268,16 @@
                                         <a href="<?php echo base_url('Home');?>"><?php echo $this->lang->line('msg_home'); ?></a>
                                     </div>
                                     <div class="col-xs-4 text-center">
-                                        <a href="<?php echo base_url('Home/contactUs');?>"><?php //echo $this->lang->line('msg_contact_us'); ?>Contact</a>
+                                        <a href="<?php echo base_url('Profile/listprofiles/all');?>"><?php //echo $this->lang->line('msg_contact_us'); ?>Profiles</a>
                                     </div>
                                     <div class="col-xs-4 text-center">
-                                        <a href="<?php echo base_url('Home/aboutUs');?>"><?php //echo $this->lang->line('msg_about_us'); ?>About</a>
+                                        <a href="<?php echo base_url('Profile/findprofile');?>"><?php //echo $this->lang->line('msg_about_us'); ?>Find</a>
                                     </div>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="<?php echo base_url('Users/changePassword');?>" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="<?php echo base_url('Profile/userProfile/');?><?php echo $userid;?>" class="btn btn-default btn-flat">My account</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="<?php echo base_url('Home/logout');?>" class="btn btn-default btn-flat">Sign out</a>
@@ -312,10 +300,10 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="<?php echo base_url('assets/img/icon.png');?>" class="img-circle" alt="User Image" />
+                            <img src="<?php echo $profile_pic; ?>" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                           <a href="<?php echo base_url('Users/changePassword');?>">
+                           <a href="<?php echo base_url('Profile/userProfile/'.$userid);?>">
                                 <p><?php echo $this->lang->line('msg_hi'); ?>, <?php echo $this->session->userdata('user_name');?> </p>
                                 <a href="<?php echo base_url('Home');?>"><i class="fa fa-circle text-success"></i> Online</a>
                            </a><!-- <i class="fa fa-arrow-right pull-right"></i> -->
@@ -332,62 +320,43 @@
                     </form> -->
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
-                     <?php 
-                        $userid = $this->session->userdata('user_id');
-                        $myprofiles = modules::load('Job')->Mdl_job->get_where_custom_tb('profile', 'userid', $userid);
-                        $myjobs = modules::load('Job')->Mdl_job->get_where_custom_tb('job', 'postedby', $userid);
-                     ?>
+                     
                     <ul class="sidebar-menu">
                         <li class="active">
                             <a href="<?php echo base_url('Admin');?>">
-                                <i class="fa fa-dashboard"></i> <span><?php echo $this->lang->line('msg_dashboard'); ?></span>
+                                <i class="fa fa-dashboard"></i> <span>Home<?php //echo $this->lang->line('msg_dashboard'); ?></span>
                             </a>
                         </li>
-                        <!-- <li>
-                            <a href="<?php //echo base_url('Profile/createProfile');?>">
-                                <i class="fa fa-clipboard"></i> <span class=""></span>My Profile <?php //echo $this->lang->line('msg_new_profile'); ?> <i class="fa fa fa-angle-right pull-right"></i>
-                            </a>
-                        </li> -->
                         <li>
                             <a href="<?php echo base_url('Profile/findprofile');?>">
-                                <i class="fa fa-clipboard"></i> <span class=""></span>Find Profiles <?php //echo $this->lang->line('msg_new_profile'); ?> <i class="fa fa fa-angle-right pull-right"></i>
+                                <i class="fa fa-search"></i> <span class=""></span>Find Profiles <?php //echo $this->lang->line('msg_new_profile'); ?> <i class="fa fa fa-angle-right pull-right"></i>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo base_url('Profile/listprofiles/all');?>">
-                                <i class="fa fa-clipboard"></i> <span class=""></span>Browse Profiles <?php //echo $this->lang->line('msg_new_profile'); ?> <i class="fa fa fa-angle-right pull-right"></i>
+                                <i class="fa fa-users"></i> <span class=""></span>Browse Profiles <?php //echo $this->lang->line('msg_new_profile'); ?> <i class="fa fa fa-angle-right pull-right"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url('Job/post');?>">
-                                <i class="fa fa-folder-open"></i> <span>Post a Project<?php //echo $this->lang->line('msg_chats'); ?></span> <i class="fa fa fa-angle-right pull-right"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo base_url('Job/myjobs');?>">
-                                <i class="fa fa-folder"></i> <span>My Projects<?php //echo $this->lang->line('msg_chats'); ?></span> <small class="badge pull-right bg-green"><?php echo number_format($myjobs->num_rows());?></small>
+                            <a href="<?php echo base_url('Profile/payments');?>">
+                                <i class="fa fa-folder-open"></i> <span>Payments<?php //echo $this->lang->line('msg_chats'); ?></span> <i class="fa fa fa-angle-right pull-right"></i>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo base_url('Profile/userProfile/');?><?php echo $userid;?>">
-                                <i class="fa fa-folder-open"></i> <span>My account<?php //echo $this->lang->line('msg_chats'); ?></span> <i class="fa fa fa-angle-right pull-right"></i>
+                                <i class="fa fa-user"></i> <span>My account<?php //echo $this->lang->line('msg_chats'); ?></span> <i class="fa fa fa-angle-right pull-right"></i>
                             </a>
                         </li>
                         <!-- <li>
-                            <a href="<?php //echo base_url('Profile/freelancer/0');?>">
-                                <i class="fa fa-users"></i> <span>Browse Freelancers<?php //echo $this->lang->line('msg_chats'); ?></span> <i class="fa fa fa-angle-right pull-right"></i>
-                            </a>
-                        </li> -->
-                        <li>
-                            <a href="<?php echo base_url('Chat/myChats');?>">
+                            <a href="<?php //echo base_url('Chat/myChats');?>">
                                 <i class="fa fa-comment"></i> <span><?php echo $this->lang->line('msg_chats'); ?></span> <small class="badge pull-right bg-green">10</small>
                             </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo base_url('Home/faq');?>">
+                        </li> -->
+                        <!-- <li>
+                            <a href="<?php //echo base_url('Home/faq');?>">
                                 <i class="fa fa-question-circle"></i> <span>Help<?php //echo $this->lang->line('msg_chats'); ?></span> <i class="fa fa fa-angle-right pull-right"></i>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="<?php echo base_url('Home/logout');?>">
                                 <i class="fa fa fa-sign-out"></i> <span class=""></span> <?php //echo $this->lang->line('msg_signout'); ?> Logout
@@ -495,7 +464,7 @@
 
 
             <!-- Right side column. Contains the navbar and content of the page -->
-            <aside class="right-side">
+            <aside class="right-side full_height">
 
                 <!-- ========== CALL RIGHT PANNEL -->
                     <?php 
@@ -525,7 +494,7 @@
     <footer class="footer" style="background-color: #333333;">
         <div class="container">
             <br>
-            <div class="row text-center" style="color: #fff;"><a href="<?php echo base_url('Home/ourPrivacy');?>"><?php echo $this->lang->line('msg_mdl_privacy'); ?></a> | <a href="<?php echo base_url('Home/ourTerms');?>"><?php echo $this->lang->line('msg_mdl_terms'); ?></a><br> © Uwezomedia Limited 2018 - <?php echo $this->lang->line('msg_all_rights_reserved'); ?>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->lang->line('msg_developer'); ?>: diioLab<!-- 2017. by Dionizi France (+255-752-194-092 | +255-684-544-167) --></div>
+            <div class="row text-center" style="color: #fff;"><a href="<?php echo base_url('Home/ourPrivacy');?>"><?php echo $this->lang->line('msg_mdl_privacy'); ?></a> | <a href="<?php echo base_url('Home/ourTerms');?>"><?php echo $this->lang->line('msg_mdl_terms'); ?></a><br> © Saka Afya Fitness Club <?php mdate('%Y'); ?> - <?php echo $this->lang->line('msg_all_rights_reserved'); ?>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->lang->line('msg_developer'); ?>: DiioLab<!-- 2017. by Dionizi France (+255-752-194-092 | +255-684-544-167) --></div>
             <hr>
         </div>     
     </footer>

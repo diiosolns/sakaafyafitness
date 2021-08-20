@@ -12,6 +12,7 @@ parent::__construct();
 		$this->load->helper('download');
 		$this->load->helper('text');
 		//My Modules
+		$this->load->model('Mdl_profile');
 		$this->load->module('Profile');
 		$this->load->module('Appointment');
 		$this->load->module('Artical');
@@ -91,10 +92,10 @@ function listprofiles(){
 	$data['msg'] ='';
 	$cat = $this->uri->segment(3);
 	if ($cat== "all") {
-		$data['title'] ='Available Profiles';
+		$data['title'] ='Available profiles';
 		$data['profileRes'] = $this->profile->get('id');
 	} else {
-		$data['title'] ='Available Profiles Under '.$cat." Category";
+		$data['title'] = '<b>'.$cat.'</b> : Available profiles';
 		$data['profileRes'] = $this->profile->get_where_custom('category', $cat);
 	}
 	
@@ -112,21 +113,13 @@ function findprofile(){
 	$data['bfooter_f'] ="blank";
 	$data['color'] = "";
 	$data['msg'] ='';
-	$cat = $this->uri->segment(3);
-	if ($cat== "all") {
-		$data['title'] ='Available Profiles';
-		$data['profileRes'] = $this->profile->get('id');
-	} else {
-		$data['title'] ='Available Profiles Under '.$cat." Category";
-		$data['profileRes'] = $this->profile->get_where_custom('category', $cat);
-	}
 
 	$findBtn = $this->input->post('findBtn',true);
 	$type = $this->input->post('type',true);
 	$category = $this->input->post('category',true);
 	$subcategory = $this->input->post('subcategory',true);
 	if (!$findBtn=="") {
-		$data['title'] ='Search results for:  '.$type." -> ".$category." -> ".$subcategory;
+		$data['title'] ='Search results for:  <b>'.$type.' -> '.$category.' -> '.$subcategory.'</b>';
 		$data['profileRes'] = $this->profile->Mdl_profile->get_where_custom4('type', $type, 'category', $category, 'subcategory', $subcategory, 'status', "Active");
 		$data['mpanel_f'] = "listprofiles";
 		$data['middle_f'] ="listprofiles";
@@ -143,6 +136,94 @@ function findprofile(){
 }
 
 
+function payments(){ 
+	$data['middle_m'] ="Profile";
+	$data['mpanel_m'] = "Profile";
+	$data['mpanel_f'] = "payments";
+	$data['middle_f'] ="payments";
+	$data['bfooter_m'] ="Home";
+	$data['bfooter_f'] ="blank";
+	$data['color'] = "";
+	$data['msg'] ='';
+	
+	if ($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+	} else {
+		$this->load->view('Home/index',$data);
+	}
+}
+
+function paynow(){ 
+	$userid = $this->session->userdata('user_id');
+	$data['middle_m'] ="Profile";
+	$data['mpanel_m'] = "Profile";
+	$data['mpanel_f'] = "paynow";
+	$data['middle_f'] ="paynow";
+	$data['bfooter_m'] ="Home";
+	$data['bfooter_f'] ="blank";
+	$data['color'] = "";
+	$data['msg'] ='';
+
+	//check if user is logged in
+	if ($this->session->userdata('logged_in')) {
+
+	$period = $this->uri->segment(3);
+	if ($period == 1) { $amount = 1500; } else if ($period == 7) { $amount = 8000; } else if ($period == 14) { $amount = 15000; } else if ($period == 30) { $amount = 25000; }
+	$today = mdate('%Y-%m-%d');
+    $days = "+".($period)." day";
+    $expdate = date('Y-m-d',strtotime($days, strtotime($today)));
+
+	$pdata = array(
+		'userid' => $userid,
+		'invoiceno' => strtoupper(substr(md5(uniqid(mt_rand(), true)) , 0, 6)),
+		'controlno' => strtoupper(substr(md5(uniqid(mt_rand(), true)) , 0, 12)),
+		'payno' => "92222396",
+		'amount' => $amount,
+		'period' => $period,
+		'paymethod' => "",
+		'paid' => "No",
+		'receipt' => "Pending",
+		'status' => "Pending",
+		'expdate' => $expdate,
+        'date' => mdate('%Y-%m-%d'),
+        'udate' => mdate('%Y-%m-%d %H:%i:%s')
+    ); 
+    //Update pending to in-progress
+    $udata = array(
+		'status' => "Cancelled",
+        'udate' => mdate('%Y-%m-%d %H:%i:%s')
+    ); 
+    $this->Mdl_profile->_update_custom2_tb('payment', 'userid', $userid, 'status', "Pending", $udata);
+    //Insert new payment
+    $this->_insert_tb('payment', $pdata);
+    //redirect to show payment methods
+    redirect('Profile/showPaymentMethods');
+	
+	//if ($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+	} else {
+		redirect('Users/login');
+		//$this->load->view('Home/index',$data);
+	}
+}
+
+function showPaymentMethods(){ 
+	$userid = $this->session->userdata('user_id');
+	$data['middle_m'] ="Profile";
+	$data['mpanel_m'] = "Profile";
+	$data['mpanel_f'] = "paynow";
+	$data['middle_f'] ="paynow";
+	$data['bfooter_m'] ="Home";
+	$data['bfooter_f'] ="blank";
+	$data['color'] = "";
+	$data['msg'] ='';
+
+	if ($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+	} else {
+		$this->load->view('Home/index',$data);
+	}
+}
 
 
 
@@ -1240,7 +1321,9 @@ function userProfile() {
 		$data['myjobres'] = $this->job->get_where_custom_limit('postedby', $userid ,100, 1);
 	}
 	//update action table
-	$this->updateAction($userid, $this->session->userdata('user_id'), 1, 1, "");
+	$doneby = $this->session->userdata('user_id');
+	if ($doneby=="") { $doneby = 0; } 
+	$this->updateAction($userid, $doneby, 1, 1, "");
 	
 	if ($this->session->userdata('logged_in')) {
 		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
@@ -1266,6 +1349,7 @@ function feedback() {
 	$profileid = $this->input->post('profileid',true);
 	$fdata['userid'] = $this->input->post('commentBtn',true);
 	$fdata['senderid'] = $this->session->userdata('user_id');
+	if($fdata['senderid']=="") { $fdata['senderid']=0; }
 	$fdata['toid'] = $this->input->post('commentBtn',true);
 	$fdata['comment'] = $this->input->post('comment',true);
 	$fdata['type'] = "Comment";
@@ -1318,7 +1402,8 @@ function managemyProfiles() {
 		$data['middle_m'] = "Admin";
 		$data['middle_f'] = "m_container";
 	 	$data['mpanel_m'] = "Profile";
-		$data['mpanel_f'] = "editProfile";
+	 	$data['mpanel_f'] = "complete_registration_edit";
+		//$data['mpanel_f'] = "editProfile";
 		$data['color'] = "red";
 		$data['msg'] ="";
 

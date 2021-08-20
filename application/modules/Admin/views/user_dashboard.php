@@ -42,9 +42,9 @@ transition: all 0.4s ease-in-out;
 .offer-primary .shape{
 	border-color: transparent #428bca transparent transparent;
 }
-.offer-info {	border-color: #5bc0de; }
+.offer-info {	border-color: #1328a8; }
 .offer-info .shape{
-	border-color: transparent #5bc0de transparent transparent;
+	border-color: transparent #1328a8 transparent transparent;
 }
 .offer-warning {	border-color: #f0ad4e; }
 .offer-warning .shape{
@@ -99,6 +99,17 @@ transition: all 0.4s ease-in-out;
 	$myinprogress = modules::load('Job')->Mdl_job->get_where_custom2( 'progress', "In-Progress", 'postedby', $userid);
 	$allprojects = modules::load('Job')->Mdl_job->get_where_custom_tb('job', 'status', "Open");
 	$mychats = 0;
+
+	//new queries
+	$comments = modules::load('Profile')->Mdl_profile->get_where_custom3_tb('comment', 'userid', $userid, 'type', 'Comment', 'status', 'Active');
+    $userres = modules::load('Users')->get_where_custom('id', $userid);
+    $profile_views = modules::load('Profile')->Mdl_profile->count_where_custom2_tb('action', 'userid', $userid, 'action', 1);
+    $profile_likes = modules::load('Profile')->Mdl_profile->count_where_custom2_tb('action', 'userid', $userid, 'action', 2);
+	$services = modules::load('Profile')->get_where_custom_tb('services', 'status', "Active");
+  	$sports = modules::load('Profile')->get_where_custom_tb('sports', 'status', "Active");
+  	$sportsperson = modules::load('Profile')->count_where('category', 'Sportsperson');
+  	$trainee = modules::load('Profile')->count_where('category', 'Trainee');
+  	$trainer = modules::load('Profile')->count_where('category', 'Trainer');
 ?>
 
 <div class="box box-info" style="margin-top: 15px;">
@@ -109,85 +120,82 @@ transition: all 0.4s ease-in-out;
 		<?php } ?>
 	</div>
     
-    <div class="box-body padding">
+<div class="box-body padding">
     <div class="row">
-
     	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<div class="offer offer-info">
-				<div class="shape">
-					<div class="shape-text">
-						<span class="glyphicon  glyphicon-calendar"></span>							
+			<a href="<?php echo base_url('Profile/listprofiles/Sportsperson');?>">
+				<div class="offer offer-info">
+					<div class="shape">
+						<div class="shape-text">
+							<span class="glyphicon  glyphicon-calendar"></span>							
+						</div>
+					</div>
+					<div class="offer-content">
+						<h3 class="lead">
+							Sportsperson<?php //echo $this->lang->line('msg_'); ?><br> 
+							<label class="badge badge-info bg-green pull-right"><?php echo number_format($sportsperson,0);?></label>
+						</h3>
 					</div>
 				</div>
-				<div class="offer-content">
-					<h3 class="lead">
-						MY Projects<?php //echo $this->lang->line('msg_'); ?><br> 
-						<label class="label label-info pull-right"><?php echo number_format($myprojects->num_rows(),0);?></label>
-					</h3>
-				</div>
-			</div>
+			</a>
 		</div>
-
 
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<div class="offer offer-info">
-				<div class="shape">
-					<div class="shape-text">
-						<span class="glyphicon  glyphicon-calendar"></span>							
+			<a href="<?php echo base_url('Profile/listprofiles/Trainee');?>">
+				<div class="offer offer-info">
+					<div class="shape">
+						<div class="shape-text">
+							<span class="glyphicon  glyphicon-calendar"></span>							
+						</div>
+					</div>
+					<div class="offer-content">
+						<h3 class="lead">
+							Trainees<?php //echo $this->lang->line('msg_'); ?><br> 
+							<label class="badge badge-info bg-green pull-right"><?php echo number_format($trainee,0);?></label>
+						</h3>
 					</div>
 				</div>
-				<div class="offer-content">
-					<h3 class="lead">
-						New Projects<?php //echo $this->lang->line('msg_'); ?><br> 
-						<label class="label label-info pull-right"><?php echo number_format($newprojects->num_rows(),0);?></label>
-					</h3>
-				</div>
-			</div>
+			</a>
 		</div>
-
-
 
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<div class="offer offer-info">
-				<div class="shape">
-					<div class="shape-text">
-						<span class="glyphicon  glyphicon-calendar"></span>							
+			<a href="<?php echo base_url('Profile/userProfile/');?><?php echo $userid;?>">
+				<div class="offer offer-info">
+					<div class="shape">
+						<div class="shape-text">
+							<span class="glyphicon  glyphicon-calendar"></span>							
+						</div>
+					</div>
+					<div class="offer-content">
+						<h3 class="lead">
+							Comments<?php //echo $this->lang->line('msg_'); ?><br> 
+							<label class="badge badge-info bg-green pull-right"><?php echo number_format($comments->num_rows(),0);?></label>
+						</h3>
 					</div>
 				</div>
-				<div class="offer-content">
-					<h3 class="lead">
-						In-Progress<?php //echo $this->lang->line('msg_'); ?><br> 
-						<label class="label label-info pull-right"><?php echo number_format($myinprogress->num_rows(),0);?></label>
-					</h3>
-				</div>
-			</div>
+			</a>
 		</div>
-
 
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<div class="offer offer-info">
-				<div class="shape">
-					<div class="shape-text">
-						<span class="glyphicon  glyphicon-comment"></span>							
+			<a href="<?php echo base_url('Profile/userProfile/');?><?php echo $userid;?>">
+				<div class="offer offer-info">
+					<div class="shape">
+						<div class="shape-text">
+							<span class="glyphicon  glyphicon-comment"></span>							
+						</div>
+					</div>
+					<div class="offer-content">
+						<h3 class="lead">
+							Messages<?php //echo $this->lang->line('msg_'); ?><br> 
+							<label class="badge badge-info bg-green pull-right"><?php echo number_format($comments->num_rows(),0);?></label>
+						</h3>
 					</div>
 				</div>
-				<div class="offer-content">
-					<h3 class="lead">
-						My Chats<?php //echo $this->lang->line('msg_'); ?><br> 
-						<label class="label label-info pull-right"><?php echo $mychats;?></label>
-					</h3>
-				</div>
-			</div>
-		</div>
-
-
-    	
-        </div>
-
-    </div><!--  =========== end body ========= -->
-
-    <div class="box-footer">
-    	
+			</a>
+		</div>	
+    </div>
+</div><!--  =========== end body ========= -->
+    <div class="box-footer">	
     </div>
 </div>
 
@@ -195,27 +203,52 @@ transition: all 0.4s ease-in-out;
 
 <div class="box box-info" style=" margin-bottom: 200px;">
 	<div class="box-header">
-		<h3 class="box-title sitecolor2-1"><i class="fa fa-clipboard"></i>&nbsp;&nbsp;<b>Browse projects</b></h3>
+		<h3 class="box-title sitecolor2-1"><i class="fa fa-search"></i>&nbsp;&nbsp;<b>Find Profiles</b></h3>
 	</div>
-
 	<div class="box-body padding" style="font-size: 18px; text-align: right; ">
-		<div class="btn-group">
-	      <?php if($this->session->userdata('user_role') == "User") { ?>
-	          <a href="<?php echo base_url('Job/myjobs/0');?>" class="btn btn-default btn-sm">Posted by me&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-	          <a href="<?php echo base_url('Job/myjobs/5');?>" class="btn btn-default btn-sm">In-Progress&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-	          <a href="<?php echo base_url('Job/myjobs/6');?>" class="btn btn-default btn-sm">Completed&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-	          <a href="<?php echo base_url('Job/myjobs/');?>" class="btn btn-default btn-sm">Revised&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-	      <?php } else if($this->session->userdata('user_role') == "Freelancer") { ?>
-	          <a href="<?php echo base_url('Job/myjobs/1');?>" class="btn btn-default btn-sm">Assigned to me&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-	          <a href="<?php echo base_url('Job/myjobs/2');?>" class="btn btn-default btn-sm">Accepted by me&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-	          <a href="<?php echo base_url('Job/myjobs/3');?>" class="btn btn-default btn-sm">Done by me&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-	          <a href="<?php echo base_url('Job/myjobs/4');?>" class="btn btn-default btn-sm">Closed by me&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-	          <a href="<?php echo base_url('Job/mybids');?>" class="btn btn-default btn-sm">My bids&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-	      <?php } ?>
-	    </div>
+        <form class="form-style-1" action="<?php echo base_url('Profile/findprofile')?>" method="post" enctype="multipart/form-data">
+            <div class="row">
+              <div class="col-md-3 find_input">
+                <div class="form-group">
+                    <select class=" form-control input-sm1" name="type" id="type" required="">
+                      <option value="Other"><?php echo $this->lang->line('msg_select_profile_type'); ?></option>
+                      <option value="Individual">Individual</option>
+                      <option value="Group">Group/ Team</option>
+                      <option value="Company">Company</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-md-3 find_input">
+                <div class="form-group">
+                    <select class="form-control" name="category" id="category" required="">
+                      <option value="Others">Select category<?php //echo $this->lang->line('msg_select_profile_category'); ?></option>
+                      <?php foreach ($services->result() as $row1): ?>
+                        <option value="<?php echo $row1->service;?>"><?php echo $row1->service;?></option>
+                      <?php endforeach; ?>
+                    </select>
+                </div>
+              </div>
+              <div class="col-md-3 find_input">
+                <div class="form-group">
+                    <select class="form-control" name="subcategory" id="subcategory" required="">
+                      <option value="Others">Select type of sport<?php //echo $this->lang->line('msg_select_profile_subcategory'); ?></option>
+                      <?php foreach ($sports->result() as $row3): ?>
+                        <option value="<?php echo $row3->name;?>"><?php echo $row3->name;?></option>
+                      <?php endforeach; ?>
+                    </select>
+                </div>
+              </div>
+              <div class="col-md-3 find_input">
+                <button type="submit" name="findBtn" value="ok" class="btn btn-info btn-md pull-right1">&nbsp;&nbsp;&nbsp;&nbsp;Search Profiles<?php //echo $this->lang->line('msg_submit'); ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+              </div>
+          </div>
+        </form>
 	</div>
-
 	<div class="box-footer" style="text-align: center;">
-		
+		<div class="btn-group">
+		  	<?php foreach ($services->result() as $row1): ?>
+	      	<a href="<?php echo base_url('Profile/listprofiles/');?><?php echo $row1->service;?>" class="btn btn-default btn-sm"><?php echo $row1->service;?>&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+	      	<?php endforeach; ?> 
+	    </div>	
 	</div>
 </div>

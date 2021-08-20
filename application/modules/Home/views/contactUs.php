@@ -1,4 +1,9 @@
 <style type="text/css">
+.contact {
+    background-color: #1328a8;
+    color: #fff !important;
+    /*background-color: #DCDCDC;*/
+}
 .jumbotron {
 background: #358CCE;
 color: #FFF;
