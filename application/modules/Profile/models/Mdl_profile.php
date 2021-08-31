@@ -17,6 +17,13 @@ $query=$this->db->get($table);
 return $query;
 }
 
+function get_tb($tb, $order_by) {
+$table = $this->get_table();
+$this->db->order_by($order_by, "ASC");
+$query=$this->db->get($tb);
+return $query;
+}
+
 function get_dist($col) {
 $table = $this->get_table();
 $this->db->distinct();
@@ -176,6 +183,13 @@ $this->db->where($col, $value);
 $this->db->update($table, $data);
 }
 
+function _update_custom1_tb($tb, $col1, $value1, $data) {
+$table = $this->get_table();
+$array = array($col1 => $value1);
+$this->db->where($array);
+$this->db->update($tb, $data);
+}
+
 function _update_custom2_tb($tb, $col1, $value1, $col2, $value2, $data) {
 $table = $this->get_table();
 $array = array($col1 => $value1, $col2 => $value2);
@@ -221,6 +235,15 @@ return $num_rows;
 function count_where_custom2_tb($tb, $col1, $value1, $col2, $value2) {
 $table = $this->get_table();
 $array = array($col1 => $value1, $col2 => $value2);
+$this->db->where($array);
+$query=$this->db->get($tb);
+$num_rows = $query->num_rows();
+return $num_rows;
+}
+
+function count_where_custom3_tb($tb, $col1, $value1, $col2, $value2, $col3, $value3) {
+$table = $this->get_table();
+$array = array($col1 => $value1, $col2 => $value2, $col3 => $value3);
 $this->db->where($array);
 $query=$this->db->get($tb);
 $num_rows = $query->num_rows();
@@ -290,5 +313,14 @@ return $query;
 }
 /*================ END LIKE =============================*/
 
+
+function get_count1_tb($tb, $col1) {
+$this->db->select(''.$col1.',COUNT('.$col1.') AS total');
+$this->db->from($tb);
+$this->db->where('status', "Active");
+$this->db->group_by($col1);
+$query=$this->db->get();
+return $query;
+}
 
 }

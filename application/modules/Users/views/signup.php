@@ -75,7 +75,7 @@
                                   <span class="help-block"></span>
                               </div>
                               <div class="form-group">
-                                  <input  type="tel" pattern="[0-9]{12}" class="form-control" id="phone" name="phone" value="<?php echo set_value('phone'); ?>"  title="Enter your phone number (Eg. 255xxxxxxxxx)" placeholder="<?php echo $this->lang->line('msg_mdl_phone'); ?> (Eg. 255xxxxxxxxx)" style="width: 98%;"> 
+                                  <input  type="tel" pattern="[0-9]{10}" class="form-control" id="phone" name="phone" value="<?php echo set_value('phone'); ?>"  title="Enter your phone number (Eg. 07XXXXXXXX)" placeholder="<?php echo $this->lang->line('msg_mdl_phone'); ?> (Eg. 255xxxxxxxxx)" style="width: 98%;"> 
                                   <?php echo form_error('phone', '<div class="error">', '</div>'); ?>
                                   <span class="help-block"></span>
                               </div>

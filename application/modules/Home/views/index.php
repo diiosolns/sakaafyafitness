@@ -30,7 +30,8 @@
         <link href="<?php echo base_url('assets/mdi/css/materialdesignicons.min.css');?>" rel="stylesheet" type="text/css" />
         <!-- site theme -->
         <link href="<?php echo base_url('assets/css/diiocss/theme.css');?>" rel="stylesheet" type="text/css" />
-
+        <!-- FONT AWSOME -->
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <style type="text/css">
           body {
               font-family: 'Roboto', sans-serif !important;
@@ -363,10 +364,10 @@
         <div class="row">
           <div class="col-md-12" style="text-align: center; padding-bottom: 40px; color: #fff; font-size: 16px;">
               <!-- ====================links -->
-              <a class="home" href="<?php echo base_url('Home');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_home'); ?></b></a>
-              <a class="about" href="<?php echo base_url('Home/aboutUs');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_about_us'); ?></b></a>
-              <a class="contact" href="<?php echo base_url('Home/contactUs');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_contact_us'); ?></b></a>
-              <a class="blog" href="<?php echo base_url('Artical/blog');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_blog'); ?></b></a>
+              <a class="" href="<?php echo base_url('Home');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_home'); ?></b></a>
+              <a class="" href="<?php echo base_url('Home/aboutUs');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_about_us'); ?></b></a>
+              <a class="" href="<?php echo base_url('Home/contactUs');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_contact_us'); ?></b></a>
+              <a class="" href="<?php echo base_url('Artical/blog');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_blog'); ?></b></a>
               <!-- <a href="<?php echo base_url('Home/FAQ');?>"><b style="color: #fff; padding-left: 40px;"><?php echo $this->lang->line('msg_faq'); ?></b></a> -->
              <!--  =================end links -->
               <hr>
@@ -428,8 +429,8 @@
             <h4 class="title"><?php echo $this->lang->line('msg_our_contacts'); ?></h4>
             <ul style="text-align: left; font-size: 16px;" >
                <!-- <b><?php //echo $this->lang->line('msg_pobox'); ?></b><br> -->
-               <b><?php echo $this->lang->line('msg_phone'); ?>+255622973959</b><br>
-               <b><?php echo $this->lang->line('msg_email'); ?><a href="mailto: support@ehuduma.com">support@ehuduma.com</a></b><br>
+               <b><?php echo $this->lang->line('msg_phone'); ?>+255 785 508 030</b><br>
+               <b><?php echo $this->lang->line('msg_email'); ?><a href="mailto: support@sakaafyafiness.club">support@ehuduma.com</a></b><br>
             </ul>
           </div>
         </div>

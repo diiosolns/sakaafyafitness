@@ -5,6 +5,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
 <script src="<?php echo base_url('assets/js/myJs/profilesch.js');?>" type="text/javascript"></script> 
 <style type="text/css">
+  #pay {
+    background-color: #4e4b4a !important;
+  }
   .profileout{
     margin-top: 2%;
     margin-bottom: 20px;
@@ -64,7 +67,7 @@
     <div class="row profile">
         <div class="col-md-12" style="height: 10px;"></div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-          <h2 style="color: gray;"><b>Pay to get better service! </b></h2> 
+          <h2 style="color: gray;"><b>Pay for better services! </b></h2> 
           <p class="sitecolor11" style="font-size: 16px;">
             Pay for your account to be able to search profiles, send messages, send E-mails and view profile contacts. 
             Pay using the phone number used to open the account. If you want to pay using a different number or an agent let us know before you make payments.

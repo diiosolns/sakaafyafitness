@@ -1,7 +1,7 @@
 <style type="text/css">
     .blog {
-        background-color: #1328a8;
-        color: #fff !important;
+        /*background-color: #1328a8;*/
+        color: #ed9d00 !important;
         /*background-color: #DCDCDC;*/
     }
     .blog_post{

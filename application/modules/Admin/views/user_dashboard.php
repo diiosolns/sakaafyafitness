@@ -159,7 +159,7 @@ transition: all 0.4s ease-in-out;
 		</div>
 
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<a href="<?php echo base_url('Profile/userProfile/');?><?php echo $userid;?>">
+			<a href="<?php echo base_url('Chat/myChats/');?><?php echo $userid;?>">
 				<div class="offer offer-info">
 					<div class="shape">
 						<div class="shape-text">
@@ -177,7 +177,7 @@ transition: all 0.4s ease-in-out;
 		</div>
 
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<a href="<?php echo base_url('Profile/userProfile/');?><?php echo $userid;?>">
+			<a href="<?php echo base_url('Chat/myChats/');?><?php echo $userid;?>">
 				<div class="offer offer-info">
 					<div class="shape">
 						<div class="shape-text">

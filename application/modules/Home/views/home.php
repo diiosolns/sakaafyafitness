@@ -5,8 +5,8 @@
 <!-- <?php echo $this->lang->line('msg_'); ?> -->
 <style type="text/css">
   .home {
-      background-color: #1328a8;
-      color: #fff !important;
+      /*background-color: #1328a8;*/
+      color: #ed9d00 !important;
       /*background-color: #DCDCDC;*/
   }
   .searchin {
@@ -124,8 +124,8 @@
       <img class="slider_img" src="<?php echo base_url('assets/img/slider/slider_md_02.svg');?>" width="100%" height="auto">
       <!-- <div class="carousel-caption hidden-xs" style="text-align: center;"> -->
       <div class="carousel-caption  animated fadeInUp" style="text-align: left; width: 50%; margin-left: 10px !important;padding-bottom: 5%; background-color1: red; left: 3% !important;">
-        <span style="font-size: 34px;">Your ultimate sports partner<?php //echo $this->lang->line('msg_get_the_best_freelance_services'); ?></span>
-        <p style="font-size: 20px;">Your ultimate sports partner<?php //echo $this->lang->line('msg_small_caption'); ?></p>
+        <span style="font-size: 34px;">If you appreciate quality, then we are for you.<?php //echo $this->lang->line('msg_get_the_best_freelance_services'); ?></span>
+        <p style="font-size: 20px;">Get In. Get Fit. Get on with Life.<?php //echo $this->lang->line('msg_small_caption'); ?></p>
         <br>
         <div class="homesch1" style="padding-bottom: 100px;">
            <a href="<?php echo base_url('Users/login');?>" class="btn btn-lg post-job-btn2-lg " >&nbsp;&nbsp;<b>SIGN IN<?php //echo $this->lang->line('msg_search_profile'); ?></b>&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
@@ -141,8 +141,8 @@
        <img class="slider_img" src="<?php echo base_url('assets/img/slider/slider_md_03.svg');?>" width="100%" height="auto">
       <!-- <div class="carousel-caption hidden-xs" style="text-align: center;"> -->
       <div class="carousel-caption  animated fadeInUp" style="text-align: left; width: 50%; margin-left: 10px !important;padding-bottom: 5%; background-color1: red; left: 3% !important;">
-        <span style="font-size: 34px;">Your ultimate sports partner<?php //echo $this->lang->line('msg_get_the_best_freelance_services'); ?></span>
-        <p style="font-size: 20px;">Your ultimate sports partner<?php //echo $this->lang->line('msg_small_caption'); ?></p>
+        <span style="font-size: 34px;">Fitness is not a destination it is a way of life.<?php //echo $this->lang->line('msg_get_the_best_freelance_services'); ?></span>
+        <p style="font-size: 20px;">Healthy mind in a healthy body.<?php //echo $this->lang->line('msg_small_caption'); ?></p>
         <br>
         <div class="homesch1" style="padding-bottom: 100px;">
            <a href="<?php echo base_url('Users/login');?>" class="btn btn-lg post-job-btn2-lg " >&nbsp;&nbsp;<b>SIGN IN<?php //echo $this->lang->line('msg_search_profile'); ?></b>&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
@@ -204,7 +204,7 @@
        <img class="slider_img-sm" src="<?php echo base_url('assets/img/slider/slider_md_02.svg');?>" width="100%" height="auto">
       <!-- <div class="carousel-caption hidden-xs" style="text-align: center;"> -->
       <div class="carousel-caption  animated fadeInUp" style="text-align: center; width: 90%; margin-left: 2px !important;padding-bottom: 5%; left: 3% !important; top: 5% !important;">
-        <h3>Your ultimate sports partner<?php //echo $this->lang->line('msg_get_the_best_freelance_services'); ?></h3>
+        <h3>If you appreciate quality, then we are for you.<?php //echo $this->lang->line('msg_get_the_best_freelance_services'); ?></h3>
        <!--  <p><?php echo $this->lang->line('msg_small_caption'); ?></p> -->
         <br>
         <div class="homesch1"  style1="padding-bottom: 100px;">
@@ -224,7 +224,7 @@
        <img class="slider_img-sm" src="<?php echo base_url('assets/img/slider/slider_md_03.svg');?>" width="100%" height="auto">
       <!-- <div class="carousel-caption hidden-xs" style="text-align: center;"> -->
       <div class="carousel-caption  animated fadeInUp" style="text-align: center; width: 90%; margin-left: 2px !important;padding-bottom: 5%; left: 3% !important; top: 5% !important;">
-        <h3>Your ultimate sports partner<?php //echo $this->lang->line('msg_get_the_best_freelance_services'); ?></h3>
+        <h3>Fitness is not a destination it is a way of life.<?php //echo $this->lang->line('msg_get_the_best_freelance_services'); ?></h3>
        <!--  <p><?php echo $this->lang->line('msg_small_caption'); ?></p> -->
         <br>
         <div class="homesch1"  style1="padding-bottom: 100px;">

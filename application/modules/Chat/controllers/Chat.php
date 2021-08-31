@@ -3,78 +3,65 @@ class Chat extends MX_Controller
 {
 
 function __construct() {
-parent::__construct();
-		$this->load->helper('number');
-		$this->load->helper('date');
-		$this->load->helper('download');
-		$this->load->helper('text');
-		//My Modules
-		$this->load->module('Profile');
-		$this->load->module('Appointment');
-		$this->load->module('Artical');
-		$this->load->module('Admin');
-		$this->load->module('Chat');
-		$this->load->module('Home');
-		$this->load->module('Users');
+	parent::__construct();
+	$this->load->helper('number');
+	$this->load->helper('date');
+	$this->load->helper('download');
+	$this->load->helper('text');
+	//My Modules
+	$this->load->model('Mdl_chat');
+	$this->load->module('Profile');
+	$this->load->module('Appointment');
+	$this->load->module('Artical');
+	$this->load->module('Admin');
+	$this->load->module('Chat');
+	$this->load->module('Home');
+	$this->load->module('Users');
 }
 
 
 function index(){
+	$userid = $this->session->userdata('user_id');
+	$senderid = $this->uri->segment(3);
 	$data['any'] = "";
-	$data['middle_m'] = "Chat";
-	$data['middle_f'] = "dashboard";
-	$this->load->view('Product/index',$data);
-}
-
-
-function myChats() {
-	$replayBtn = $this->input->post('replayBtn',true);
-	//$people = $this->uri->segment(3);
-	if (!$this->uri->segment(3) == "") {
-		# code...
-		$this->session->set_userdata('people', $this->uri->segment(3));
-	}
-
-	if (!$this->session->userData('people') == "") {
-		# code...
-		$people = $this->session->userData('people');
-	} else {
-		# code...
-		$people = $this->session->userData('user_id',true);
-	}
-	
-
-	//update replay
-	if (!$replayBtn == "") {
-		# code...
-		$msgid =$replayBtn;
-		$chatdata['replay'] = $this->input->post('replay',true);
-		$chatdata['status'] = "read";
-		$this->_update2('chat', 'id', $msgid, $chatdata);
-	}
-
-	$data['peopleid'] = $people ;
-	$data['unreadsms'] = $this->get_where_custom3('sender', $people, 'recipient', $this->session->userData('user_id',true), 'status', 'unread');
-	//$data['smspeople'] = $this->get_where_custom2_dist('chat', 'sender', 'recipient', $this->session->userData('user_id',true), 'status', 'unread');
-	$data['smspeople'] = $this->get_where_custom1_dist('sender', 'recipient', $this->session->userData('user_id',true));
-
-	
-
-	$data['middle_m'] ="Admin";
-	//$data['middle_f'] ="m_container";
+	$data['middle_m'] ="Chat";
 	$data['mpanel_m'] = "Chat";
 	$data['mpanel_f'] = "myChats";
+	$data['middle_f'] = "myChats";
+	$data['sender_res'] = $this->Mdl_chat->get_where_custom_tb('users' ,'id', $senderid); 
+	$data['chat_res'] = $this->Mdl_chat->get_where_custom3_tb('comment', 'userid', $userid, 'senderid', $senderid, 'status', 'Active');
+
 	if ($this->session->userdata('logged_in')) {
-		$data['color'] = "blue";
-		$data['msg'] ="";
-		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); }
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
 		//if ($this->session->userdata('user_role') == "admin") { if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } } else { $this->load->view('Production/index',$data); }
 	} else {
-		redirect('Home');
+		$this->load->view('Home/index',$data);
 	}
-
 }
 
+function myChats(){
+	$userid = $this->session->userdata('user_id');
+	$senderid = $this->uri->segment(3);
+	$action = $this->uri->segment(4);
+	$smsid = $this->uri->segment(5);
+	$data['any'] = "";
+	$data['middle_m'] ="Chat";
+	$data['mpanel_m'] = "Chat";
+	$data['mpanel_f'] = "myChats";
+	$data['middle_f'] = "myChats";
+	if ($action == "delete") {
+		$this->_delete_td('comment', $smsid);
+	} 
+	$data['sender_res'] = $this->Mdl_chat->get_where_custom_tb('users' ,'id', $senderid); 
+	$data['chat_res'] = $this->Mdl_chat->get_where_custom3_tb('comment', 'userid', $userid, 'senderid', $senderid, 'status', 'Active');
+
+	if ($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+		//if ($this->session->userdata('user_role') == "admin") { if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } } else { $this->load->view('Production/index',$data); }
+	} else {
+		$this->load->view('Home/index',$data);
+	}
+}
 
 function leaveComment() {
 	$commentBtn = $this->input->post('commentBtn',true);

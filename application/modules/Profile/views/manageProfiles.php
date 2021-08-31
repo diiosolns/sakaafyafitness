@@ -1,6 +1,6 @@
 <div class="box box-info  " style="margin-top: 15px;">
                                                 <div class="box-header">
-                                                    <h3 class="box-title"><b>Manage Freelancer Profiles<?php //echo $this->lang->line('msg_manage_my_profile'); ?></b></h3>
+                                                    <h3 class="box-title"><b>Manage User Profiles<?php //echo $this->lang->line('msg_manage_my_profile'); ?></b></h3>
                                                 </div><!-- /.box-header -->
                                                 <div class="box-body padding" style="overflow-x:scroll; white-space: nowrap;">
                                                 <form action="<?php echo base_url('Profile/manageProfiles')?>" method="post">

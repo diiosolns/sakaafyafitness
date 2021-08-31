@@ -1,185 +1,108 @@
-<div style=" padding: 15px 5px 0px 0px; margin-left: 2%; margin-right: 2%;" class="row">
+<style type="text/css">
+  .mybox{
+    background-color: #fff;
+    padding: 20px 20px 20px 20px; 
+    margin-bottom: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .leftlist {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    background-color: #F9F9F9 !important;
+    border-bottom: 1px solid lightgray;
+  }
+  .leftlist:hover {
+    background-color: lightgray !important;
+    color: black !important;
+  }
+  .message {
+    padding: 20px 20px 20px 20px; 
+    margin: 20px 20px 20px 20px; 
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    background-color: #F9F9F9 !important;
+  }
+  .label {
+    border-radius: 10px;
+  }
+</style>
 
-<div style=" padding:0px 5px 0px 0px;" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-  <div class="chat-panel panel panel-info">
-      <div class="panel-heading">
-        <i class="fa fa-comments fa-fw"></i>
-          <?php echo $this->lang->line('msg_my_chats'); ?>  - <?php echo modules::load('Users')->get_where($peopleid)->row()->username; ?>
-       <div class="btn-group pull-right">
-          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-chevron-down"></i>
-          </button>
-        <ul class="dropdown-menu slidedown">
-        <li>
-          <a href="<?php echo base_url('Chat/myChats')?>">
-          <i class="fa fa-refresh fa-fw"></i> Refresh
-          </a>
-        </li>
-        <li>
-          <a href="<?php echo base_url('Chat/myChats')?>">
-            <i class="fa fa-save fa-fw"></i> Unread
-          </a>
-        </li>
-        <!-- <li>
-          <a href="#">
-           <i class="fa fa-times fa-fw"></i> Busy
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-clock-o fa-fw"></i> Away
-          </a>
-        </li> -->
-        <li class="divider"></li>
-        <li>
-          <a href="<?php echo base_url('Home/logout')?>">
-            <i class="fa fa-sign-out fa-fw"></i> Sign Out
-            </a>
-        </li>
-      </ul>
-     </div>
-    </div>
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-      <ul class="chat">
-         <?php 
-         $logoUrl = base_url('assets/img/logo.png');
-          if ($unreadsms->num_rows() == 0) {
-            # code...
-            echo '<li class="left clearfix">
-                    <span class="chat-img pull-left">
-                      <img src="'.$logoUrl.'" alt="User" class="img-circle">
-                    </span>
-                    <div class="chat-body clearfix">
-                      <div class="header">
-                        <strong class="primary-font">eHuduma</strong> 
-                        <small class="pull-right text-muted">
-                          <i class="fa fa-clock-o fa-fw"></i> 0 mins ago
-                        </small>
-                      </div>
-                      <p>
-                       '.$this->lang->line('msg_sorry').'
-                        <br><b style="color:blue;">'.$this->lang->line('msg_chat_welcome').'</b>
-                      </p>
-                    </div>
-                  </li> ';
-          }
+<?php
+    $userid = $this->session->userdata('user_id');
+    $comments = modules::load('Profile')->Mdl_profile->get_where_custom3_tb('comment', 'userid', $userid, 'type', 'Comment', 'status', 'Active');
+    $messages = modules::load('Profile')->Mdl_profile->get_where_custom3_tb('comment', 'userid', $userid, 'type', 'Message', 'status', 'Active');
+    $mails = modules::load('Profile')->Mdl_profile->get_where_custom3_tb('comment', 'userid', $userid, 'type', 'Mail', 'status', 'Active');
+    $feedbacks = modules::load('Profile')->Mdl_profile->get_where_custom2_tb('comment', 'userid', $userid, 'status', 'Active');
+?>
+
+<section class="mybox">
+  <div class="row">
+    <div class="col-md-4">
+      <?php foreach ($feedbacks->result() as $feedback): ?>
+        <?php 
+          $senderres = modules::load('Users')->get_where_custom('id', $feedback->senderid); 
+          if ($senderres->num_rows()>0) {
+            $senderid = $senderres->row()->id;
+            $sendername = $senderres->row()->name;
+            $senderimage = base_url('assets/img/profile/0/').$senderres->row()->userimg;
+          } else {
+            $senderid = 0;
+            $sendername = "Guest";
+            $senderimage = base_url('assets/img/profile/0/def.png');
+          } 
         ?>
-        
-<!-- <?php echo $this->lang->line('msg_'); ?> -->
-
-      <?php foreach ($unreadsms->result() as $row): ?>
-      <?php 
-            $peoplename = modules::load('Users')->get_where($row->senderid)->row()->username;
-            $numunread = modules::load('Admin')->get_where_custom3('chat', 'senderid', $row->senderid, 'userid', $this->session->userData('user_id',true), 'status', 'unread')->num_rows(); 
-      ?>
-        
-        <li class="left clearfix">
-          <span class="chat-img pull-left">
-            <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
-          </span>
-          <div class="chat-body clearfix">
-            <div class="header">
-              <strong class="primary-font"><?php echo $peoplename;?></strong> 
-              <small class="pull-right text-muted">
-                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-                <i class="fa fa-reply fa-fw" data-toggle="collapse" data-target="#<?php echo $row->id; ?>"></i> Replay
-              </small>
-            </div>
-            <p>
-              <?php echo $row->incomming; ?>
-            </p>
-             <div class="collapse" id="<?php echo $row->id; ?>">
-              <form role="form" method="post" action="<?php echo base_url('Admin/Chat')?>" enctype="multipart/form-data">  
-                <div class="input-group " >
-                  <input id="btn-input" type="text" name= "replay" class="form-control input-sm" placeholder="Type your message here...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-warning btn-sm" name="replayBtn" Value="<?php echo $row->id; ?>" id="btn-chat">
-                      Send
-                    </button>
-                  </span>
-                </div>
-              </form>
-            </div>
-          </div>
-        </li>
-
-       <!--  <li class="right clearfix">
-          <span class="chat-img pull-right">
-            <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">
-          </span>
-          <div class="chat-body clearfix">
-            <div class="header">
-              <small class=" text-muted">
-                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
-                <strong class="pull-right primary-font">Bhaumik Patel</strong>
-            </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-              </p>
-          </div>
-        </li> -->
-        <?php endforeach; ?>
-                     
-      </ul>
+        <a href="<?php echo base_url('Chat/myChats') ?>/<?php echo $senderid; ?>">
+        <div class="row leftlist">
+          <div class="col-md-2"><img src="<?php echo $senderimage;?>" class="img-circle" alt="User image" width="100%" ></div>
+          <div class="col-md-10"><?php echo $sendername;?> <span class="label <?php if($feedback->type=="Mail") { echo "label-warning"; } else if($feedback->type=="Message") { echo "label-success"; } else { echo "label-default"; } ?>  pull-right"><?php echo $feedback->type;?></span> </div>
+        </div></a>
+      <?php endforeach; ?>
     </div>
-    <!-- /.panel-body -->
-    <div class="panel-footer">
-     <!--  <div class="input-group">
-        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here...">
-          <span class="input-group-btn">
-            <button class="btn btn-warning btn-sm" id="btn-chat">
-               Send
-            </button>
-          </span>
-      </div> -->
-   </div>
-   <!-- /.panel-footer -->
+
+    <div class="col-md-8">
+      <div style="font-size: 18px;">Messages from <a href="<?php echo base_url('Profile/userProfile') ?>/<?php if($sender_res->num_rows()>0) { echo $sender_res->row()->id; } else { echo 0; } ?>"><?php if($sender_res->num_rows()>0) { echo $sender_res->row()->name; } else { echo "Guest"; } ?></a></div>
+      <?php if(modules::load('Profile')->haveEnoughCredit()) { ?>
+      <?php foreach ($chat_res->result() as $chat): ?>
+        <div class="message">
+          <span class="label <?php if($chat->type=="Mail") { echo "label-warning"; } else if($chat->type=="Message") { echo "label-success"; } else { echo "label-default"; } ?>  pull-right"><?php echo $chat->type;?></span>
+          <?php echo $chat->comment ;?>
+          <div style="padding-top: 10px; padding-bottom: 10px;">
+            <small class="pull-left label label-default " ><i><?php echo $chat->udate ;?></i></small>
+            <a href="<?php echo base_url('Chat/myChats') ?>/<?php echo $chat->senderid; ?>/delete/<?php echo $chat->id; ?>" class="btn btn-xs btn-danger pull-right " ><i class="fa fa-times"></i></a>
+          </div>
+        </div>
+      <?php endforeach; ?> 
+       <?php } else { ?>
+        <!-- my view contact button -->
+        <div style="text-align: center; margin-top: 40px;">
+          <a data-toggle="modal" data-target="#paynow" class="btn btn-lg pull-right1 sitecolor2bg " style="color: #fff !important;" >Read Messages&nbsp;&nbsp;<i class="fa fa-eye"></i></a>
+        </div>
+        <!-- end view contact button -->
+      <?php } ?>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- PAY -->
+<div id="paynow" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title">Insuficient Credit</b></h3>
+      </div>
+        <div class="modal-body" style="padding-top: 40px; text-align: center;">
+          <div class="alert alert-danger">
+            <strong>Insufficient credit!</strong> You don't have enough credit to perform this action. Please pay for your account to be able to access all premium features.
+          </div>
+          <div style="margin-top: 40px; margin-bottom: 20px;">
+            <a href="<?php echo base_url('Profile/payments'); ?>"  class="btn btn-lg pull-right1 sitecolor2bg " style="color: #fff !important;">&nbsp;&nbsp;&nbsp;&nbsp;PAY NOW<?php //echo $this->lang->line('msg_submit'); ?> &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right" style="color: #fff !important;"></i>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+          </div>
+        </div>
+    </div>
   </div>
 </div>
-
-
-<!-- xxxxxx the chat book xxxxxxxxxxx -->
-
-<div style=" padding: 0px 0px 0px 5px;" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <i class="fa fa-users fa-fw"></i>
-       <?php echo $this->lang->line('msg_people'); ?> 
-  </div>
-   <div class="panel-body">
-      <ul class="list-group list-group-flush"> 
-        <?php 
-          if ($smspeople->num_rows() == 0) {
-            # code...
-            //echo ' <li class="list-group-item"><h3>No New Messages.!</h3></li>';
-            echo ' <b>
-                   '.$this->lang->line('msg_sorry2').'
-                     <br><b style="color:blue;">'.$this->lang->line('msg_chat_welcome').'</b>
-                   </b>';
-          }
-        ?>
-        <?php foreach ($smspeople->result() as $row): ?>
-        <?php //echo $row->heading;?>
-        <?php 
-            $peoplenameRes = modules::load('Users')->get_where($row->senderid);
-            if (!($peoplenameRes->num_rows() == 0)) {
-              $peoplename = $peoplenameRes->row()->username; 
-            } else {
-              $peoplename = "eHuduma Vistor";
-            }
-            $numunread = modules::load('Admin')->get_where_custom3('chat', 'senderid', $row->senderid, 'userid', $this->session->userData('user_id',true), 'status', 'unread')->num_rows(); 
-        ?>
-
-        <li class="list-group-item"><a href="<?php echo base_url('Chat/myChats')?>/<?php echo $row->senderid; ?>"><i class="fa fa-user fa-fw"></i><?php echo $peoplename;?><span ><b class="badge label green pull-right" style="background-color: green;"><?php echo $numunread; ?></b></span></a></li> 
-        <!-- <li class="list-group-item">Dapibus ac facilisis in</li> 
-        <li class="list-group-item">Vestibulum at eros</li>  -->
-        <?php endforeach; ?>
-      </ul> 
-   </div>
-</div>
-</div>
-
-<!-- xxxxxxxxxxxxxxx end chat book xxxxxxxxxxxxxxxxxx -->
-
-</div>
+<!-- END PAY -->

@@ -3,20 +3,20 @@ class Users extends MX_Controller
 {
 
 function __construct() {
-parent::__construct();
-		$this->load->library(array('session'));
-	    $this->load->helper('number');
-		$this->load->helper('date');
-		$this->load->helper('download');
-		$this->load->helper('text');
-		//My Modules
-		$this->load->module('Profile');
-		$this->load->module('Appointment');
-		$this->load->module('Artical');
-		$this->load->module('Admin');
-		$this->load->module('Chat');
-		$this->load->module('Home');
-		$this->load->module('Users');
+	parent::__construct();
+	$this->load->library(array('session'));
+	$this->load->helper('number');
+	$this->load->helper('date');
+	$this->load->helper('download');
+	$this->load->helper('text');
+	//My Modules
+	$this->load->module('Profile');
+	$this->load->module('Appointment');
+	$this->load->module('Artical');
+	$this->load->module('Admin');
+	$this->load->module('Chat');
+	$this->load->module('Home');
+	$this->load->module('Users');
 }
 
 
@@ -42,7 +42,7 @@ function userReg(){
 	$this->load->library('form_validation');
 	$this->form_validation->set_rules('name', 'Full name', 'trim|required|alpha_numeric_spaces|min_length[5]|max_length[50]');
 	$this->form_validation->set_rules('phone', 'Phone number', 'trim|required|numeric');
-	$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
+	$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]');
 	$this->form_validation->set_rules('cpassword', 'Password Confirmation', 'trim|required|matches[password]');
 	$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 
@@ -51,6 +51,10 @@ if ($this->form_validation->run() == FALSE) {
 	$data['msg'] = "<br>Oops! Invalid input, please enter valid data";
 	$this->load->view('Users/signup',$data);
 } else {
+	$today = mdate('%Y-%m-%d');
+    $days = "+5 day";
+    $expdate = date('Y-m-d',strtotime($days, strtotime($today)));
+
 	$udata['name'] = $this->input->post('name', true);
 	$udata['username'] = $this->input->post('email', true);
 	$udata['email'] = $this->input->post('email', true);
@@ -61,6 +65,7 @@ if ($this->form_validation->run() == FALSE) {
 	$udata['email_verification_tocken'] = md5(uniqid($udata['email'], true));
 	$udata['password'] = $this->input->post('password', true);
 	$cpwrd = $this->input->post('cpassword', true);
+	$udata['expdate'] = $expdate;
 	$udata['date'] = mdate('%d-%m-%Y');
 	$udata['udate'] = mdate('%d-%m-%Y %H:%i:%s');
 	$usernameVer    = $this->get_where_custom('username', $udata['username']);
@@ -161,14 +166,14 @@ function signin() {
 		}
 		
 		if (($user->num_rows()>0) && ($user->row()->password == $password)) {
-				if ($user->row()->email_verified == 1) {
-					# code...
+				if ($user->row()->email_verified >= 0) {
 					$newdata = array('user_id' =>(int)$user->row()->id,
 							'user_name'=> (string)$user->row()->name,
 							'user_username'=> (string)$user->row()->username,
 							'user_pwrd'=> (string)$user->row()->password,
 							'user_date'=> (string)$user->row()->date,
 							'user_role'=> (string)$user->row()->role,
+							'user_expdate'=> (string)$user->row()->expdate,
 							'user_img'=> (string)$user->row()->userimg,
 							'user_email_verified'=> (string)$user->row()->email_verified,
 							'user_online'=> (string)$user->row()->online,

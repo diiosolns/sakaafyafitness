@@ -3,20 +3,20 @@ class Admin extends MX_Controller
 {
 
 function __construct() {
-		parent::__construct();
-		parent::__construct();
-		$this->load->library(array('session'));
-		$this->load->helper('download');
-		$this->load->helper('text');//calling string helper 
-		$this->load->helper('url');
-		//My Modules
-		$this->load->module('Profile');
-		$this->load->module('Appointment');
-		$this->load->module('Artical');
-		$this->load->module('Admin');
-		$this->load->module('Chat');
-		$this->load->module('Home');
-		$this->load->module('Users');
+	parent::__construct();
+	$this->load->library(array('session'));
+	$this->load->helper('download');
+	$this->load->helper('text');//calling string helper 
+	$this->load->helper('url');
+	//My Modules
+	$this->load->model('Mdl_admin');
+	$this->load->module('Profile');
+	$this->load->module('Appointment');
+	$this->load->module('Artical');
+	$this->load->module('Admin');
+	$this->load->module('Chat');
+	$this->load->module('Home');
+	$this->load->module('Users');
 }
 
 
@@ -64,6 +64,86 @@ function dashboard() {
 
 
 	echo "me here";
+}
+
+function ManageTransactions(){ 
+	$cat = $this->uri->segment(3);
+	$data['middle_m'] ="Admin";
+	$data['mpanel_m'] = "Admin";
+	$data['mpanel_f'] = "ManageTransactions";
+	$data['middle_f'] ="ManageTransactions";
+	$data['bfooter_m'] ="Home";
+	$data['bfooter_f'] ="blank";
+	$data['color'] = "";
+	$data['msg'] ='';
+
+	$receiveBtn = $this->input->post('receiveBtn',true);
+	$cancelBtn = $this->input->post('cancelBtn',true);
+	$deleteBtn = $this->input->post('deleteBtn',true);
+	$searchBtn = $this->input->post('searchBtn',true);
+
+	if (!$receiveBtn == "") {
+		# code...
+		$id = $receiveBtn;
+		$udata = array(
+	    	'paid' => "Yes",
+	    	'receipt' => "Received",
+			'status' => "Active",
+	        'udate' => mdate('%Y-%m-%d %H:%i:%s')
+	    ); 
+	    $this->_update_tb('payment', $id, $udata);
+	    //update user details
+	    $pay_res = $this->get_where_custom_tb('payment', 'id', $id);
+	    $user_data = array(
+			'expdate' => $pay_res->row()->expdate,
+	        'udate' => mdate('%Y-%m-%d %H:%i:%s')
+	    ); 
+	    $this->_update_tb('users', $pay_res->row()->userid, $user_data);
+	    //End user account update
+		$data['paymentRes'] = $this->Mdl_admin->get_where_custom_tb('payment', 'status', 'Pending');
+	} else if (!$cancelBtn == "") {
+		# code...
+		$id = $cancelBtn;
+		$udata = array(
+	    	'paid' => "Cancelled",
+	    	'receipt' => "Cancelled",
+			'status' => "Cancelled",
+	        'udate' => mdate('%Y-%m-%d %H:%i:%s')
+	    ); 
+	    $this->_update_tb('payment', $id, $udata);
+		//check posibility of updating user
+		//end
+		$data['paymentRes'] = $this->Mdl_admin->get_where_custom_tb('payment', 'status', 'Pending');
+	} else if (!$deleteBtn == "") {
+		# code...
+		$id = $deleteBtn;
+		$this->_delete_tb('payment', $id);
+		$data['paymentRes'] = $this->Mdl_admin->get_where_custom_tb('payment', 'status', 'Pending');
+	} else if (!$searchBtn == "") {
+		# code...
+		$keyword = $this->input->post('keyword',true);
+		$data['paymentRes'] = $this->Mdl_admin->get_where_custom_tb('payment', 'controlno', $keyword);
+	} else {
+		if ($cat == "Active") {
+			$data['paymentRes'] = $this->Mdl_admin->get_where_custom_tb('payment', 'status', 'Active');
+		} else if ($cat == "Pending") {
+			$data['paymentRes'] = $this->Mdl_admin->get_where_custom_tb('payment', 'status', 'Pending');
+		} else if ($cat == "Received") {
+			$data['paymentRes'] = $this->Mdl_admin->get_where_custom_tb('payment', 'receipt', 'Received');
+		} else if ($cat == "Cancelled") {
+			$data['paymentRes'] = $this->Mdl_admin->get_where_custom_tb('payment', 'status', 'Cancelled');
+		} else if ($cat == "all") {
+			$data['paymentRes'] = $this->Mdl_admin->get_where_custom_tb('payment', 'status', 'Pending');
+		} else {
+			$data['paymentRes'] = $this->Mdl_admin->get_where_custom_tb('payment', 'status', 'Pending');
+		}
+	}
+	
+	if ($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+	} else {
+		$this->load->view('Home/index',$data);
+	}
 }
 
 

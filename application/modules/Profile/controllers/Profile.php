@@ -3,24 +3,23 @@ class Profile extends MX_Controller
 {
 
 function __construct() {
-parent::__construct();
-        $this->load->library('pagination'); //for pagination
-        //$this->load->helper('url'); //load url helper
-
-		$this->load->helper('number');
-		$this->load->helper('date');
-		$this->load->helper('download');
-		$this->load->helper('text');
-		//My Modules
-		$this->load->model('Mdl_profile');
-		$this->load->module('Profile');
-		$this->load->module('Appointment');
-		$this->load->module('Artical');
-		$this->load->module('Admin');
-		$this->load->module('Chat');
-		$this->load->module('Home');
-		$this->load->module('Users');
-		$this->load->module('Job');
+	parent::__construct();
+    $this->load->library('pagination'); //for pagination
+    //$this->load->helper('url'); //load url helper
+	$this->load->helper('number');
+	$this->load->helper('date');
+	$this->load->helper('download');
+	$this->load->helper('text');
+	//My Modules
+	$this->load->model('Mdl_profile');
+	$this->load->module('Profile');
+	$this->load->module('Appointment');
+	$this->load->module('Artical');
+	$this->load->module('Admin');
+	$this->load->module('Chat');
+	$this->load->module('Home');
+	$this->load->module('Users');
+	$this->load->module('Job');
 }
 
 
@@ -71,9 +70,17 @@ function index(){
 
 
 function complete_registration(){
-	$data['msg'] = "";	
+	$data['middle_m'] ="Profile";
+	$data['mpanel_m'] = "Profile";
+	$data['mpanel_f'] = "complete_registration";
+	$data['middle_f'] ="complete_registration";
+	$data['bfooter_m'] ="Home";
+	$data['bfooter_f'] ="blank";
+	$data['color'] = "";
+	$data['msg'] ='';
 	if ($this->session->userdata('logged_in')) {
-		$this->load->view('Profile/complete_registration',$data);
+		$this->load->view('Home/index',$data);
+		//$this->load->view('Profile/complete_registration',$data);
 	} else {
 		redirect('Home');
 	}
@@ -190,6 +197,8 @@ function paynow(){
     ); 
     //Update pending to in-progress
     $udata = array(
+    	'paid' => "Cancelled",
+    	'receipt' => "Cancelled",
 		'status' => "Cancelled",
         'udate' => mdate('%Y-%m-%d %H:%i:%s')
     ); 
@@ -274,6 +283,7 @@ function freelancer2(){
 
 
 function get_profile_data_from_post(){
+	$new_name = ($this->get_max() +1)."_".$this->session->userdata('user_id')."";
 	$data['profilename'] = $this->input->post('pname', true);
 	$data['gender'] = $this->input->post('gender', true);
 	$data['yob'] = mdate('%Y') - $this->input->post('age', true);
@@ -289,93 +299,45 @@ function get_profile_data_from_post(){
 	$data['email'] = $this->input->post('email', true);;
 	$data['phone'] = $this->input->post('phone', true);;
 	$data['altphone'] = $this->input->post('altphone', true);;
-	$data['date'] = mdate('%d-%m-%Y');
 	$data['searchprofile'] = $data['profilename']." : ".$data['type']." : ".$data['category']." : ".$data['subcategory']." : ".$data['country']." : ".$data['region']." : ".$data['phyaddress']." : ".$data['email']." : ".$data['phone']." : ".$data['altphone']." : ".$data['description']." : ".$data['date'];
-
-	//new name for an image
-	//$new_name = ($this->get_max() +1)."";
-	$new_name = ($this->get_max() +1)."_".$this->session->userdata('user_username')."";
-	//upload images
-		// Crope , resize and upload img 0
-		$config0['upload_path']           = './assets/img/profile/0/';
-        $config0['allowed_types']        = 'gif|jpg|png';
-        $config0['max_size']             = 6048;
-        $config0['max_width']            = 3464;
-        $config0['max_height']           = 3464;
-        $config0['file_name'] = $new_name;
-        $field_name0 = "img";
-        $this->load->library('upload',$config0);
-        $this->upload->do_upload($field_name0);
-        $data0 = array('upload_data0' => $this->upload->data());
-        $artImage_name = $data0['upload_data0']['file_name'];
-		$data0['artimgsms']= $this->upload->display_errors();
-		//resizing
-		//$image_data = $this->upload->data();
-                    /*$config0['image_library'] = 'gd2';
-                    $config0['source_image'] = './assets/img/profile/0/'.$artImage_name; //get original image
-                    $config0['maintain_ratio'] = TRUE;
-                    $config0['width'] = 150;
-                    $config0['height'] = 100;
-                    $this->load->library('image_lib', $config0);
-                    $this->image_lib->resize();*/
-
-		// first image
-		/*$config['upload_path']          = './assets/img/profile/1/';
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = 6048;
-        $config['max_width']            = 3464;
-        $config['max_height']           = 3464;
-        $config['file_name'] = $new_name;
-        $field_name = "img";
-        $this->load->library('upload',$config);
-        $this->upload->do_upload($field_name);
-        $data1 = array('upload_data' => $this->upload->data());
-        $artImage_name = $data1['upload_data']['file_name'];
-		$data1['artimgsms']= $this->upload->display_errors();*/
-	
-	echo $data0['artimgsms'];
-	if (!$data0['artimgsms'] == "") {
-		$artImage_name = "def.png";
-	} 
-
-	//upload PDF files
-	$config1['upload_path']   = './uploads/attachments/';
-    $config1['allowed_types'] = 'pdf|jpg|png';
-    $config1['file_name'] = $new_name."_ID";
-    $this->load->library('upload',$config1);
-    $this->upload->do_upload('idfile');
-    $data1 = array('upload_data' => $this->upload->data());
-    $data['idfile'] = $data1['upload_data']['file_name'];
-
-    $config2['upload_path']   = './uploads/attachments/';
-    $config2['allowed_types'] = 'pdf|jpg|png';
-    $config2['file_name'] = $new_name."_Certificate";
-    $this->load->library('upload',$config2);
-    $this->upload->do_upload('certificate');
-    $data2 = array('upload_data' => $this->upload->data());
-    $data['certificate'] = $data2['upload_data']['file_name'];
-
-    $config3['upload_path']   = './uploads/attachments/';
-    $config3['allowed_types'] = 'pdf|jpg|png';
-    $config3['file_name'] = $new_name."_Resume";
-    $this->load->library('upload',$config3);
-    $this->upload->do_upload('resume');
-    $data3 = array('upload_data' => $this->upload->data());
-    $data['resume'] = $data3['upload_data']['file_name'];
-	//End PD files upload
-
-	$data['img'] = $artImage_name;
 	$data['status'] = "Active";
 	$data['date'] = mdate('%d-%m-%Y');
 	$data['udate'] = mdate('%d-%m-%Y %H:%i:%s');
-	
-	//echo $data1['artimgsms'];
+	//upload files
+	$data['img'] = $this->UploadImage('img', $new_name, './assets/img/profile/0/');
+	$data['idfile'] = $this->UploadImage('idfile', $new_name, './uploads/attachments/');
+	$data['certificate'] = $this->UploadImage('certificate', $new_name, './uploads/attachments/'); 
+	$data['resume'] = $this->UploadImage('resume', $new_name, './uploads/attachments/');
+	//update user profile pic
+	$udata = array(
+		'userimg' => $data['img'],
+		'udate' => mdate('%Y-%m-%d %H:%i:%s')
+	); $this->Mdl_profile->_update_custom1_tb('users', 'id', $this->session->userdata('user_id'), $udata);
+
 	return $data;
 }
 
-
+function UploadImage($input_name, $filename, $path) {
+	$config['upload_path']          =  $path;
+    $config['allowed_types']        = 'gif|jpg|png|pdf';
+    /*$config['max_size']             = 6048;
+    $config['max_width']            = 3464;
+    $config['max_height']           = 3464;*/
+    $config['file_name'] = $filename."_".mdate('%Y%m%d%H%i%s');
+    $this->load->library('upload', $config);
+    $this->upload->initialize($config);
+    if ( ! $this->upload->do_upload($input_name)) {
+        //return $this->upload->display_errors();
+        return "def.png";
+    } else {
+        $data = array('upload_data' => $this->upload->data());
+        $file_name = $data['upload_data']['file_name'];
+        return $file_name;
+    }
+}
 
 function get_profile_edit_data_from_post(){
+	$new_name = ($this->get_max() +1)."_".$this->session->userdata('user_id')."";
 	$data['profilename'] = $this->input->post('pname', true);
 	$data['gender'] = $this->input->post('gender', true);
 	$data['yob'] = mdate('%Y') - $this->input->post('age', true);
@@ -383,7 +345,6 @@ function get_profile_edit_data_from_post(){
 	$data['type'] = $this->input->post('type', true);
 	$data['category'] = $this->input->post('cat', true);
 	$data['subcategory'] = $this->input->post('subcat', true);
-	$data['userid'] = $this->session->userdata('user_id');
 	$data['description'] = $this->input->post('desc', true);;
 	$data['country'] = $this->input->post('country', true);
 	$data['region'] = $this->input->post('region', true);
@@ -391,100 +352,38 @@ function get_profile_edit_data_from_post(){
 	$data['email'] = $this->input->post('email', true);;
 	$data['phone'] = $this->input->post('phone', true);;
 	$data['altphone'] = $this->input->post('altphone', true);;
-	$data['date'] = mdate('%d-%m-%Y');
 	$data['searchprofile'] = $data['profilename']." : ".$data['type']." : ".$data['category']." : ".$data['subcategory']." : ".$data['country']." : ".$data['region']." : ".$data['phyaddress']." : ".$data['email']." : ".$data['phone']." : ".$data['altphone']." : ".$data['description']." : ".$data['date'];
-
-	//new name for an image
-	$new_name = ($this->get_max() +1)."_".$this->session->userdata('user_username')."";
-	//upload images
-		// Crope , resize and upload img 0
-		$config0['upload_path']           = './assets/img/profile/0/';
-        $config0['allowed_types']        = 'gif|jpg|png';
-        $config0['max_size']             = 6048;
-        $config0['max_width']            = 3464;
-        $config0['max_height']           = 3464;
-        $config0['file_name'] = $new_name;
-        $field_name0 = "img";
-        $this->load->library('upload',$config0);
-        $this->upload->do_upload($field_name0);
-        $data0 = array('upload_data0' => $this->upload->data());
-        $artImage_name = $data0['upload_data0']['file_name'];
-		$data0['artimgsms']= $this->upload->display_errors();
-		//resizing
-		//$image_data = $this->upload->data();
-                   /* $config0['image_library'] = 'gd2';
-                    $config0['source_image'] = './assets/img/profile/0/'.$artImage_name; //get original image
-                    $config0['maintain_ratio'] = TRUE;
-                    $config0['width'] = 150;
-                    $config0['height'] = 100;
-                    $this->load->library('image_lib', $config0);
-                    $this->image_lib->resize();*/
-
-		// first image
-		/*$config['upload_path']          = './assets/img/profile/1/';
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = 6048;
-        $config['max_width']            = 3464;
-        $config['max_height']           = 3464;
-        $config['file_name'] = $new_name;
-        $field_name = "img";
-        $this->load->library('upload',$config);
-        $this->upload->do_upload($field_name);
-        $data1 = array('upload_data' => $this->upload->data());
-        $artImage_name = $data1['upload_data']['file_name'];
-		$data1['artimgsms']= $this->upload->display_errors();*/
-	
-	if (!$data0['artimgsms'] == "") {
-		$artImage_name = "def.png";
-	} 
-
-	//upload PDF files
-	$config1['upload_path']   = './uploads/attachments/';
-    $config1['allowed_types'] = 'pdf|jpg|png';
-    $config1['file_name'] = $new_name."_ID";
-    $this->load->library('upload',$config1);
-    $this->upload->do_upload('idfile');
-    $data1 = array('upload_data' => $this->upload->data());
-    $data['idfile'] = $data1['upload_data']['file_name'];
-
-    $config2['upload_path']   = './uploads/attachments/';
-    $config2['allowed_types'] = 'pdf|jpg|png';
-    $config2['file_name'] = $new_name."_Certificate";
-    $this->load->library('upload',$config2);
-    $this->upload->do_upload('certificate');
-    $data2 = array('upload_data' => $this->upload->data());
-    $data['certificate'] = $data2['upload_data']['file_name'];
-
-    $config3['upload_path']   = './uploads/attachments/';
-    $config3['allowed_types'] = 'pdf|jpg|png';
-    $config3['file_name'] = $new_name."_Resume";
-    $this->load->library('upload',$config3);
-    $this->upload->do_upload('resume');
-    $data3 = array('upload_data' => $this->upload->data());
-    $data['resume'] = $data3['upload_data']['file_name'];
-	//End PD files upload
-
-	$data['img'] = $artImage_name;
-	$data['date'] = mdate('%d-%m-%Y');
 	$data['udate'] = mdate('%d-%m-%Y %H:%i:%s');
-	
-	//echo $data1['artimgsms'];
+	//upload files
+	$img = $this->UploadImage('img', $new_name, './assets/img/profile/0/');
+	$idfile = $this->UploadImage('idfile', $new_name, './uploads/attachments/');
+	$certificate = $this->UploadImage('certificate', $new_name, './uploads/attachments/'); 
+	$resume = $this->UploadImage('resume', $new_name, './uploads/attachments/');
+	//update files
+	if(!($img == "def.png")) { 
+		$data['img'] = $img; 
+		//update user profile pic
+		$udata = array(
+			'userimg' => $data['img'],
+			'udate' => mdate('%Y-%m-%d %H:%i:%s')
+		); $this->Mdl_profile->_update_custom1_tb('users', 'id', $this->session->userdata('user_id'), $udata);
+	}
+	if(!($idfile == "def.png")) { $data['idfile'] = $idfile; }
+	if(!($certificate == "def.png")) { $data['certificate'] = $certificate; }
+	if(!($resume == "def.png")) { $data['resume'] = $resume; }
+
 	return $data;
 }
 
-
-
-
 function createProfile(){
-	 $regBtn = $this->input->post('regBtn', true);
-	 $data['profileRes'] = $this->profile->get_where_custom('userid', $this->session->userdata('user_id') );
+	$userid = $this->session->userdata('user_id');
+	$regBtn = $this->input->post('regBtn', true);
+	$data['profileRes'] = $this->profile->get_where_custom('userid', $this->session->userdata('user_id') );
 	 
 	 if (!$regBtn == "") {
-	 	# code...
 	 	$pdata = $this->get_profile_data_from_post();
 	 	//insert data into database
 	 	$this->_insert($pdata);
-
 	 	//update Timetable
 	 	$tdata['profileid'] = $this->get('id')->row()->id;
 	 	$tdata['monday'] = "0600 - 1800";
@@ -495,71 +394,20 @@ function createProfile(){
 	 	$tdata['saturday'] = "0600 - 1800";
 	 	$tdata['sunday'] = "0600 - 1800";
 	 	$this->_insert_tb('timetable', $tdata);
-
-	 	# code... prevent resubmission
-	 	redirect('Profile/createProfile2');
-
-	 	/*$data['middle_m'] ="Admin";
-		//$data['middle_f'] ="m_container";
-	 	$data['mpanel_m'] = "Profile";
-		$data['mpanel_f'] = "createProfile";
-		$data['bfooter_m'] ="Home";
-		$data['bfooter_f'] ="profileSlider";
-		if ($this->session->userdata('logged_in')) {
-			$data['color'] = "blue";
-			$data['msg'] ="Your Profile has been Registered Successifully.!";
-			if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); }
-			//if ($this->session->userdata('user_role') == "admin") { if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } } else { $this->load->view('Production/index',$data); }
-		} else {
-			redirect('Home');
-		}*/
-
+	 	# code... 
+	 	redirect('Profile/userProfile/'.$userid);
 	 } else {
 	 	# code...
 	 	if ($data['profileRes']->num_rows()>0) {
 	 		# code...
-	 		redirect('Profile/managemyProfiles');
+	 		redirect('Profile/userProfile/'.$userid);
 	 	} else {
 	 		# code...
-	 		$data['middle_m'] ="Admin";
-		 	$data['mpanel_m'] = "Profile";
-			$data['mpanel_f'] = "createProfile";
-			$data['bfooter_m'] ="Home";
-			$data['bfooter_f'] ="profileSlider";
+	 		redirect('Profile/complete_registration');
 	 	}
-		if ($this->session->userdata('logged_in')) {
-			$data['color'] = "red";
-			$data['msg'] ="";
-			if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); }
-			//if ($this->session->userdata('user_role') == "admin") { if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } } else { $this->load->view('Production/index',$data); }
-		} else {
-			//redirect('Home');
-		}
-	 }		
-	 
+	 }		 
 }
 
-
-function createProfile2(){
-	 $regBtn = $this->input->post('regBtn', true);
-	 $data['profileRes'] = $this->profile->get_where_custom('userid', $this->session->userdata('user_id') );
-	 
-	 # code...
-	 	$data['middle_m'] ="Admin";
-	 	$data['mpanel_m'] = "Profile";
-		$data['mpanel_f'] = "createProfile";
-		$data['bfooter_m'] ="Home";
-		$data['bfooter_f'] ="profileSlider";
-		if ($this->session->userdata('logged_in')) {
-			$data['color'] = "blue";
-			$data['msg'] ='<div class="alert alert-info alert-dismissable" style="margin-top: 5px;"> <i class="fa fa-check"></i> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> <b>Info.</b> You have successfully created your profile. You can edit your profile anytime to include latest updaes.<br> Thank you! </div>';
-			if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); }
-			//if ($this->session->userdata('user_role') == "admin") { if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } } else { $this->load->view('Production/index',$data); }
-		} else {
-			redirect('Home');
-		}
-	 
-}
 
 
 function profileList() {
@@ -1294,9 +1142,6 @@ function userProfile() {
 	$this->session->set_userdata('profile_user_id',$userid);
 	$data['profile_user_id'] = $userid;
 	$data['profileRes'] = $this->get_where_custom('userid', $this->uri->segment(3));
-	$data['postedJobs'] = $this->job->get_where_custom('postedby', $userid)->num_rows();
-	$data['inprogressJobs'] = $this->job->get_where_custom2('postedby', $userid, 'progress', "In-progress")->num_rows();
-	$data['doneJobs'] = $this->job->get_where_custom2('doneby', $userid, 'progress', "Completed")->num_rows();
 	$data['middle_m'] ="Profile";
 	$data['mpanel_m'] = "Profile";
 	$data['mpanel_f'] = "myProfile";
@@ -1306,30 +1151,41 @@ function userProfile() {
 	$data['color'] = "red";
 	$data['msg'] ="";
 
-	if ($this->uri->segment(4)=="all") {
+	if ($data['profileRes']->num_rows()==0) {
 		# code...
-		$data['myjobres'] = $this->job->get_where_custom('status', "Open");
-	} else if ($this->uri->segment(4)=="posted") {
+		redirect('Profile/complete_registration');
+	} else {
 		# code...
-		$data['myjobres'] = $this->job->get_where_custom_limit('postedby', $userid ,100, 1);
-	} else if ($this->uri->segment(4)=="like") {
-		# code...
-		$data['myjobres'] = $this->job->get_where_custom_limit('doneby', $userid ,100, 1);
+		if ($this->uri->segment(4)=="all") {
+			# code...
+			$data['myjobres'] = $this->job->get_where_custom('status', "Open");
+		} else if ($this->uri->segment(4)=="posted") {
+			# code...
+			$data['myjobres'] = $this->job->get_where_custom_limit('postedby', $userid ,100, 1);
+		} else if ($this->uri->segment(4)=="like") {
+			# code...
+			$data['myjobres'] = $this->job->get_where_custom_limit('doneby', $userid ,100, 1);
+			//update action table
+			$this->updateAction($userid, $this->session->userdata('user_id'), 2, 1, "");
+		} else if ($this->uri->segment(4)=="unlike") {
+			# code...
+			$data['myjobres'] = $this->job->get_where_custom_limit('doneby', $userid ,100, 1);
+			//update action table
+			$this->deleteAction($userid, $this->session->userdata('user_id'), 2, 1, "");
+		} else {
+			$data['myjobres'] = $this->job->get_where_custom_limit('postedby', $userid ,100, 1);
+		}
 		//update action table
-		$this->updateAction($userid, $this->session->userdata('user_id'), 2, 1, "");
-	} else {
-		$data['myjobres'] = $this->job->get_where_custom_limit('postedby', $userid ,100, 1);
-	}
-	//update action table
-	$doneby = $this->session->userdata('user_id');
-	if ($doneby=="") { $doneby = 0; } 
-	$this->updateAction($userid, $doneby, 1, 1, "");
-	
-	if ($this->session->userdata('logged_in')) {
-		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
-		//if ($this->session->userdata('user_role') == "admin") { if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } } else { $this->load->view('Production/index',$data); }
-	} else {
-		$this->load->view('Home/index',$data);
+		$doneby = $this->session->userdata('user_id');
+		if ($doneby=="") { $doneby = 0; } 
+		$this->updateAction($userid, $doneby, 1, 1, "");
+		
+		if ($this->session->userdata('logged_in')) {
+			if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+			//if ($this->session->userdata('user_role') == "admin") { if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } } else { $this->load->view('Production/index',$data); }
+		} else {
+			$this->load->view('Home/index',$data);
+		}
 	}
 }
 
@@ -1345,21 +1201,69 @@ function updateAction($userid, $doneby, $action, $value, $remark) {
 	$this->_insert_tb('action', $data);
 }
 
-function feedback() {
-	$profileid = $this->input->post('profileid',true);
-	$fdata['userid'] = $this->input->post('commentBtn',true);
-	$fdata['senderid'] = $this->session->userdata('user_id');
-	if($fdata['senderid']=="") { $fdata['senderid']=0; }
-	$fdata['toid'] = $this->input->post('commentBtn',true);
-	$fdata['comment'] = $this->input->post('comment',true);
-	$fdata['type'] = "Comment";
-	$fdata['status'] = "Active";
-	$data['date'] = mdate('%d-%m-%Y');
-	$data['udate'] = mdate('%d-%m-%Y %H:%i:%s');
-	$this->_insert_tb('comment', $fdata);
+function deleteAction($userid, $doneby, $action, $value, $remark) {
+	$this->Mdl_profile->_delete_custome3_tb('action', 'userid', $userid, 'doneby', $doneby, 'action', $action);
+}
 
-	//redirect to profile
-	redirect('Profile/userProfile/'.$fdata['userid']);
+function feedback() {
+	$commentBtn = $this->input->post('commentBtn',true);
+	$messageBtn = $this->input->post('messageBtn',true);
+	$emailBtn = $this->input->post('emailBtn',true);
+
+	if (!$commentBtn=="") {
+		# code...
+		$userid = $commentBtn;
+		$profileid = $this->input->post('profileid',true);
+		$fdata['userid'] = $userid;
+		$fdata['senderid'] = $this->session->userdata('user_id');
+		if($fdata['senderid']=="") { $fdata['senderid']=0; }
+		$fdata['toid'] = $this->input->post('commentBtn',true);
+		$fdata['comment'] = $this->input->post('comment',true);
+		$fdata['type'] = "Comment";
+		$fdata['status'] = "Active";
+		$fdata['date'] = mdate('%d-%m-%Y');
+		$fdata['udate'] = mdate('%d-%m-%Y %H:%i:%s');
+		$this->_insert_tb('comment', $fdata);
+		redirect('Profile/userProfile/'.$userid);
+	} else if (!$messageBtn=="") {
+		# code...
+		$userid = $messageBtn;
+		$profileid = $this->input->post('profileid',true);
+		$fdata['userid'] = $userid;
+		$fdata['senderid'] = $this->session->userdata('user_id');
+		$fdata['toid'] = $userid;
+		$fdata['comment'] = $this->input->post('message',true);
+		$fdata['type'] = "Message";
+		$fdata['status'] = "Active";
+		$fdata['date'] = mdate('%d-%m-%Y');
+		$fdata['udate'] = mdate('%d-%m-%Y %H:%i:%s');
+		$this->_insert_tb('comment', $fdata);
+		redirect('Profile/userProfile/'.$userid);
+	} else if (!$emailBtn=="") {
+		# code...
+		$userid = $emailBtn;
+		$title = $this->input->post('title',true);
+		$mail = $this->input->post('mail',true);
+		$profileid = $this->input->post('profileid',true);
+		$fdata['userid'] = $userid;
+		$fdata['senderid'] = $this->session->userdata('user_id');
+		$fdata['toid'] = $userid;
+		$fdata['comment'] = $mail;
+		$fdata['type'] = "Mail";
+		$fdata['status'] = "Active";
+		$fdata['date'] = mdate('%d-%m-%Y');
+		$fdata['udate'] = mdate('%d-%m-%Y %H:%i:%s');
+		$this->_insert_tb('comment', $fdata);
+		redirect('Profile/userProfile/'.$userid);
+		//send an email
+		$to_res = $this->Mdl_profile->get_where_custom_tb('users', 'id', $userid);
+		$this->emailSender($to_res->row()->email, $title, $mail);
+		//end send email
+	} else {
+		//redirect to profile
+		$userid = $this->session->userdata('user_id');
+		redirect('Profile/userProfile/'.$userid);
+	}
 
 	if ($this->session->userdata('logged_in')) {
 		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
@@ -1374,6 +1278,10 @@ function managemyProfiles() {
 	$deleteBtn = $this->input->post('deleteBtn', true);
 	$editBtn = $this->input->post('editBtn', true);
 	$modifyBtn = $this->input->post('modifyBtn', true);
+	$verifyBtn = $this->input->post('verifyBtn', true);
+	$hideBtn = $this->input->post('hideBtn', true);
+	$showBtn = $this->input->post('showBtn', true);
+	$passwordBtn = $this->input->post('passwordBtn', true);
 	$data['profileRes'] = $this->get_where_custom('userid', $userid);
 	$data['myjobres'] = $this->job->get_where_custom_limit('postedby', $userid ,100, 1);
 	$data['postedJobs'] = $this->job->get_where_custom('postedby', $userid)->num_rows();
@@ -1384,21 +1292,90 @@ function managemyProfiles() {
 		# code...
 		$id = $deleteBtn;
 		$this->_delete($id);
-
 		$data['profileRes'] = $this->get_where_custom('userid', $this->session->userdata('user_id'));
+		redirect('Admin');
+	} else if (!$verifyBtn == '') {
+		$id = $verifyBtn;
+		$pdata = array(
+			'verified' => 1,
+			'status' => "Active",
+	        'udate' => mdate('%Y-%m-%d %H:%i:%s')
+	    ); $this->_update_custome('userid', $id, $pdata);
 
-		$data['middle_m'] ="Admin";
-		//$data['middle_f'] ="m_container";
-	 	$data['mpanel_m'] = "Profile";
+		$data['profileRes'] = $this->get_where_custom('id', $id);
+		$data['profile_user_id'] = $id;
+		$data['middle_m'] ="Profile";
+		$data['mpanel_m'] = "Profile";
 		$data['mpanel_f'] = "myProfile";
-		$data['color'] = "red";
-		$data['msg'] ="";
+		$data['middle_f'] = "myProfile";
+		$data['bfooter_m'] ="Home";
+		$data['bfooter_f'] ="blank";
+		$data['color'] = "blue";
+		$data['msg'] ="This profile has been verified.";
+	} else if (!$hideBtn == '') {
+		$id = $hideBtn;
+		$pdata = array(
+			'verified' => 0,
+			'status' => "Hidden",
+	        'udate' => mdate('%Y-%m-%d %H:%i:%s')
+	    ); $this->_update_custome('userid', $id, $pdata);
 
+		$data['profileRes'] = $this->get_where_custom('id', $id);
+		$data['profile_user_id'] = $id;
+		$data['middle_m'] ="Profile";
+		$data['mpanel_m'] = "Profile";
+		$data['mpanel_f'] = "myProfile";
+		$data['middle_f'] = "myProfile";
+		$data['bfooter_m'] ="Home";
+		$data['bfooter_f'] ="blank";
+		$data['color'] = "blue";
+		$data['msg'] ="This profile has been hidden, I will not be visible to anyone.";
+	} else if (!$showBtn == '') {
+		$id = $showBtn;
+		$pdata = array(
+			'status' => "Active",
+	        'udate' => mdate('%Y-%m-%d %H:%i:%s')
+	    ); $this->_update_custome('userid', $id, $pdata);
+
+		$data['profileRes'] = $this->get_where_custom('id', $id);
+		$data['profile_user_id'] = $id;
+		$data['middle_m'] ="Profile";
+		$data['mpanel_m'] = "Profile";
+		$data['mpanel_f'] = "myProfile";
+		$data['middle_f'] = "myProfile";
+		$data['bfooter_m'] ="Home";
+		$data['bfooter_f'] ="blank";
+		$data['color'] = "blue";
+		$data['msg'] ="This profile is now visible to everyone.";
+	} else if (!$passwordBtn == '') {
+		$userid = $passwordBtn;
+		$user_res = $this->Mdl_profile->get_where_custom_tb('users', 'id', $userid);
+		$old_password = $this->input->post('old_password',true);
+		$new_password = $this->input->post('new_password',true);
+		$conf_password = $this->input->post('conf_password',true);
+		
+		if ($old_password == $user_res->row()->password) {
+			if ($new_password == $conf_password) {
+				$udata = array(
+			    	'password' => $new_password,
+			        'udate' => mdate('%Y-%m-%d %H:%i:%s')
+			    ); $this->Mdl_profile->_update_custom1_tb('users', 'id', $userid, $udata);
+			    redirect('Profile/userProfile/'.$userid);
+				return "Done: Your password has been changed. Use new password during your next login.";
+			} else { 
+				redirect('Profile/userProfile/'.$userid);
+				return "Failed: Passwords does not match!"; 
+			}
+		} else {
+			redirect('Profile/userProfile/'.$userid);
+			return "Failed: Incorrect current password!";
+		}
+		//redirect('Profile/userProfile/'.$userid);
 	} else if (!$editBtn == '') {
 		# code...
 		$id = $editBtn;
 		$data['editRes'] = $this->get_where_custom('id', $id);
-
+		$data['age'] = mdate('%Y') - $data['editRes']->row()->yob;
 		$data['middle_m'] = "Admin";
 		$data['middle_f'] = "m_container";
 	 	$data['mpanel_m'] = "Profile";
@@ -1406,23 +1383,14 @@ function managemyProfiles() {
 		//$data['mpanel_f'] = "editProfile";
 		$data['color'] = "red";
 		$data['msg'] ="";
-
 	} elseif (!$modifyBtn == "") {
 		# code...
 		$id = $modifyBtn;
 		//collect data from form
 		$edata = $this->get_profile_edit_data_from_post();
 		$this->_update($id, $edata);
-
-		$data['profileRes'] = $this->get_where_custom('userid', $this->session->userdata('user_id'));
-
-		$data['middle_m'] ="Admin";
-		//$data['middle_f'] ="m_container";
-	 	$data['mpanel_m'] = "Profile";
-		$data['mpanel_f'] = "myProfile";
-		$data['color'] = "blue";
-		$data['msg'] ="The Profile Has Been Modified Successifully. !";
-
+		$userid = $this->session->userdata('user_id');
+		redirect('Profile/userProfile/'.$userid);
 	} else {
 		# code...
 		$data['middle_m'] ="Admin";
@@ -1445,8 +1413,11 @@ function managemyProfiles() {
 
 function manageProfiles() {
 	$deleteBtn = $this->input->post('deleteBtn', true);
+	$modifyBtn = $this->input->post('modifyBtn', true);
+	$verifyBtn = $this->input->post('verifyBtn', true);
+	$hideBtn = $this->input->post('hideBtn', true);
+	$showBtn = $this->input->post('showBtn', true);
 	$data['profileRes'] = $this->get('id');
-
 
 	if (!$deleteBtn == "") {
 		# code...
@@ -1742,5 +1713,34 @@ return $query;
 }
 /*================ END LIKE =============================*/
 
+/*CHECK BALANCE*/
+function haveEnoughCredit() {
+	$userid = $this->session->userdata('user_id');
+	$user_res = $this->Mdl_profile->get_where_custom_tb('users', 'id', $userid);
+	$today = mdate('%Y-%m-%d');
+	$expdate = $user_res->row()->expdate;
+	$datediff = strtotime($expdate) - strtotime($today);
+    $days = round($datediff / (60 * 60 * 24));
+    if ($days>0) {
+    	return (bool)true;
+    } else {
+    	return (bool)false;
+    }   
+}
+
+function myBalance() {
+	$userid = $this->session->userdata('user_id');
+	$user_res = $this->Mdl_profile->get_where_custom_tb('users', 'id', $userid);
+	$today = mdate('%Y-%m-%d');
+	$expdate = $user_res->row()->expdate;
+	$datediff = strtotime($expdate) - strtotime($today);
+    $days = round($datediff / (60 * 60 * 24));
+    if ($days>0) {
+    	return $days;
+    } else {
+    	return 0;
+    }   
+}
+/*END BALANCE*/
 
 }

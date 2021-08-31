@@ -1,7 +1,7 @@
 <style type="text/css">
 .contact {
-    background-color: #1328a8;
-    color: #fff !important;
+    /*background-color: #1328a8;*/
+    color: #ed9d00 !important;
     /*background-color: #DCDCDC;*/
 }
 .jumbotron {
@@ -60,11 +60,11 @@ input {
                 <br />
                 <br />
                 <h3 style="line-height:20%;"><i class="fa fa-envelope fa-1x" style="line-height:6%;color:#00c0ef;"></i> <?php echo $this->lang->line('msg_email_title'); ?></h3>
-                <p style="margin-top:6%;line-height:35%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;support@ehuduma.com<?php //echo $this->lang->line('msg_email2'); ?></p>
+                <p style="margin-top:6%;line-height:35%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;support@sakaafyafiness.club<?php //echo $this->lang->line('msg_email2'); ?></p>
                 <br />
                 <br />
                 <h3 style="line-height:20%;"><i class="fa fa-user fa-1x" style="line-height:6%;color:#00c0ef;"></i> <?php echo $this->lang->line('msg_phone'); ?></h3>
-                <p style="margin-top:6%;line-height:35%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+255 622 973 959<?php //echo $this->lang->line('msg_phone2'); ?></p>
+                <p style="margin-top:6%;line-height:35%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+255 785 508 030<?php //echo $this->lang->line('msg_phone2'); ?></p>
                 <br />
                 <br />
                 <h3 style="line-height:20%;"><i class="fa fa-tasks fa-1x" style="line-height:6%;color:#00c0ef;"></i> <?php echo $this->lang->line('msg_location'); ?></h3>
@@ -136,17 +136,18 @@ input {
           <form class="form-style-1" action="<?php echo base_url('Home/contactUs')?>" method="post" enctype="multipart/form-data">
             <legend><span class="glyphicon glyphicon-globe"></span> <?php echo $this->lang->line('msg_our_office'); ?></legend>
             <address>
-                <strong><?php echo $this->lang->line('msg_ehuduma'); ?></strong><br>
+                <strong>SAKA AFYA<?php //echo $this->lang->line('msg_ehuduma'); ?></strong><br>
                 <!-- <?php //echo $this->lang->line('msg_address_title'); ?><br> -->
                 <?php echo $this->lang->line('msg_address_place'); ?><br>
                 <?php //echo $this->lang->line('msg_address_box'); ?>DSM<br>
-                <i>  +255 622 973 959<?php //echo $this->lang->line('msg_address_phone'); ?> </i>
+                <i>  +255 785 508 030<?php //echo $this->lang->line('msg_address_phone'); ?> </i>
                <!--  (255) 625-480-482 -->
             </address>
             <address>
                 <strong><?php echo $this->lang->line('msg_full_name'); ?></strong><br>
-                <?php echo $this->lang->line('msg_full_name2'); ?><br>
-                <a href="mailto:support@ehuduma.com"><?php echo $this->lang->line('msg_email'); ?> support@ehuduma.com</a>
+                SAKA AFYA FITNESS CLUB
+                <?php //echo $this->lang->line('msg_full_name2'); ?><br>
+                <a href="mailto:support@sakaafyafiness.club"><?php echo $this->lang->line('msg_email'); ?> support@sakaafyafiness.club</a>
             </address>
             </form>
         </div>

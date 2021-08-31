@@ -1,51 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Saka Afya Fitness Club</title>
-        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-         <!--Web icon-->
-        <link rel="shortcut icon" href="<?php echo base_url('assets/img/icon.ico') ?>" />
-        <!-- bootstrap 3.0.2 -->
-        <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet" type="text/css" />
-        <!-- font Awesome -->
-        <link href="<?php echo base_url('assets/css/font-awesome.min.css');?>" rel="stylesheet" type="text/css" />
-        <!-- Ionicons -->
-        <link href="<?php echo base_url('assets/css/ionicons.min.css');?>" rel="stylesheet" type="text/css" />
-        <!-- Morris chart -->
-        <link href="<?php echo base_url('assets/css/morris/morris.css');?>" rel="stylesheet" type="text/css" />
-        <!-- jvectormap -->
-        <link href="<?php echo base_url('assets/css/jvectormap/jquery-jvectormap-1.2.2.css');?>" rel="stylesheet" type="text/css" />
-        <!-- fullCalendar -->
-        <link href="<?php echo base_url('assets/css/fullcalendar/fullcalendar.css');?>" rel="stylesheet" type="text/css" />
-        <!-- Daterange picker -->
-        <link href="<?php echo base_url('assets/css/daterangepicker/daterangepicker-bs3.css');?>" rel="stylesheet" type="text/css" />
-        <!-- bootstrap wysihtml5 - text editor -->
-        <link href="<?php echo base_url('assets/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css');?>" rel="stylesheet" type="text/css" />
-        <!-- Theme style -->
-        <link href="<?php echo base_url('assets/css/AdminLTE.css');?>" rel="stylesheet" type="text/css" />
-        <!-- Font Family (Google font) -->
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/tabs.css');?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/tabstyles.css');?>" />
-        <!-- site theme -->
-        <link href="<?php echo base_url('assets/css/diiocss/theme.css');?>" rel="stylesheet" type="text/css" />
-
-
-        <script src="<?php echo base_url('assets/js/modernizr.custom.js');?>"></script>
-        <!--  search inputs top -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
-        <script src="<?php echo base_url('assets/js/myJs/profilesch1.js');?>" type="text/javascript"></script> 
-
-        <style type="text/css">
-            body {
-                  font-family: 'Roboto', sans-serif !important;
-              }
-
-          
-           .mypadding {
-              padding: 1% 4% 0 4%;
-           }
+<!-- bootstrap wysihtml5 - text editor -->
+<link href="<?php echo base_url('assets/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css');?>" rel="stylesheet" type="text/css" />     
+<style type="text/css">
+    #account {
+        background-color: #4e4b4a !important;
+    }
+        .mypadding {
+             padding: 1% 4% 0 4%;
+        }
 
         .form-style-1 {
             margin:10px auto;
@@ -131,14 +92,27 @@
         .form-style-1 .required{
             color:red;
         }
-        </style>
-    </head>
-    <body class="skin-black">
-    <?php
-         $services = modules::load('Profile')->get_where_custom_tb('services', 'status', "Active");
-         $sports = modules::load('Profile')->get_where_custom_tb('sports', 'status', "Active");
-    ?>
-        <!--  ======================== Create Profile Form ================= -->
+        .custom-file-upload {
+            background-color: #F4F4F4;
+            border: 1px solid #ccc;
+            display: inline-block;
+            text-align: center !important;
+            padding: 2px 2px 2px 2px !important;
+            cursor: pointer;
+        }
+        /*input[type="file"] {
+              display: none;
+          }*/
+        #img {
+            display: none;
+        }
+</style>
+
+<?php
+    $services = modules::load('Profile')->get_where_custom_tb('services', 'status', "Active");
+    $sports = modules::load('Profile')->get_where_custom_tb('sports', 'status', "Active");
+?>
+<!--  ======================== Create Profile Form ================= -->
         <div class="row" style="margin: 5px 5px 5px 5px">
         
             <div class="col-md-2"></div>
@@ -156,52 +130,55 @@
                                 <div class="col-md-12"  style="text-align: center; font-size: 14px; padding-bottom: 20px;">
 
                                 </div>
-                                     <h4><b>Basic Information</b></h4>
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label><?php echo $this->lang->line('msg_profile_name'); ?><span class="required">*</span></label>
-                                                <input type="text" class="form-control  field-long input-sm1" name="pname" value="" placeholder="<?php echo $this->lang->line('msg_enter_profile_name'); ?>"  required="">
+                                     
+                                    <div class="col-md-9" style1="vertical-align: top !important; background-color: red;">
+                                        <h4><b>Basic Information</b></h4>
+                                        <div class="row">
+                                            <div class="col-md-12" style1="margin-bottom: 30px; margin-top: 20px;">
+                                                <div class="form-group" >
+                                                    <label><?php echo $this->lang->line('msg_profile_name'); ?><span class="required">*</span></label>
+                                                    <input type="text" class="form-control  field-long input-sm1" name="pname" value="" placeholder="<?php echo $this->lang->line('msg_enter_profile_name'); ?>"  required="">
+                                                </div>
                                             </div>
-                                          </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label><?php echo $this->lang->line('msg_profile_image'); ?> </label>
-                                                <input type="file"  class="form-control" name="img" accept=".gif, .jpg, .png" value="" placeholder="<?php echo $this->lang->line('msg_choose_file'); ?>"   required1="">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Gender<?php //echo ucfirst($this->lang->line('msg_profile_type')); ?><span class="required">*</span></label>
+                                                    <select class=" field-select input-sm1" name="gender" id="gender" required="">
+                                                        <option value="Other">Select your gender<?php //echo $this->lang->line('msg_select_profile_type'); ?></option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                 </div>
                                             </div>
-                                          </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Gender<?php //echo ucfirst($this->lang->line('msg_profile_type')); ?><span class="required">*</span></label>
-                                            <select class=" field-select input-sm1" name="gender" id="gender" required="">
-                                                <option value="Other">Select your gender<?php //echo $this->lang->line('msg_select_profile_type'); ?></option>
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
-                                            </select>
-                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Age<?php //echo ucfirst($this->lang->line('msg_profile_type')); ?><span class="required">*</span></label>
-                                            <select class=" field-select input-sm1" name="age" id="age" required="">
-                                                <option value="Other">Select your age<?php //echo $this->lang->line('msg_select_profile_type'); ?></option>
-                                                <?php for($i = 18; $i <= 100; $i++) { ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label>National ID/Driving license<?php //echo $this->lang->line('msg_profile_name'); ?><span class="required">*</span></label>
-                                                <input type="text" class="form-control  field-long input-sm1" name="idno" id="idno" value="" placeholder="Enter your ID No.<?php //echo $this->lang->line('msg_enter_profile_name'); ?>"  required="">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Age<?php //echo ucfirst($this->lang->line('msg_profile_type')); ?><span class="required">*</span></label>
+                                                    <select class=" field-select input-sm1" name="age" id="age" required="">
+                                                        <option value="Other">Select your age<?php //echo $this->lang->line('msg_select_profile_type'); ?></option>
+                                                        <?php for($i = 15; $i <= 100; $i++) { ?>
+                                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                 </div>
                                             </div>
-                                          </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label>ID Number<?php //echo $this->lang->line('msg_profile_name'); ?><span class="required">*</span></label>
+                                                        <input type="text" class="form-control  field-long input-sm1" name="idno" id="idno" value="" placeholder="National ID/Driving license<?php //echo $this->lang->line('msg_enter_profile_name'); ?>"  required="">
+                                                    </div>
+                                                  </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="custom-file-upload"><img class="thumbnail" id="img1" src="<?php echo base_url('assets/img/profile/0/def.png');?>" alt="Profile pic" width="100%" /><input accept="image/*" type='file' id="img" name="img" /><i class="fa fa-upload"></i> Choose Photo</label>
+                                            <!-- <label><?php echo $this->lang->line('msg_profile_image'); ?> </label>
+                                            <input type="file"  class="form-control" name="img" accept=".gif, .jpg, .png" value="" placeholder="<?php echo $this->lang->line('msg_choose_file'); ?>"   required1=""> -->
+                                        </div>
+                                    </div>
+                                    
                             </div>
                                
                             <div class="row">
@@ -310,7 +287,7 @@
 
                             <div class="row">
                                 <hr>
-                                <h4><b>Description (More Details) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-info btn-sm " name="editBtn" value="" data-toggle="tooltip"  title="" data-original-title="Maelezo kuhusu profaili: Tafadhari eleza kwa ufupi kuhusu ujuzi na uzoefu wako pamoja na mfano/ mifano ya kazi ulizokwishafanya au unazozifanya. "><i class="fa fa-info" style="border-radius: 50%;"></i></button></b></h4> 
+                                <h4><b>Description (More Details) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-info btn-sm " name="editBtn" value="" data-toggle="tooltip"  title="" data-original-title="Please write short description about you/ your team, group or club."><i class="fa fa-info" style="border-radius: 50%;"></i></button></b></h4> 
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="form-group">
@@ -368,50 +345,17 @@
         </div>
         <!--  ======================== end Create Profile Form ============= -->
 
-        <!--  ======================== FOOTER ============= -->
-        <footer class="footer" style="background-color: #333333;">
-            <div class="container">
-                <br>
-                <div class="row text-center" style="color: #fff;"><a href="<?php echo base_url('Home/ourPrivacy');?>"><?php echo $this->lang->line('msg_mdl_privacy'); ?></a> | <a href="<?php echo base_url('Home/ourTerms');?>"><?php echo $this->lang->line('msg_mdl_terms'); ?></a><br> © Saka Afya Fitness Club <?php echo mdate('%Y'); ?> - <?php echo $this->lang->line('msg_all_rights_reserved'); ?>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->lang->line('msg_developer'); ?>: DiioLab<!-- 2017. by Dionizi France (+255-752-194-092 | +255-684-544-167) --></div>
-                <hr>
-            </div>     
-        </footer>
-        <!-- ======================== END FOOTER ========= -->
 
-        <!-- jQuery 2.0.2 -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <!-- jQuery UI 1.10.3 -->
-        <script src="<?php echo base_url('assets/js/jquery-ui-1.10.3.min.js');?>" type="text/javascript"></script>
-        <!-- Bootstrap -->
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>" type="text/javascript"></script>
-        <!-- Morris.js charts -->
-        <script src="<?php echo base_url('assets/js/cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js');?>"></script>
-        <script src="<?php echo base_url('assets/js/plugins/morris/morris.min.js');?>" type="text/javascript"></script>
-        <!-- Sparkline -->
-        <script src="<?php echo base_url('assets/js/plugins/sparkline/jquery.sparkline.min.js');?>" type="text/javascript"></script>
-        <!-- jvectormap -->
-        <script src="<?php echo base_url('assets/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js');?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('assets/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js');?>" type="text/javascript"></script>
-        <!-- fullCalendar -->
-        <script src="<?php echo base_url('assets/js/plugins/fullcalendar/fullcalendar.min.js');?>" type="text/javascript"></script>
-        <!-- jQuery Knob Chart -->
-        <script src="<?php echo base_url('assets/js/plugins/jqueryKnob/jquery.knob.js');?>" type="text/javascript"></script>
-        <!-- daterangepicker -->
-        <script src="<?php echo base_url('assets/js/plugins/daterangepicker/daterangepicker.js');?>" type="text/javascript"></script>
-        <!-- Bootstrap WYSIHTML5 -->
-        <script src="<?php echo base_url('assets/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js');?>" type="text/javascript"></script>
-        <!-- iCheck -->
-        <script src="<?php echo base_url('assets/js/plugins/iCheck/icheck.min.js');?>" type="text/javascript"></script>
-        <!-- AdminLTE App -->
-        <script src="<?php echo base_url('assets/js/AdminLTE/app.js');?>" type="text/javascript"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="<?php echo base_url('assets/js/AdminLTE/dashboard.js');?>" type="text/javascript"></script>       
-        <!-- CK Editor -->
-        <script src="<?php echo base_url('assets/js/plugins/ckeditor/ckeditor.js');?>" type="text/javascript"></script>
-        <!-- Bootstrap WYSIHTML5 -->
-        <!-- <script src="<?php //echo base_url('assets/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js');?>" type="text/javascript"></script> -->
-        <script type="text/javascript">     
-        </script> 
-
-    </body>
-</html>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="<?php echo base_url('assets/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js');?>" type="text/javascript"></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) { 
+        //do work
+        img.onchange = evt => {
+            const [file] = img.files
+            if (file) {
+            img1.src = URL.createObjectURL(file)
+            }
+        }
+    });
+</script>

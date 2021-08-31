@@ -327,22 +327,22 @@
                                 <i class="fa fa-dashboard"></i> <span>Home<?php //echo $this->lang->line('msg_dashboard'); ?></span>
                             </a>
                         </li>
-                        <li>
+                        <li id="find">
                             <a href="<?php echo base_url('Profile/findprofile');?>">
                                 <i class="fa fa-search"></i> <span class=""></span>Find Profiles <?php //echo $this->lang->line('msg_new_profile'); ?> <i class="fa fa fa-angle-right pull-right"></i>
                             </a>
                         </li>
-                        <li>
+                        <li id="browse">
                             <a href="<?php echo base_url('Profile/listprofiles/all');?>">
                                 <i class="fa fa-users"></i> <span class=""></span>Browse Profiles <?php //echo $this->lang->line('msg_new_profile'); ?> <i class="fa fa fa-angle-right pull-right"></i>
                             </a>
                         </li>
-                        <li>
+                        <li id="pay">
                             <a href="<?php echo base_url('Profile/payments');?>">
                                 <i class="fa fa-folder-open"></i> <span>Payments<?php //echo $this->lang->line('msg_chats'); ?></span> <i class="fa fa fa-angle-right pull-right"></i>
                             </a>
                         </li>
-                        <li>
+                        <li id="account">
                             <a href="<?php echo base_url('Profile/userProfile/');?><?php echo $userid;?>">
                                 <i class="fa fa-user"></i> <span>My account<?php //echo $this->lang->line('msg_chats'); ?></span> <i class="fa fa fa-angle-right pull-right"></i>
                             </a>
@@ -473,6 +473,14 @@
 
                     <!-- ============== MIDDLE PANNEL ============ -->
                      <div class="row">
+                        <?php if(!(modules::load('Profile')->haveEnoughCredit())) { ?>
+                        <div class="col-md-12" style="padding: 20px 20px 0 20px; font-size: 16px;">
+                            <div class="alert alert-danger">
+                                <strong>Insufficient credit!</strong> You don't have enough credit. Please pay for your account to be able to access all premium features.
+                                <a href="<?php echo base_url('Profile/payments'); ?>"  class="btn btn-sm pull-right sitecolor2bg " style="color: #fff !important; margin-left1: 10px;">&nbsp;&nbsp;PAY NOW<?php //echo $this->lang->line('msg_submit'); ?> &nbsp;&nbsp;<i class="fa fa-arrow-circle-right" style="color: #fff !important;"></i>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                            </div>
+                        </div>
+                        <?php } ?>
                          <div class="col-md-12" style="margin-left: 1%; margin-right: 1%;">
                              <?php 
                                  $this->load->view($mpanel_m.'/'.$mpanel_f);

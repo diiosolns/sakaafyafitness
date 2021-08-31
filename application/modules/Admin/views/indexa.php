@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Saka Afya Fitness Club</title>
+        <title>Admin-Saka Afya Fitness Club</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
          <!--Web icon-->
         <link rel="shortcut icon" href="<?php echo base_url('assets/img/icon.ico') ?>" />
@@ -26,7 +26,9 @@
         <link href="<?php echo base_url('assets/css/AdminLTE.css');?>" rel="stylesheet" type="text/css" />
         <!-- Font Family (Google font) -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
+        <!-- site theme -->
+        <link href="<?php echo base_url('assets/css/diiocss/theme.css');?>" rel="stylesheet" type="text/css" />
+        
         <style type="text/css">
             body {
                   font-family: 'Roboto', sans-serif !important;
@@ -35,9 +37,21 @@
            .mypadding {
               padding: 1% 4% 0 4%;
            }
+           .full_height {
+            min-height: 100vh;
+           }
+           .bg-light-blue {
+              background-color: #1328a8 !important;
+           }
         </style>
     </head>
     <body class="skin-black">
+        <?php 
+            $userid = $this->session->userdata('user_id');
+            $myprofiles = modules::load('Job')->Mdl_job->get_where_custom_tb('profile', 'userid', $userid);
+            $myjobs = modules::load('Job')->Mdl_job->get_where_custom_tb('job', 'postedby', $userid);
+            $profile_pic = base_url('assets/img/profile/0/'.$this->session->userdata('user_img'));
+        ?>
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="<?php echo base_url('Home');?>" class="logo">
@@ -255,10 +269,10 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img src="<?php echo base_url('assets/img/icon.png');?>" class="img-circle" alt="User Image" />
+                                    <img src="<?php echo $profile_pic; ?>" class="img-circle" alt="User Image" />
                                     <p>
                                         <?php echo $this->session->userdata('user_name');?> - <?php echo $this->session->userdata('user_role');?> User
-                                        <small>Member of eHuduma</small>
+                                        <small>Club Admin</small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -299,7 +313,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="<?php echo base_url('assets/img/icon.png');?>" class="img-circle" alt="User Image" />
+                            <img src="<?php echo $profile_pic; ?>" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
                             <p><?php echo $this->lang->line('msg_hi'); ?>, <?php echo $this->session->userdata('user_name');?></p>
@@ -332,19 +346,6 @@
                        
                         <li class="treeview">
                             <a href="#">
-                                <span class="fa fa-users"></span>  
-                                <span class=""> Manage Projects  <?php //echo $this->lang->line('msg_my_profile'); ?> </span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="<?php echo base_url('Job/manage_jobs');?>"> <i class="fa fa-angle-double-right"></i> Ongoing<?php //echo $this->lang->line('msg_new_profile'); ?></a></li>
-                                <li><a href="<?php echo base_url('Job/historical_jobs');?>">  <i class="fa fa-angle-double-right"></i> Closed <?php //echo $this->lang->line('msg_manage_my_profile'); ?></a></li>
-                                <!-- <li><a href="pages/charts/morris.html"><i class="fa fa-angle-double-right"></i> New</a></li> -->
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
                                 <i class="fa fa-users"></i>
                                 <span class="">Manage Users<?php //echo $this->lang->line('msg_user_profiles'); ?> </span>
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -356,9 +357,11 @@
                             </ul>
                         </li>
 
-                        <li>
-                            <a href="<?php echo base_url('Chat/myChats');?>">
-                                <i class="fa fa-comment"></i> <span><?php echo $this->lang->line('msg_chats'); ?></span> <small class="badge pull-right bg-green">10</small>
+                         <li class="treeview">
+                            <a href="<?php echo base_url('Admin/ManageTransactions');?>">
+                                <i class="fa fa-money"></i>
+                                <span class="">Manage Payments<?php //echo $this->lang->line('msg_user_profiles'); ?> </span>
+                                <i class="fa fa-angle-right pull-right"></i>
                             </a>
                         </li>
 
@@ -409,7 +412,7 @@
 
 
             <!-- Right side column. Contains the navbar and content of the page -->
-            <aside class="right-side">
+            <aside class="right-side full_height">
 
                 <!-- ========== CALL RIGHT PANNEL -->
                     <?php 
@@ -439,7 +442,7 @@
     <footer class="footer" style="background-color: #333333;">
         <div class="container">
             <br>
-            <div class="row text-center" style="color: #fff;"><a href="<?php echo base_url('Home/ourPrivacy');?>"><?php echo $this->lang->line('msg_mdl_privacy'); ?></a> | <a href="<?php echo base_url('Home/ourTerms');?>"><?php echo $this->lang->line('msg_mdl_terms'); ?></a><br> © Uwezomedia Limited 2018 - <?php echo $this->lang->line('msg_all_rights_reserved'); ?>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->lang->line('msg_developer'); ?>: diioLab<!-- 2017. by Dionizi France (+255-752-194-092 | +255-684-544-167) --></div>
+            <div class="row text-center" style="color: #fff;"><a href="<?php echo base_url('Home/ourPrivacy');?>"><?php echo $this->lang->line('msg_mdl_privacy'); ?></a> | <a href="<?php echo base_url('Home/ourTerms');?>"><?php echo $this->lang->line('msg_mdl_terms'); ?></a><br> © Saka Afya Fitness Club <?php echo mdate('%Y'); ?> - <?php echo $this->lang->line('msg_all_rights_reserved'); ?>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->lang->line('msg_developer'); ?>: <a href="https://www.diiolab.com">DiioLab</a><!-- 2017. by Dionizi France (+255-752-194-092 | +255-684-544-167) --></div>
             <hr>
         </div>     
     </footer>

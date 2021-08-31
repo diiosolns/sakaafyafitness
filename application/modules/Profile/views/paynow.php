@@ -5,6 +5,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
 <script src="<?php echo base_url('assets/js/myJs/profilesch.js');?>" type="text/javascript"></script> 
 <style type="text/css">
+  #pay {
+    background-color: #4e4b4a !important;
+  }
   .profileout{
     margin-top: 2%;
     margin-bottom: 20px;

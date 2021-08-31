@@ -70,6 +70,14 @@ $query=$this->db->get($table);
 return $query;
 }
 
+function get_where_custom3_tb($tb, $col1, $value1, $col2, $value2, $col3, $value3) {
+$table = $this->get_table();
+$array = array($col1 => $value1, $col2 => $value2, $col3 => $value3);
+$this->db->where($array);
+$query=$this->db->get($tb);
+return $query;
+}
+
 function get_where_custom1_dist($col, $col1, $value1){
 $table = $this->get_table();
 $array = array($col1 => $value1);
@@ -110,7 +118,7 @@ $this->db->delete($table);
 }
 
 
-function _delete_td($td, $id) {
+function _delete_td($tb, $id) {
 $table = $tb;
 $this->db->where('id', $id);
 $this->db->delete($table);

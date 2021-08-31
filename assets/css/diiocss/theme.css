@@ -42,3 +42,11 @@
   background-color: #1328a8 !important;
   color: #fff;
 }
+
+/*input {
+  border: 1px solid lightgray !important;
+}*/
+
+textarea {
+  border: 1px solid lightgray !important;
+}

@@ -74,7 +74,7 @@
                                       <input type="checkbox" name="remember" id="remember"> <?php echo $this->lang->line('msg_mdl_remember'); ?>
                                   </label>
                               </div>
-                              <button type="submit" name="loginBtn" value="ok" class="btn btn-info btn-block" style="width: 98%;"><?php echo $this->lang->line('msg_mdl_login');?>></button>
+                              <button type="submit" name="loginBtn" value="ok" class="btn btn-info btn-block" style="width: 98%;"><?php echo $this->lang->line('msg_mdl_login');?></button>
                               <div style="color: <?php echo $color;?>; text-align: center;">
                                   <b><?php echo $msg;?></b>
                               </div>

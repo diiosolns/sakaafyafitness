@@ -9,6 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Upload class to help identify allowed file types.
 |
 */
+//'csv'   =>  array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel')
+//'pdf'   =>  array('application/pdf', 'application/x-download')
 
 return array(
 	'hqx'	=>	array('application/mac-binhex40', 'application/mac-binhex', 'application/x-binhex40', 'application/x-mac-binhex40'),
