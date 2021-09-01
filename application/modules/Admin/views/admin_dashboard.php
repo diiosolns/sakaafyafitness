@@ -128,6 +128,7 @@
     <div class="box-body1 ">
     <div class="row">
     	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			<a href="<?php echo base_url('Admin/ManageTransactions');?>">
 			<div class="offer offer-info">
 				<div class="shape">
 					<div class="shape-text">
@@ -136,14 +137,16 @@
 				</div>
 				<div class="offer-content">
 					<h3 class="lead">
-						<a href="<?php echo base_url('Job/historical_jobs');?>">Subscriptions</a>
+						Subscriptions
 					<?php //echo $this->lang->line('msg_users'); ?>  <br> 
 					<label class="label label-info pull-right">TZS <?php echo number_format(modules::load('Admin')->get_sum_where_custom1('payment', 'amount', 'receipt', "Received")->row()->amount,0);?></label>
 					</h3>
 				</div>
 			</div>
+			</a>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			<a href="<?php echo base_url('Admin/ManageTransactions');?>">
 			<div class="offer offer-info">
 				<div class="shape">
 					<div class="shape-text">
@@ -152,14 +155,15 @@
 				</div>
 				<div class="offer-content">
 					<h3 class="lead">
-						<a href="<?php echo base_url('Job/historical_jobs');?>">Pending Pay</a>
+						Pending Pay
 					<?php //echo $this->lang->line('msg_users'); ?>  <br> 
 					<label class="label label-info pull-right">TZS <?php echo number_format(modules::load('Admin')->get_sum_where_custom1('payment', 'amount', 'receipt', "Pending")->row()->amount,0);?></label>
 					</h3>
 				</div>
-			</div>
+			</div></a>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			<a href="<?php echo base_url('Profile/listprofiles/all');?>">
 			<div class="offer offer-radius offer-info">
 				<div class="shape">
 					<div class="shape-text">
@@ -173,9 +177,10 @@
 						 <label class="label label-info pull-right"> <?php echo modules::load('Profile')->get('id')->num_rows();?></label>
 					</h3>
 				</div>
-			</div>
+			</div></a>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			<a href="<?php echo base_url('Artical/manageArticals');?>">
 			<div class="offer offer-info">
 				<div class="shape">
 					<div class="shape-text">
@@ -189,7 +194,7 @@
 						<label class="label label-info pull-right"><?php echo modules::load('Artical')->get('id')->num_rows();?></label>
 					</h3>
 				</div>
-			</div>
+			</div></a>
 		</div>
         </div>
 
@@ -210,7 +215,7 @@
 		    <hr>
 		    <ul class="myul">
 		      <?php foreach ($profile_category->result() as $category): ?>
-		        <li class="myli"><a href="<?php echo base_url('Profile/manageProfiles/');?><?php echo $category->category;?>"><?php echo $category->category;?><small class="badge pull-right bg-green"><?php echo number_format($category->total,0); ?></small></a></li>
+		        <li class="myli"><a href="<?php echo base_url('Profile/manageProfiles/category/');?><?php echo $category->category;?>"><?php echo $category->category;?><small class="badge pull-right bg-green"><?php echo number_format($category->total,0); ?></small></a></li>
 		      <?php endforeach; ?>
 		    </ul>
 		</div>
@@ -219,7 +224,7 @@
 		    <hr>
 		    <ul class="myul">
 		      <?php foreach ($profile_type->result() as $type): ?>
-		        <li class="myli"><a href="<?php echo base_url('Profile/manageProfiles/');?><?php echo $type->type;?>"><?php echo $type->type;?><small class="badge pull-right bg-green"><?php echo number_format($type->total,0); ?></small></a></li>
+		        <li class="myli"><a href="<?php echo base_url('Profile/manageProfiles/type/');?><?php echo $type->type;?>"><?php echo $type->type;?><small class="badge pull-right bg-green"><?php echo number_format($type->total,0); ?></small></a></li>
 		      <?php endforeach; ?>
 		    </ul>
 		</div>
@@ -228,7 +233,7 @@
 		    <hr>
 		    <ul class="myul">
 		      <?php foreach ($profile_gender->result() as $gender): ?>
-		        <li class="myli"><a href="<?php echo base_url('Profile/manageProfiles/');?><?php echo $gender->gender;?>"><?php echo $gender->gender;?><small class="badge pull-right bg-green"><?php echo number_format($gender->total,0); ?></small></a></li>
+		        <li class="myli"><a href="<?php echo base_url('Profile/manageProfiles/gender/');?><?php echo $gender->gender;?>"><?php echo $gender->gender;?><small class="badge pull-right bg-green"><?php echo number_format($gender->total,0); ?></small></a></li>
 		      <?php endforeach; ?>
 		    </ul>
 		</div>
@@ -240,7 +245,7 @@
 		    <hr>
 		    <ul class="myul">
 		      <?php foreach ($profile_subcategory->result() as $subcategory): ?>
-		        <li class="myli"><a href="<?php echo base_url('Profile/manageProfiles/');?><?php echo $subcategory->subcategory;?>"><?php echo $subcategory->subcategory;?><small class="badge pull-right bg-green"><?php echo number_format($subcategory->total,0); ?></small></a></li>
+		        <li class="myli"><a href="<?php echo base_url('Profile/manageProfiles/subcategory/');?><?php echo $subcategory->subcategory;?>"><?php echo $subcategory->subcategory;?><small class="badge pull-right bg-green"><?php echo number_format($subcategory->total,0); ?></small></a></li>
 		      <?php endforeach; ?>
 		    </ul>
 		</div>
@@ -249,7 +254,7 @@
 		    <hr>
 		    <ul class="myul">
 		      <?php foreach ($profile_region->result() as $region): ?>
-		        <li class="myli"><a href="<?php echo base_url('Profile/manageProfiles/');?><?php echo $region->region;?>"><?php echo $region->region;?><small class="badge pull-right bg-green"><?php echo number_format($region->total,0); ?></small></a></li>
+		        <li class="myli"><a href="<?php echo base_url('Profile/manageProfiles/region/');?><?php echo $region->region;?>"><?php echo $region->region;?><small class="badge pull-right bg-green"><?php echo number_format($region->total,0); ?></small></a></li>
 		      <?php endforeach; ?>
 		    </ul>
 		</div>

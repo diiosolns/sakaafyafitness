@@ -290,7 +290,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="<?php echo base_url('Users/changePassword');?>" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="<?php echo base_url('Profile/userProfile/');?><?php echo $userid;?>" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="<?php echo base_url('Home/logout');?>" class="btn btn-default btn-flat">Sign out</a>
@@ -322,9 +322,9 @@
                         </div>
                     </div>
                     <!-- search form -->
-                    <form action="<?php echo base_url('Home/searchResults');?>" method="post" class="sidebar-form" enctype="multipart/form-data">
+                    <form action="<?php echo base_url('Admin/ManageTransactions');?>" method="post" class="sidebar-form" enctype="multipart/form-data">
                         <div class="input-group">
-                            <input type="text" name="search" class="form-control" placeholder="<?php echo $this->lang->line('msg_search'); ?>" required="" />
+                            <input type="text" name="keyword" class="form-control" placeholder="<?php echo $this->lang->line('msg_search'); ?>" required="" />
                             <span class="input-group-btn">
                                 <button type='submit' name="searchBtn" value="ok" id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                             </span>
@@ -351,18 +351,23 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?php echo base_url('Profile/manageProfiles');?>">  <i class="fa fa-angle-double-right"></i> Freelancers   <?php //echo $this->lang->line('msg_manage_profiles'); ?></a></li>
-                                <li><a href="<?php echo base_url('Users/manageUsers/User');?>">  <i class="fa fa-angle-double-right"></i>Employers  <?php //echo $this->lang->line('msg_manage_accounts'); ?></a></li>
+                                <li><a href="<?php echo base_url('Profile/manageProfiles');?>">  <i class="fa fa-angle-double-right"></i> Manage Profiles   <?php //echo $this->lang->line('msg_manage_profiles'); ?></a></li>
+                                <li><a href="<?php echo base_url('Users/manageUsers/User');?>">  <i class="fa fa-angle-double-right"></i>Manage User Accounts  <?php //echo $this->lang->line('msg_manage_accounts'); ?></a></li>
                                 <li><a href="<?php echo base_url('Users/manageUsers');?>">  <i class="fa fa-angle-double-right"></i> All users  <?php //echo $this->lang->line('msg_manage_accounts'); ?></a></li>
                             </ul>
                         </li>
 
-                         <li class="treeview">
-                            <a href="<?php echo base_url('Admin/ManageTransactions');?>">
+                        <li class="treeview">
+                            <a href="#">
                                 <i class="fa fa-money"></i>
                                 <span class="">Manage Payments<?php //echo $this->lang->line('msg_user_profiles'); ?> </span>
-                                <i class="fa fa-angle-right pull-right"></i>
+                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
+                            <ul class="treeview-menu">
+                                <li><a href="<?php echo base_url('Admin/ManageTransactions');?>">  <i class="fa fa-angle-double-right"></i> Manage transactions<?php //echo $this->lang->line('msg_manage_profiles'); ?></a></li>
+                                <li><a href="<?php echo base_url('Admin/PaidUsers');?>">  <i class="fa fa-angle-double-right"></i>User Subscriptions<?php //echo $this->lang->line('msg_manage_accounts'); ?></a></li>
+                                <li><a href="<?php echo base_url('Admin/ManageTransactions');?>">  <i class="fa fa-angle-double-right"></i>Payment history<?php //echo $this->lang->line('msg_manage_accounts'); ?></a></li>
+                            </ul>
                         </li>
 
                         <!-- <li class="treeview">
@@ -392,7 +397,7 @@
                         </li>
 
                         <li>
-                            <a href="<?php echo base_url('Users/changePassword');?>">
+                            <a href="<?php echo base_url('Profile/userProfile/');?><?php echo $userid;?>">
                                 <i class="glyphicon glyphicon-user"></i><span class=""></span> <?php //echo $this->lang->line('msg_signout'); ?> My account
                             </a>
                         </li>

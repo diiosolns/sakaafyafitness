@@ -32,7 +32,6 @@
 </style>
 
 <?php
-    $userid = $this->session->userdata('user_id');
     $comments = modules::load('Profile')->Mdl_profile->get_where_custom3_tb('comment', 'userid', $userid, 'type', 'Comment', 'status', 'Active');
     $messages = modules::load('Profile')->Mdl_profile->get_where_custom3_tb('comment', 'userid', $userid, 'type', 'Message', 'status', 'Active');
     $mails = modules::load('Profile')->Mdl_profile->get_where_custom3_tb('comment', 'userid', $userid, 'type', 'Mail', 'status', 'Active');
@@ -40,6 +39,8 @@
 ?>
 
 <section class="mybox">
+  <span style="font-size: 22px;">Manage Messages Sent to  <b><a href="<?php echo base_url('Profile/userProfile') ?>/<?php echo $user_res->row()->id ?>"><?php echo $user_res->row()->name; ?></a></b> </span>
+  <hr>
   <div class="row">
     <div class="col-md-4">
       <?php foreach ($feedbacks->result() as $feedback): ?>
@@ -55,7 +56,7 @@
             $senderimage = base_url('assets/img/profile/0/def.png');
           } 
         ?>
-        <a href="<?php echo base_url('Chat/myChats') ?>/<?php echo $senderid; ?>">
+        <a href="<?php echo base_url('Chat/manageChats/'.$user_res->row()->id) ?>/<?php echo $senderid; ?>">
         <div class="row leftlist">
           <div class="col-md-2"><img src="<?php echo $senderimage;?>" class="img-circle" alt="User image" width="100%" ></div>
           <div class="col-md-10"><?php echo $sendername;?> <span class="label <?php if($feedback->type=="Mail") { echo "label-warning"; } else if($feedback->type=="Message") { echo "label-success"; } else { echo "label-default"; } ?>  pull-right"><?php echo $feedback->type;?></span> </div>
@@ -72,7 +73,7 @@
           <?php echo $chat->comment ;?>
           <div style="padding-top: 10px; padding-bottom: 10px;">
             <small class="pull-left label label-default " ><i><?php echo $chat->udate ;?></i></small>
-            <a href="<?php echo base_url('Chat/myChats') ?>/<?php echo $chat->senderid; ?>/delete/<?php echo $chat->id; ?>" class="btn btn-xs btn-danger pull-right " ><i class="fa fa-times"></i></a>
+            <a href="<?php echo base_url('Chat/manageChats/'.$user_res->row()->id) ?>/<?php echo $chat->senderid; ?>/delete/<?php echo $chat->id; ?>" class="btn btn-xs btn-danger pull-right " ><i class="fa fa-times"></i></a>
           </div>
         </div>
       <?php endforeach; ?> 

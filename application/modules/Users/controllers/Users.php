@@ -170,6 +170,8 @@ function signin() {
 					$newdata = array('user_id' =>(int)$user->row()->id,
 							'user_name'=> (string)$user->row()->name,
 							'user_username'=> (string)$user->row()->username,
+							'user_phone'=> (string)$user->row()->phone,
+							'user_email'=> (string)$user->row()->email,
 							'user_pwrd'=> (string)$user->row()->password,
 							'user_date'=> (string)$user->row()->date,
 							'user_role'=> (string)$user->row()->role,

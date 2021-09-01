@@ -76,7 +76,7 @@
 
     <div class="row">
         <?php foreach ($relatedRes->result() as $post): ?>
-            <?php $url = base_url('/uploads/blogs/ehuduma.png')?>
+            <?php $url = base_url('/uploads/blogs/sakaafya.png')?>
             <div class="col-md-4">
                 <div class="blog_related_card">
                     <a href="<?php echo base_url('/Artical/blog/').$post->id;?>"><img src="<?php echo $url;?>" alt="blog post" width="100%"></a>

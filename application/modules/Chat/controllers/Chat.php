@@ -63,6 +63,32 @@ function myChats(){
 	}
 }
 
+function manageChats(){
+	$userid = $this->uri->segment(3);
+	$senderid = $this->uri->segment(4);
+	$action = $this->uri->segment(5);
+	$smsid = $this->uri->segment(6);
+	$data['userid'] = $userid;
+	$data['any'] = "";
+	$data['middle_m'] ="Chat";
+	$data['mpanel_m'] = "Chat";
+	$data['mpanel_f'] = "manageChats";
+	$data['middle_f'] = "manageChats";
+	if ($action == "delete") {
+		$this->_delete_td('comment', $smsid);
+	} 
+	$data['user_res'] = $this->Mdl_chat->get_where_custom_tb('users' ,'id', $userid); 
+	$data['sender_res'] = $this->Mdl_chat->get_where_custom_tb('users' ,'id', $senderid); 
+	$data['chat_res'] = $this->Mdl_chat->get_where_custom3_tb('comment', 'userid', $userid, 'senderid', $senderid, 'status', 'Active');
+
+	if ($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+		//if ($this->session->userdata('user_role') == "admin") { if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexu',$data); } } else { $this->load->view('Production/index',$data); }
+	} else {
+		$this->load->view('Home/index',$data);
+	}
+}
+
 function leaveComment() {
 	$commentBtn = $this->input->post('commentBtn',true);
 	$cdata['profileid'] = $commentBtn;

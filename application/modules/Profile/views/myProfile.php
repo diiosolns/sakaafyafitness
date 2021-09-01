@@ -331,7 +331,7 @@
                         <li class="contact_li"><i class="fa fa-map-marker sitecolor1">&nbsp;&nbsp;</i> <?php echo $profileres->row()->phyaddress;?>, <?php echo $profileres->row()->region;?>, <?php echo $profileres->row()->country;?></li>
                         <li class="contact_li"><i class="fa fa-file sitecolor1">&nbsp;&nbsp;</i>ID No.: <?php echo $profileres->row()->idno;?></li>
                       <?php } ?>
-                        <li class="contact_li"><i class="fa fa-phone sitecolor1">&nbsp;&nbsp;</i> +<?php if(($this->session->userdata('user_role')=="Admin")) { echo $userres->row()->phone;} else {echo $userres->row()->phone;}?></li>
+                        <li class="contact_li"><i class="fa fa-phone sitecolor1">&nbsp;&nbsp;</i> <?php if(($this->session->userdata('user_role')=="Admin")) { echo $userres->row()->phone;} else {echo $userres->row()->phone;}?></li>
                         <li class="contact_li"><i class="fa fa-envelope sitecolor1">&nbsp;&nbsp;</i> <?php if(($this->session->userdata('user_role')=="Admin")) {  echo $userres->row()->email;} else {echo $userres->row()->email;}?></li>
                         <li class="contact_li"><i class="fa fa-clock-o sitecolor1">&nbsp;&nbsp;</i>Member for <i><?php echo $age;?></i></li>
                         <li class="contact_li"><i class="fa fa-calendar sitecolor1">&nbsp;&nbsp;</i>Seen on <?php echo $userres->row()->udate;?></li>

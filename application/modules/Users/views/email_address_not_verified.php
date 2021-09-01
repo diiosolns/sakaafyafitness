@@ -74,7 +74,7 @@
                 OOps! Your E-mail address seems not verified. Please login to your E-mail account and click verify button.
               </p>
               <div style="text-align: center; padding-top: 25px;">
-                <a href="<?php echo base_url('Users/login'); ?>"   class="btn btn-lg sitecolor2bg"><b>Continue to SakaAfya<?php //echo $this->lang->line('msg_mdl_privacy'); ?></b></a>
+                <a href="<?php echo base_url('Users/login'); ?>"   class="btn btn-lg sitecolor2bg" style="color: #fff !important;"><b>Continue to SakaAfya<?php //echo $this->lang->line('msg_mdl_privacy'); ?></b></a>
                 <br><br><br>
                 <a href="<?php echo base_url('Home'); ?>"   class=""><b>Home<?php //echo $this->lang->line('msg_mdl_privacy'); ?></b></a> | <a href="<?php echo base_url('Home/ourPrivacy'); ?>"   class=""><b><?php echo $this->lang->line('msg_mdl_privacy'); ?></b></a> | <a href="<?php echo base_url('Home/ourTerms'); ?>"  class=""><b><?php echo $this->lang->line('msg_mdl_terms'); ?></b></a>
               </div>

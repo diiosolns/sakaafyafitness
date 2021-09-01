@@ -134,6 +134,24 @@ $query=$this->db->get($tb);
 return $query;
 }
 
+function get_where_custom_btndates1($tb, $col1, $value1, $datecol1, $datevalue1, $operator ){
+$table = $this->get_table($tb);
+$condition = ''.$col1.' = "'.$value1.'" AND '.$datecol1.' '.$operator.' "'. date('Y-m-d', strtotime($datevalue1)).'"';
+$this->db->where($condition);
+$this->db->order_by('id',"desc");
+$query=$this->db->get($tb);
+return $query;
+}
+
+function get_where_custom_btndates2($tb, $col1, $value1, $datecol1, $datevalue1, $datecol2, $datevalue2){
+$table = $this->get_table($tb);
+$condition = ''.$col1.' = "'.$value1.'" AND '.$datecol1.' BETWEEN "'. date('Y-m-d', strtotime($datevalue1)). '" AND "'. date('Y-m-d', strtotime($datevalue2)).'"';
+$this->db->where($condition);
+$this->db->order_by('id',"desc");
+$query=$this->db->get($tb);
+return $query;
+}
+
 function get_where_custom3($tb, $col1, $value1, $col2, $value2, $col3, $value3){
 $table = $this->get_table($tb);
 $array = array($col1 => $value1, $col2 => $value2, $col3 => $value3);

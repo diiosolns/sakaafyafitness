@@ -97,7 +97,7 @@ function listprofiles(){
 	$data['bfooter_f'] ="blank";
 	$data['color'] = "";
 	$data['msg'] ='';
-	$cat = $this->uri->segment(3);
+	$cat = str_replace('%20',' ',$this->uri->segment(3));
 	if ($cat== "all") {
 		$data['title'] ='Available profiles';
 		$data['profileRes'] = $this->profile->get('id');
@@ -1412,27 +1412,40 @@ function managemyProfiles() {
 
 
 function manageProfiles() {
+	$cat = $this->uri->segment(3);
+	$keyword = str_replace('%20',' ',$this->uri->segment(4));
 	$deleteBtn = $this->input->post('deleteBtn', true);
 	$modifyBtn = $this->input->post('modifyBtn', true);
 	$verifyBtn = $this->input->post('verifyBtn', true);
 	$hideBtn = $this->input->post('hideBtn', true);
 	$showBtn = $this->input->post('showBtn', true);
-	$data['profileRes'] = $this->get('id');
+	
+	if ($cat == "category") {
+		$data['profileRes'] = $this->Mdl_profile->get_where_custom2_tb('profile', 'category', $keyword, 'status', "Active");
+	} else if ($cat == "type") {
+		$data['profileRes'] = $this->Mdl_profile->get_where_custom2_tb('profile', 'type', $keyword, 'status', "Active");
+	} else if ($cat == "gender") {
+		$data['profileRes'] = $this->Mdl_profile->get_where_custom2_tb('profile', 'gender', $keyword, 'status', "Active");
+	} else if ($cat == "subcategory") {
+		$data['profileRes'] = $this->Mdl_profile->get_where_custom2_tb('profile', 'subcategory', $keyword, 'status', "Active");
+	} else if ($cat == "region") {
+		$data['profileRes'] = $this->Mdl_profile->get_where_custom2_tb('profile', 'region', $keyword, 'status', "Active");
+	} else {
+		$data['profileRes'] = $this->Mdl_profile->get_where_custom_tb('profile',  'status', "Active");
+	}
+	
 
 	if (!$deleteBtn == "") {
 		# code...
 		$id = $deleteBtn;
 		$this->_delete($id);
-
 		$data['profileRes'] = $this->get('id');
-
 		$data['middle_m'] ="Admin";
 		//$data['middle_f'] ="m_container";
 	 	$data['mpanel_m'] = "Profile";
 		$data['mpanel_f'] = "manageProfiles";
 		$data['color'] = "red";
 		$data['msg'] ="";
-
 	} else {
 		# code...
 		$data['middle_m'] ="Admin";

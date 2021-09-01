@@ -226,7 +226,7 @@
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label><?php echo $this->lang->line('msg_phone_number'); ?><span class="required">*</span></label>
-                                            <input type="text"  class="field-long" name="phone" value="" placeholder="Eg. 07XXXXXXXX<?php //echo $this->lang->line('msg_enter_phone_number'); ?>"   required="">
+                                            <input type="text"  class="field-long" name="phone" value="<?php echo $this->session->userdata('user_phone'); ?>" placeholder="Eg. 07XXXXXXXX<?php //echo $this->lang->line('msg_enter_phone_number'); ?>"   required="">
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +242,7 @@
                                     <div class="form-group">
                                         <div class="form-group field-select">
                                             <label><?php echo $this->lang->line('msg_email_address'); ?><span class="required">*</span></label>
-                                            <input type="email"  class="field-long" name="email" value="" placeholder="Enter e-mail<?php //echo $this->lang->line('msg_enter_email_address'); ?>"   required="">
+                                            <input type="email"  class="field-long" name="email" value="<?php echo $this->session->userdata('user_email'); ?>" placeholder="Enter e-mail<?php //echo $this->lang->line('msg_enter_email_address'); ?>"   required="">
                                         </div>
                                       </div>
                                 </div>

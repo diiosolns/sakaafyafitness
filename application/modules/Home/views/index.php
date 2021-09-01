@@ -32,6 +32,10 @@
         <link href="<?php echo base_url('assets/css/diiocss/theme.css');?>" rel="stylesheet" type="text/css" />
         <!-- FONT AWSOME -->
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <!-- font Awesome -->
+        <link href="<?php echo base_url('assets/css/font-awesome.min.css');?>" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="<?php echo base_url('assets/css/ionicons.min.css');?>" rel="stylesheet" type="text/css" />
         <style type="text/css">
           body {
               font-family: 'Roboto', sans-serif !important;
@@ -219,7 +223,10 @@
             font-size: 18px; border: 2px solid #fff; 
         }
 
-
+        .social i {
+          color: #fff !important;
+          /*background-color: #fff !important;*/
+        }
         </style>
 
         <!-- =============== LARGE DROPDOWN (MORE)========= -->
@@ -388,7 +395,7 @@
               <a href="<?php echo base_url('Home/aboutUs'); ?>">Read more</a>
             </p>
             <ul class="social-icon">
-            <a href="https://www.facebook.com/" target="_blank" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/" target="_blank" class="social"><i class="fa fa-facebook" aria-hidden="true" ></i></a>
             <a href="https://twitter.com/signup?lang=en" target="_blank" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             <a href="https://www.instagram.com/accounts/login/" target="_blank" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
             <a href="https://www.youtube.com/" target="_blank" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
@@ -398,13 +405,13 @@
         <div class="col-sm-3 center">
             <h4 class="title"><?php echo $this->lang->line('msg_profile_types'); ?></h4>
             <span class="acount-icon">          
-              <a href="<?php echo base_url('Profile/listprofiles/Sportsperson');?>"><i class="fa fa-user" aria-hidden="true"></i> Sportsperson <?php //echo $this->lang->line('msg_Freelancer'); ?></a>
-              <a href="<?php echo base_url('Profile/listprofiles/Trainee');?>"><i class="fa fa-tasks" aria-hidden="true"></i> Trainees <?php //echo $this->lang->line('msg_post_a_job'); ?></a> 
-              <a href="<?php echo base_url('Profile/listprofiles/Trainer');?>"><i class="fa fa-tasks" aria-hidden="true"></i> Trainers <?php //echo $this->lang->line('msg_post_a_job'); ?></a>    
-              <a href="<?php echo base_url('Profile/listprofiles/Sponsor');?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Coaches/ Sponsors <?php //echo $this->lang->line('msg_find_jobs'); ?></a>
-              <a href="<?php echo base_url('Profile/listprofiles/Team');?>"><i class="fa fa-tasks" aria-hidden="true"></i> Teams <?php //echo $this->lang->line('msg_post_a_job'); ?></a>
-              <a href="<?php echo base_url('Profile/listprofiles/Gym');?>"><i class="fa fa-user" aria-hidden="true"></i> Gyms <?php //echo $this->lang->line('msg_Freelancer'); ?></a>
-              <a href="<?php echo base_url('Profile/listprofiles/Instructor');?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Instructors <?php //echo $this->lang->line('msg_find_jobs'); ?></a>         
+              <a href="<?php echo base_url('Profile/listprofiles/Sportsperson');?>"><i class="fas fa-basketball-ball" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sportsperson <?php //echo $this->lang->line('msg_Freelancer'); ?></a>
+              <a href="<?php echo base_url('Profile/listprofiles/Trainee');?>"><i class="fas fa-skating" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trainees <?php //echo $this->lang->line('msg_post_a_job'); ?></a> 
+              <a href="<?php echo base_url('Profile/listprofiles/Trainer');?>"><i class="fas fa-skiing" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trainers <?php //echo $this->lang->line('msg_post_a_job'); ?></a>    
+              <a href="<?php echo base_url('Profile/listprofiles/Sponsor');?>"><i class="far fa-futbol" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Coaches/ Sponsors <?php //echo $this->lang->line('msg_find_jobs'); ?></a>
+              <a href="<?php echo base_url('Profile/listprofiles/Team');?>"><i class="fa fa-users" aria-hidden="true"></i> Teams <?php //echo $this->lang->line('msg_post_a_job'); ?></a>
+              <a href="<?php echo base_url('Profile/listprofiles/Gym');?>"><i class="fas fa-dumbbell" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gyms <?php //echo $this->lang->line('msg_Freelancer'); ?></a>
+              <a href="<?php echo base_url('Profile/listprofiles/Instructor');?>"><i class="fas fa-snowboarding" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instructors <?php //echo $this->lang->line('msg_find_jobs'); ?></a>         
             </span>
         </div>
         <div class="col-sm-3">

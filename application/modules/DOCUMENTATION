@@ -13,6 +13,17 @@ BLACK:  #000616  rgba(4,11,27,255)
 
 
 
+PENDING: (30/08/2021)
+Reports
+Admin message view
+More transaction features
+
+
+
+
+
+
+
 C:\xampp\htdocs\sakaafyafitness\assets\js\AdminLTE\app.js:
   150      }).addClass("no-print");
   151      demo_settings.append(

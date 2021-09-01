@@ -61,8 +61,6 @@ function index(){
 
 
 function dashboard() {
-
-
 	echo "me here";
 }
 
@@ -147,7 +145,34 @@ function ManageTransactions(){
 }
 
 
+function PaidUsers() {
+	$cat = $this->uri->segment(3);
+	$data['middle_m'] ="Admin";
+	$data['mpanel_m'] = "Admin";
+	$data['mpanel_f'] = "PaidUsers";
+	$data['middle_f'] ="PaidUsers";
+	$data['bfooter_m'] ="Home";
+	$data['bfooter_f'] ="blank";
+	$data['color'] = "";
+	$today = mdate('%Y-%m-%d');
 
+	if ($cat == "paid") {
+		$data['msg'] ='Active Subscriptions (Users With Enough Credit)';
+		$data['userRes'] =  $this->Mdl_admin->get_where_custom_btndates1('users', 'status', "Active", 'expdate', $today, '>' );
+	} else if ($cat == "expired") {
+		$data['msg'] ='Expired Subscriptions (Users Without Credit)';
+		$data['userRes'] =  $this->Mdl_admin->get_where_custom_btndates1('users', 'status', "Active", 'expdate', $today, '<=' );
+	}  else {
+		$data['msg'] ='Active Subscriptions (Users With Enough Credit)';
+		$data['userRes'] =  $this->Mdl_admin->get_where_custom_btndates1('users', 'status', "Active", 'expdate', $today, '>' );
+	}
+	
+	if ($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('user_role') == "Admin") {$data['middle_f'] = "adminm_container"; $this->load->view('Admin/indexa',$data); } else  {  $data['middle_f'] = "m_container"; $this->load->view('Admin/indexf',$data); }
+	} else {
+		$this->load->view('Home/index',$data);
+	}
+}
 
 
 
