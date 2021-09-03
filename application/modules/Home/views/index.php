@@ -437,7 +437,7 @@
             <ul style="text-align: left; font-size: 16px;" >
                <!-- <b><?php //echo $this->lang->line('msg_pobox'); ?></b><br> -->
                <b><?php echo $this->lang->line('msg_phone'); ?>+255 785 508 030</b><br>
-               <b><?php echo $this->lang->line('msg_email'); ?><a href="mailto: support@sakaafyafiness.club">support@ehuduma.com</a></b><br>
+               <b><?php echo $this->lang->line('msg_email'); ?><a href="mailto: support@sakaafyafitness.club">support@sakaafyafitness.club</a></b><br>
             </ul>
           </div>
         </div>

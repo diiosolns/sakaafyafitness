@@ -11,15 +11,10 @@ BLACK:  #000616  rgba(4,11,27,255)
 
 
 
-
-
 PENDING: (30/08/2021)
 Reports
 Admin message view
 More transaction features
-
-
-
 
 
 
@@ -33,6 +28,10 @@ C:\xampp\htdocs\sakaafyafitness\assets\js\AdminLTE\app.js:
 
 
 
+03/09/2021:
+- Published/ Hoisted for the forst time
+- Db Hoisting
+- Web hoisting
 
 
 
@@ -47,25 +46,3 @@ C:\xampp\htdocs\sakaafyafitness\assets\js\AdminLTE\app.js:
 
 
 =================END SAKAAFYAFITNESS CLUB==================
-09/02/2017
-USING POPOVER
-1. Add jQuery (2.7 or 2.0.2) befor kbootstrap.js 
-2. Initialise the popover
-	 <!-- Popover -->
-        <script>
-          $(document).ready(function(){
-              $('[data-toggle="popover"]').popover(); 
-          });
-        </script>
-
------------------------------------------------------
-31/08/2020
-------------
-1. Implement job edti (owne & admin can edit)
-2. Implement admin controls
-	-accept (raise modal to input agreed price)
-	-paid (raise modal to input paid amount)
-	-bid closed
-	-job completed (Done)
-	-Closed (close job)
-	-Cancel (cancelling jobs)

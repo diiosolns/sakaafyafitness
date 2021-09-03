@@ -60,7 +60,7 @@ input {
                 <br />
                 <br />
                 <h3 style="line-height:20%;"><i class="fa fa-envelope fa-1x" style="line-height:6%;color:#00c0ef;"></i> <?php echo $this->lang->line('msg_email_title'); ?></h3>
-                <p style="margin-top:6%;line-height:35%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;support@sakaafyafiness.club<?php //echo $this->lang->line('msg_email2'); ?></p>
+                <p style="margin-top:6%;line-height:35%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;support@sakaafyafitness.club<?php //echo $this->lang->line('msg_email2'); ?></p>
                 <br />
                 <br />
                 <h3 style="line-height:20%;"><i class="fa fa-user fa-1x" style="line-height:6%;color:#00c0ef;"></i> <?php echo $this->lang->line('msg_phone'); ?></h3>
@@ -147,7 +147,7 @@ input {
                 <strong><?php echo $this->lang->line('msg_full_name'); ?></strong><br>
                 SAKA AFYA FITNESS CLUB
                 <?php //echo $this->lang->line('msg_full_name2'); ?><br>
-                <a href="mailto:support@sakaafyafiness.club"><?php echo $this->lang->line('msg_email'); ?> support@sakaafyafiness.club</a>
+                <a href="mailto:support@sakaafyafitness.club"><?php echo $this->lang->line('msg_email'); ?> support@sakaafyafitness.club</a>
             </address>
             </form>
         </div>
