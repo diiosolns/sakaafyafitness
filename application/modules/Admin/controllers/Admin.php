@@ -45,6 +45,11 @@ function index(){
 					//$data['mpanel_f'] = "createProfile";
 					redirect('Profile/complete_registration');
 				} else {
+					if($data['profileRes']->num_rows() == 2) {
+						//do something
+					} else {
+						//do nothing
+					}
 					$data['mpanel_m'] = "Admin";
 					//$data['middle_f'] = "m_container"; 
 					$data['mpanel_f'] = "user_dashboard"; 
